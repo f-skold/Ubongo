@@ -13,7 +13,10 @@ class CFigura:
         self.y = y
         self._id = n
         self.imagen(filename, True)
-        self.col = self.image.get_at((25,25))
+        if self._id == 4 or self._id == 6:
+            self.col = self.image.get_at((51,25))
+        else:
+            self.col = self.image.get_at((0,0))
         
     def imagen(self, filename, transparent=False):
         self.image = pygame.image.load(filename)

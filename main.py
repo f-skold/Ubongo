@@ -33,9 +33,9 @@ def main():
     Figuras.append(CFigura(randint(0,1000),randint(0,700),1,"Fichas/Ficha1.png"))
     Figuras.append(CFigura(randint(0,1000),randint(0,700),2,"Fichas/Ficha2.png"))
     Figuras.append(CFigura(randint(0,1000),randint(0,700),3,"Fichas/Ficha3.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),4,"Fichas/Ficha4.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),5,"Fichas/Ficha5.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),6,"Fichas/Ficha6.png"))
+    Figuras.append(CFigura(randint(0,1000),randint(0,700),4,"Fichas/Ficha4.png"))
+    Figuras.append(CFigura(randint(0,1000),randint(0,700),5,"Fichas/Ficha5.png"))
+    Figuras.append(CFigura(randint(0,1000),randint(0,700),6,"Fichas/Ficha6.png"))
     #Figuras.append(CFigura(randint(0,1000),randint(0,700),7,"Fichas/Ficha7.png"))
     #Figuras.append(CFigura(randint(0,1000),randint(0,700),8,"Fichas/Ficha8.png"))
     #Figuras.append(CFigura(randint(0,1000),randint(0,700),9,"Fichas/Ficha9.png"))
@@ -63,7 +63,7 @@ def main():
             elif event.type == pygame.KEYDOWN:
                 #si la tecla es "d" rota en sentido horario
                 if event.key == pygame.K_d and aux != 0:
-                    aux.rotarImg(0)
+                    aux.rotarImg(1)
                     
                 #si la tecla es "a" rota es sentido anti-horario
                 elif event.key == pygame.K_a and aux != 0:
@@ -102,6 +102,5 @@ def main():
         Esc.DibujarPlantilla1(surface)
 
         screen.update()
-
 
 main()
