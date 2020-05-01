@@ -1,3 +1,4 @@
+
 from FichasyTableros import *
 
 def main():
@@ -26,22 +27,22 @@ def main():
     reloj = pygame.time.Clock()
 
     #Se crea la lista de Escenarios
-    Esc = Escenarios()
+    Esc = Escenarios(600,0)
     
     # Se crea la lista con todas las figuras
     Figuras = []
     Figuras.append(CFigura(randint(0,1000),randint(0,700),1,"Fichas/Ficha1.png"))
     Figuras.append(CFigura(randint(0,1000),randint(0,700),2,"Fichas/Ficha2.png"))
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),3,"Fichas/Ficha3.png"))
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),4,"Fichas/Ficha4.png"))
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),5,"Fichas/Ficha5.png"))
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),6,"Fichas/Ficha6.png"))
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),7,"Fichas/Ficha7.png"))
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),8,"Fichas/Ficha8.png"))
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),9,"Fichas/Ficha9.png"))
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),10,"Fichas/Ficha10.png"))
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),11,"Fichas/Ficha11.png"))
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),12,"Fichas/Ficha12.png"))
+    #Figuras.append(CFigura(randint(0,1000),randint(0,700),3,"Fichas/Ficha3.png"))
+    #Figuras.append(CFigura(randint(0,1000),randint(0,700),4,"Fichas/Ficha4.png"))
+    #Figuras.append(CFigura(randint(0,1000),randint(0,700),5,"Fichas/Ficha5.png"))
+    #Figuras.append(CFigura(randint(0,1000),randint(0,700),6,"Fichas/Ficha6.png"))
+    #Figuras.append(CFigura(randint(0,1000),randint(0,700),7,"Fichas/Ficha7.png"))
+    #Figuras.append(CFigura(randint(0,1000),randint(0,700),8,"Fichas/Ficha8.png"))
+    #Figuras.append(CFigura(randint(0,1000),randint(0,700),9,"Fichas/Ficha9.png"))
+    #Figuras.append(CFigura(randint(0,1000),randint(0,700),10,"Fichas/Ficha10.png"))
+    #Figuras.append(CFigura(randint(0,1000),randint(0,700),11,"Fichas/Ficha11.png"))
+    #Figuras.append(CFigura(randint(0,1000),randint(0,700),12,"Fichas/Ficha12.png"))
     # Variables controladoras
     # X y Y sirven para obtener la posicion del raton
     x = 0
@@ -94,13 +95,20 @@ def main():
         if activate:
             aux.setPos(x, y)
         
+        origenPlantilla=800
+        #colisiones
+        #for i in range(len(Figuras)):
+        #    Collisions=detectColisions(Figuras[i].x,Figuras[i].y,Figuras[i].getWidth(),Figuras[i].getHeight(),origenPlantilla,1)
+
         surface.fill((100, 0, 255))
+
+        Esc.DibujarPlantilla1(surface,origenPlantilla,0)
+        
         # Se cargan todas las figuras
         for i in range(len(Figuras)):
-            Figuras[i].cargarImg(surface)
+                Figuras[i].cargarImg(surface)
 
-        Esc.DibujarPlantilla1(surface)
-
+        
         screen.update()
 
 main()
