@@ -13,7 +13,7 @@ class CFigura:
         self.y = y
         self._id = n
         self.imagen(filename, True)
-        if self._id == 4 or self._id == 6:
+        if self._id == 4 or self._id == 6 or self._id == 10:
             self.col = self.image.get_at((51,25))
         else:
             self.col = self.image.get_at((0,0))

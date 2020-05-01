@@ -36,12 +36,12 @@ def main():
     Figuras.append(CFigura(randint(0,1000),randint(0,700),4,"Fichas/Ficha4.png"))
     Figuras.append(CFigura(randint(0,1000),randint(0,700),5,"Fichas/Ficha5.png"))
     Figuras.append(CFigura(randint(0,1000),randint(0,700),6,"Fichas/Ficha6.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),7,"Fichas/Ficha7.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),8,"Fichas/Ficha8.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),9,"Fichas/Ficha9.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),10,"Fichas/Ficha10.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),11,"Fichas/Ficha11.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),12,"Fichas/Ficha12.png"))
+    Figuras.append(CFigura(randint(0,1000),randint(0,700),7,"Fichas/Ficha7.png"))
+    Figuras.append(CFigura(randint(0,1000),randint(0,700),8,"Fichas/Ficha8.png"))
+    Figuras.append(CFigura(randint(0,1000),randint(0,700),9,"Fichas/Ficha9.png"))
+    Figuras.append(CFigura(randint(0,1000),randint(0,700),10,"Fichas/Ficha10.png"))
+    Figuras.append(CFigura(randint(0,1000),randint(0,700),11,"Fichas/Ficha11.png"))
+    Figuras.append(CFigura(randint(0,1000),randint(0,700),12,"Fichas/Ficha12.png"))
     # Variables controladoras
     # X y Y sirven para obtener la posicion del raton
     x = 0
