@@ -27,22 +27,8 @@ def main():
     reloj = pygame.time.Clock()
 
     #Se crea la lista de Escenarios
-    Esc = Escenarios(600,0)
+    Esc = Plantilla(600,0)
     
-    # Se crea la lista con todas las figuras
-    Figuras = []
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),1,"Fichas/Ficha1.png"))
-    Figuras.append(CFigura(randint(0,1000),randint(0,700),2,"Fichas/Ficha2.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),3,"Fichas/Ficha3.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),4,"Fichas/Ficha4.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),5,"Fichas/Ficha5.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),6,"Fichas/Ficha6.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),7,"Fichas/Ficha7.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),8,"Fichas/Ficha8.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),9,"Fichas/Ficha9.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),10,"Fichas/Ficha10.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),11,"Fichas/Ficha11.png"))
-    #Figuras.append(CFigura(randint(0,1000),randint(0,700),12,"Fichas/Ficha12.png"))
     # Variables controladoras
     # X y Y sirven para obtener la posicion del raton
     x = 0
@@ -69,6 +55,11 @@ def main():
                 #si la tecla es "a" rota es sentido anti-horario
                 elif event.key == pygame.K_a and aux != 0:
                     aux.rotarImg(0)
+                
+                #Si la tecla es "q" la imgaen se voltea
+                elif event.key == pygame.K_q and aux != 0:
+                    aux.voltearImg()
+                    
                     
             #Si se apreta un boton del mouse
             elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -76,21 +67,24 @@ def main():
                 if event.button == pygame.BUTTON_LEFT:
                     pixel = list(surface.get_at((x, y)))
                     #se busca la figura que coincida con la pos del cursor
-                    for i in range(len(Figuras)):
-                        if pixel == list(Figuras[i].getCol()):
+                    for i in range(len(Esc.getFiguras())):
+                        if pixel == list(Esc.getFiguras()[i].getCol()):
                             #se activa el movimiento
                             activate = True
-                            aux = Figuras[i]
+                            aux = Esc.getFiguras()[i]
                             
                 #si el boton es derecho
                 elif event.button == pygame.BUTTON_RIGHT:
                     #se cancela el movimiento
                     activate = False
+                    if aux != 0:
+                        aux.acomodarImg()
                     aux = 0
                     
         #FPS fijados en 20
         reloj.tick(20)
         x,y = pygame.mouse.get_pos()
+        
         #Cambio de pos de la figura seleccionada
         if activate:
             aux.setPos(x, y)
@@ -100,14 +94,12 @@ def main():
         #for i in range(len(Figuras)):
         #    Collisions=detectColisions(Figuras[i].x,Figuras[i].y,Figuras[i].getWidth(),Figuras[i].getHeight(),origenPlantilla,1)
 
-        surface.fill((100, 0, 255))
+        surface.fill((255,139,129))
 
         Esc.DibujarPlantilla1(surface,origenPlantilla,0)
         
         # Se cargan todas las figuras
-        for i in range(len(Figuras)):
-                Figuras[i].cargarImg(surface)
-
+        Esc.cargarFiguras(surface,4,0)
         
         screen.update()
 

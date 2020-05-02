@@ -1,0 +1,10 @@
+Me falta crear la clase jugador
+    Tendrá a la clase plantilla
+
+En la clase plantilla
+    Falta validar el completado del puzzle
+
+(opcional -> las plantillas no se pueden resolver si no están en su debida posición en teoría)
+En la clase Figuras
+    Validar la colisión entre figuras,
+    para que no se intersecten en las plantillas
