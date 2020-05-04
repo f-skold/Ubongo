@@ -15,7 +15,7 @@ def main():
     screen = pygame.display
 
     # Tamaño de la pantalla
-    xs = 1200
+    xs = 800
     ys = 800
 
     # Superfice que se toma
@@ -60,7 +60,6 @@ def main():
                 elif event.key == pygame.K_q and aux != 0:
                     aux.voltearImg()
                     
-                    
             #Si se apreta un boton del mouse
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 #si el boton es izquierdo
@@ -77,8 +76,12 @@ def main():
                 elif event.button == pygame.BUTTON_RIGHT:
                     #se cancela el movimiento
                     activate = False
+                    #obtener la posicion del mouse
+                    posmouse = pygame.mouse.get_pos()
                     if aux != 0:
                         aux.acomodarImg()
+                        actualX, actualY = aux.getPos()
+                        Esc.colocar(actualX,actualY, aux)
                     aux = 0
                     
         #FPS fijados en 20
@@ -89,10 +92,7 @@ def main():
         if activate:
             aux.setPos(x, y)
         
-        origenPlantilla=800
-        #colisiones
-        #for i in range(len(Figuras)):
-        #    Collisions=detectColisions(Figuras[i].x,Figuras[i].y,Figuras[i].getWidth(),Figuras[i].getHeight(),origenPlantilla,1)
+        origenPlantilla=400
 
         surface.fill((255,139,129))
 

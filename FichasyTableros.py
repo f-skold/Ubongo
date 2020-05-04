@@ -7,7 +7,8 @@ class CFigura:
     _id = 0
     col = (0, 0, 0)
     image = 0
-
+    mat = []
+    
     def __init__(self, x, y, n, filename):
         self.x = x
         self.y = y
@@ -17,6 +18,17 @@ class CFigura:
             self.col = self.image.get_at((51,25))
         else:
             self.col = self.image.get_at((0,0))
+        self.formaMatriz()
+    
+    def formaMatriz(self):
+        ancho, alto = self.image.get_rect().size
+        self.mat = [[-1 for i in range(ancho//50)]for j in range(alto//50)]
+        for i in range(0,alto//50):
+            for j in range(0, ancho//50):
+                pixelcol=self.image.get_at((j*50,i*50))
+                if pixelcol == self.col:
+                    self.mat[i][j] = 1
+        print(self._id)
         
     def imagen(self, filename, transparent=False):
         self.image = pygame.image.load(filename)
@@ -40,7 +52,7 @@ class CFigura:
     def reescalarImg(self):
         if self._id == 1:
             self.image = pygame.transform.scale(self.image,(150,50))
-            
+
         
     def acomodarImg(self):
         self.x -= (self.x % 50)
@@ -51,6 +63,9 @@ class CFigura:
 
     def getCol(self):
         return self.col
+    
+    def getPos(self):
+        return self.x, self.y
 
     def setPos(self, x, y):
         self.x = x
@@ -66,11 +81,18 @@ class CFigura:
     def getHeight(self):
         self.height = self.image.get_height()
         return self.height
-
+    
+    def getMat(self):
+        return self.mat
+    
 class Plantilla:
     # ESCENARIOS
-    #3 FICHAS
+    
     Figuras = []
+    ma_vali = []
+    color = (0,0,0)
+    pos = (0,0)
+    
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -87,50 +109,75 @@ class Plantilla:
             CFigura(150,(250),10,"Fichas/Ficha10.png"),
             CFigura(150,(300),11,"Fichas/Ficha11.png"),
             CFigura(150,(350),12,"Fichas/Ficha12.png")]
+        
+    def colocar(self, piez_x, piez_y, aux):
+        n_col = len(self.ma_vali[0])
+        n_fil = len(self.ma_vali)
+        x = piez_x - self.x
+        y = piez_y - self.y
+        aux.formaMatriz()
+        aux_mat = aux.getMat()
+        
+        for f in range(len(aux_mat)):
+            for c in range(len(aux_mat[f])):
+                if aux_mat[f][c] != -1:
+                    self.ma_vali[f+(y//50)][c+(x//50)] = aux_mat[f][c]
+                
 
+    def getMat(self):
+        return self.ma_vali
+    
+    # 3 Fichas
     def DibujarPlantilla1(self, surface, x, y):
-        color = (255, 255, 255)
+        self.color = (255, 255, 255)
+        self.x = x
         #x = 600
         #y = 0
 
         #DIBUJAR TABLERO DE JUGADOR PERSONA
         #Fila 1
-        pygame.draw.rect(surface, color, [(x, y), (50, 50)])
-        pygame.draw.rect(surface, color, [(x+50, y), (50, 50)])
-        pygame.draw.rect(surface, color, [(x+100, y), (50, 50)])
-        pygame.draw.rect(surface, color, [(x+150, y), (50, 50)])
-        #Fila 2
-        pygame.draw.rect(surface, color, [(x + 50, y+50), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 100, y+50), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 150, y + 50), (50, 50)])
-        #Fila 3
-        pygame.draw.rect(surface, color, [(x + 50, y + 100), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 100, y + 100), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 150, y + 100), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 200, y + 100), (50, 50)])
+        #pygame.draw.rect(surface, color, [(x, y), (50, 50)])
+        #pygame.draw.rect(surface, color, [(x+50, y), (50, 50)])
+        #pygame.draw.rect(surface, color, [(x+100, y), (50, 50)])
+        #pygame.draw.rect(surface, color, [(x+150, y), (50, 50)])
+        ##Fila 2
+        #pygame.draw.rect(surface, color, [(x + 50, y+50), (50, 50)])
+        #pygame.draw.rect(surface, color, [(x + 100, y+50), (50, 50)])
+        #pygame.draw.rect(surface, color, [(x + 150, y + 50), (50, 50)])
+        ##Fila 3
+        #pygame.draw.rect(surface, color, [(x + 50, y + 100), (50, 50)])
+        #pygame.draw.rect(surface, color, [(x + 100, y + 100), (50, 50)])
+        #pygame.draw.rect(surface, color, [(x + 150, y + 100), (50, 50)])
+        #pygame.draw.rect(surface, color, [(x + 200, y + 100), (50, 50)])
         #Fila 4
-        pygame.draw.rect(surface, color, [(x + 100, y + 150), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 150, y + 150), (50, 50)])
+        #pygame.draw.rect(surface, color, [(x + 100, y + 150), (50, 50)])
+        #pygame.draw.rect(surface, color, [(x + 150, y + 150), (50, 50)])
 
         # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
         # Fila 1
-        y = 400
-        pygame.draw.rect(surface, color, [(x, y), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 50, y), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 100, y), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 150, y), (50, 50)])
+        self.y = 250
+        pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50,  self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)])
         # Fila 2
-        pygame.draw.rect(surface, color, [(x + 50, y + 50), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 100, y + 50), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 150, y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50,  self.y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)])
         # Fila 3
-        pygame.draw.rect(surface, color, [(x + 50, y + 100), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 100, y + 100), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 150, y + 100), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 200, y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50,  self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 100), (50, 50)])
         # Fila 4
-        pygame.draw.rect(surface, color, [(x + 100, y + 150), (50, 50)])
-        pygame.draw.rect(surface, color, [(x + 150, y + 150), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
+        
+        if len(self.ma_vali)==0:
+            self.ma_vali = [[ 0, 0, 0, 0, -1],
+                            [-1, 0, 0, 0, -1],
+                            [-1, 0, 0, 0,  0],
+                            [-1,-1, 0, 0, -1]]
 
     # 3 FICHAS
     def DibujarPlantilla2(self, surface, x, y):
