@@ -1,8 +1,18 @@
 import sys
 import random
-
 import pygame
 from pygame.locals import *
+
+# inicializar Pygame
+pygame.init()
+# Tamaño de la pantalla para menu
+xs = 1200
+ys = 800
+# establecer el título de la ventana
+pygame.display.set_caption('Ubongo!!!')
+#LETRAS
+menufont = pygame.font.Font(None,48)
+
 
 
 class dado:
@@ -785,22 +795,120 @@ dimensiones = [1000, 300]
 an = dimensiones[0] / 18
 la = dimensiones[1] / 6
 
+#Menu e instrucciones
+def menuOpciones():
+    reloj = pygame.time.Clock()
+    running = True
+    while running:
+        display = pygame.display.set_mode((xs, ys))
+        display.fill((0, 0, 0))
+
+        mx, my = pygame.mouse.get_pos()
+
+        button_1 = pygame.Rect(50, 100, 400, 50)
+        button_2 = pygame.Rect(150, 200, 400, 50)
+        button_3 = pygame.Rect(250, 300, 400, 50)
+
+        pygame.draw.rect(display, (255, 0, 0), button_1)
+        pygame.draw.rect(display, (0, 255, 0), button_2)
+        pygame.draw.rect(display, (0, 0, 255), button_3)
+        imagen1 = pygame.image.load("dibujo1.png")
+        display.blit(imagen1, (460, 200))
+        imagen2 = pygame.image.load("dibujo2.png")
+        display.blit(imagen2, (760, 100))
+
+        start = menufont.render('Comenzar Juego', True, (0, 255, 0))
+        instrucciones = menufont.render('Instrucciones', True, (0, 0, 255))
+        quit = menufont.render('Salir', True, (255, 255, 255))
+
+        display.blit(start, (90, 112))
+        display.blit(instrucciones, (225, 210))
+        display.blit(quit, (400, 310))
+
+        click = False
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+
+        if button_1.collidepoint((mx, my)):
+            if click:
+                return True
+        if button_2.collidepoint((mx, my)):
+            if click:
+                return False
+        if button_3.collidepoint((mx, my)):
+            if click:
+                pygame.quit()
+                sys.exit()
+
+        pygame.display.update()
+        reloj.tick(60)
+
+def instrucciones():
+    reloj = pygame.time.Clock()
+    running = True
+    while running:
+
+        display = pygame.display.set_mode((xs, ys))
+        display.fill((0, 0, 0))
+
+        mx, my = pygame.mouse.get_pos()
+
+        button_1 = pygame.Rect(50, 50, 150, 50)
+        button_2 = pygame.Rect(50, 100, 150, 50)
+
+        imagen1 = pygame.image.load("instrucciones.png")
+        display.blit(imagen1, (-40, 0))
+        pygame.draw.rect(display, (0, 255, 0), button_1)
+        pygame.draw.rect(display, (255, 0, 0), button_2)
+        empezar = menufont.render('Empezar', True, (0, 0, 255))
+        volver = menufont.render('Salir', True, (0, 0, 255))
+        display.blit(empezar, (55, 60))
+        display.blit(volver, (78, 110))
+
+        if button_1.collidepoint((mx, my)):
+            if click:
+                return True
+        if button_2.collidepoint((mx, my)):
+            if click:
+                pygame.quit()
+                sys.exit()
+
+        click = False
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+
+        pygame.display.update()
+        reloj.tick(60)
 
 def main():
+
+    menuOpciones()
+
+    if menuOpciones()==False:
+        instrucciones()
+
     # Booleano que controla el while principal
     running = True
 
-    # inicializa Pygame
-    pygame.init()
-
-    # establece el título de la ventana
-    pygame.display.set_caption('Ubongo!!!')
-
     screen = pygame.display
-
-    # Tamaño de la pantalla
-    xs = 1000
-    ys = 900
 
     # Datos del tablero
     Dado = dado()
@@ -919,7 +1027,7 @@ def main():
         if activate:
             aux.setPos(x, y)
 
-        origenPlantilla = 240
+        origenPlantilla = 250
 
         surface.fill((255, 139, 129))
 
