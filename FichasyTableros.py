@@ -28,7 +28,6 @@ class CFigura:
                 pixelcol=self.image.get_at((j*50,i*50))
                 if pixelcol == self.col:
                     self.mat[i][j] = 1
-        print(self._id)
         
     def imagen(self, filename, transparent=False):
         self.image = pygame.image.load(filename)
@@ -131,29 +130,7 @@ class Plantilla:
     def DibujarPlantilla1(self, surface, x, y):
         self.color = (255, 255, 255)
         self.x = x
-        #x = 600
-        #y = 0
-
-        #DIBUJAR TABLERO DE JUGADOR PERSONA
-        #Fila 1
-        #pygame.draw.rect(surface, color, [(x, y), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x+50, y), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x+100, y), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x+150, y), (50, 50)])
-        ##Fila 2
-        #pygame.draw.rect(surface, color, [(x + 50, y+50), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y+50), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 50), (50, 50)])
-        ##Fila 3
-        #pygame.draw.rect(surface, color, [(x + 50, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 200, y + 100), (50, 50)])
-        #Fila 4
-        #pygame.draw.rect(surface, color, [(x + 100, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 150), (50, 50)])
-
-        # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
+        
         # Fila 1
         self.y = 250
         pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
@@ -183,31 +160,7 @@ class Plantilla:
     def DibujarPlantilla2(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        #y = 0
-
-        # DIBUJAR TABLERO DE JUGADOR PERSONA
-        # Fila 1
-        #pygame.draw.rect(surface, color, [(x, y), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y), (50, 50)])
-
-        # Fila 2
-        #pygame.draw.rect(surface, color, [(x, y + 50), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 50), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 50), (50, 50)])
-        # Fila 3
-        #pygame.draw.rect(surface, color, [(x, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 100), (50, 50)])
-        # Fila 4
-        #pygame.draw.rect(surface, color, [(x, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 150), (50, 50)])
-        # Fila 5
-        #pygame.draw.rect(surface, color, [(x + 100, y + 200), (50, 50)])
-        # Fila 6
-        #pygame.draw.rect(surface, color, [(x + 100, y + 250), (50, 50)])
-
-        # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
+        
         self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
@@ -241,35 +194,7 @@ class Plantilla:
     def DibujarPlantilla3(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        #y = 0
-
-        # DIBUJAR TABLERO DE JUGADOR PERSONA
-        # Fila 1
-        #pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)])
-        # Fila 2
-        #pygame.draw.rect(surface, self.color, [(self.x, self.y + 50), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)])
-        # Fila 3
-        #pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)])
-        # Fila 4
-        #pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
-        # Fila 5
-        #pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 200), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 200), (50, 50)])
-        # Fila 6
-        #pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 250), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 250), (50, 50)])
-
-        # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
+        
         self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
@@ -308,28 +233,6 @@ class Plantilla:
     def DibujarPlantilla4(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        #y = 0
-
-        # DIBUJAR TABLERO DE JUGADOR PERSONA
-        # Fila 1
-        #pygame.draw.rect(surface, self.color, [(self.x + 50, y), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 100, y), (50, 50)])
-        # Fila 2
-        #pygame.draw.rect(surface, self.color, [(self.x, y + 50), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 50, y + 50), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 100, y + 50), (50, 50)])
-        # Fila 3
-        #pygame.draw.rect(surface, self.color, [(self.x, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 50, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 100, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 150, y + 100), (50, 50)])
-        # Fila 4
-        #pygame.draw.rect(surface, self.color, [(self.x + 50, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 100, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 150, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, self.color, [(self.x + 200, y + 150), (50, 50)])
-
-        # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
         self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
@@ -359,33 +262,6 @@ class Plantilla:
     def DibujarPlantilla5(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        #y = 0
-        # DIBUJAR TABLERO DE JUGADOR PERSONA
-        # Fila 1
-        #pygame.draw.rect(surface, color, [(x + 100, y), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y), (50, 50)])
-        # Fila 2
-        #pygame.draw.rect(surface, color, [(x + 100, y + 50), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 50), (50, 50)])
-        # Fila 3
-        #pygame.draw.rect(surface, color, [(x, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 100), (50, 50)])
-        # Fila 4
-        #pygame.draw.rect(surface, color, [(x, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 150), (50, 50)])
-        # Fila 5
-        #pygame.draw.rect(surface, color, [(x, y + 200), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 200), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 200), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 200), (50, 50)])
-        # Fila 6
-        #pygame.draw.rect(surface, color, [(x + 50, y + 250), (50, 50)])
-
-        # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
         self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
@@ -423,30 +299,6 @@ class Plantilla:
     def DibujarPlantilla6(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        #y = 0
-        # DIBUJAR TABLERO DE JUGADOR PERSONA
-        # Fila 1
-        #pygame.draw.rect(surface, color, [(x + 100, y), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y), (50, 50)])
-        # Fila 2
-        #pygame.draw.rect(surface, color, [(x + 100, y + 50), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 50), (50, 50)])
-        # Fila 3
-        #pygame.draw.rect(surface, color, [(x, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 100), (50, 50)])
-        # Fila 4
-        #pygame.draw.rect(surface, color, [(x, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 150), (50, 50)])
-        # Fila 5
-        #pygame.draw.rect(surface, color, [(x + 50, y + 200), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 200), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 200), (50, 50)])
-
-        # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
         self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
@@ -480,32 +332,6 @@ class Plantilla:
     def DibujarPlantilla7(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        #y = 0
-        # DIBUJAR TABLERO DE JUGADOR PERSONA
-        # Fila 1
-        #pygame.draw.rect(surface, color, [(x + 50, y), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y), (50, 50)])
-        # Fila 2
-        #pygame.draw.rect(surface, color, [(x + 50, y + 50), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 50), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 50), (50, 50)])
-        # Fila 3
-        #pygame.draw.rect(surface, color, [(x + 50, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 100), (50, 50)])
-        # Fila 4
-        #pygame.draw.rect(surface, color, [(x, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 150), (50, 50)])
-        # Fila 5
-        #pygame.draw.rect(surface, color, [(x, y + 200), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 200), (50, 50)])
-        # Fila 6
-        #pygame.draw.rect(surface, color, [(x, y + 250), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 250), (50, 50)])
-
-        # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
         self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
@@ -542,28 +368,6 @@ class Plantilla:
     def DibujarPlantilla8(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        #y = 0
-        # DIBUJAR TABLERO DE JUGADOR PERSONA
-        # Fila 1
-        #pygame.draw.rect(surface, color, [(x, y), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y), (50, 50)])
-        # Fila 2
-        #pygame.draw.rect(surface, color, [(x, y + 50), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 50, y + 50), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 50), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 50), (50, 50)])
-        # Fila 3
-        #pygame.draw.rect(surface, color, [(x + 50, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 100), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 100), (50, 50)])
-        # Fila 4
-        #pygame.draw.rect(surface, color, [(x + 50, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 100, y + 150), (50, 50)])
-        #pygame.draw.rect(surface, color, [(x + 150, y + 150), (50, 50)])
-
-        # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
         self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
@@ -677,4 +481,4 @@ class Plantilla:
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[3].cargarImg(surface)
             
-        
+    

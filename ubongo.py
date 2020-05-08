@@ -90,9 +90,7 @@ class jugador:
                 f = f + 1
 
 
-
 def drawTablero(dimensiones, pantalla):
-
 
     pygame.draw.rect(pantalla, (248, 190, 38), [0, 0, dimensiones[0], dimensiones[1]])
     pygame.draw.rect(pantalla, (128, 128, 0), [12 * (an), 0, dimensiones[0] - (an), dimensiones[1]])
@@ -127,13 +125,6 @@ players = [jugador(12*an, 1*la, 1) , jugador(13*an, 2*la, 2)]
 for y in range(0, 6):
     for x in range(0, 12):
         gemas[y][x] = gema(x * an, y * la, random.randint(1, 6))
-
-
-
-
-
-
-
 
 
 while True:
