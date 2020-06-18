@@ -14,11 +14,11 @@ pygame.display.set_caption('Ubongo!!!')
 menufont = pygame.font.Font(None,48)
 
 
-
 class dado:
 
     def __init__(self):
         self.res = 0
+
 
         self.i1 = pygame.image.load(r'DadoImagenes/i1.png')
         self.i2 = pygame.image.load(r'DadoImagenes/i2.png')
@@ -141,7 +141,6 @@ class CFigura:
                 pixelcol = self.image.get_at((j * 50, i * 50))
                 if pixelcol == self.col:
                     self.mat[i][j] = 1
-        print(self._id)
 
     def imagen(self, filename, transparent=False):
         self.image = pygame.image.load(filename)
@@ -243,27 +242,6 @@ class Plantilla:
     def DibujarPlantilla1(self, surface, x, y):
         self.color = (255, 255, 255)
         self.x = x
-        # x = 600
-        # y = 0
-
-        # DIBUJAR TABLERO DE JUGADOR PERSONA
-        # Fila 1
-        # pygame.draw.rect(surface, color, [(x, y), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x+50, y), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x+100, y), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x+150, y), (50, 50)])
-        ##Fila 2
-        # pygame.draw.rect(surface, color, [(x + 50, y+50), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 100, y+50), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 150, y + 50), (50, 50)])
-        ##Fila 3
-        # pygame.draw.rect(surface, color, [(x + 50, y + 100), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 100, y + 100), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 150, y + 100), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 200, y + 100), (50, 50)])
-        # Fila 4
-        # pygame.draw.rect(surface, color, [(x + 100, y + 150), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 150, y + 150), (50, 50)])
 
         # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
         # Fila 1

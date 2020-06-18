@@ -9,12 +9,12 @@ class dado:
     def __init__(self):
         self.res = 0
 
-        self.i1 = pygame.image.load(r'C:\Users\Ricardo\Desktop\Latency\i1.png')
-        self.i2 = pygame.image.load(r'C:\Users\Ricardo\Desktop\Latency\i2.png')
-        self.i3 = pygame.image.load(r'C:\Users\Ricardo\Desktop\Latency\i3.png')
-        self.i4 = pygame.image.load(r'C:\Users\Ricardo\Desktop\Latency\i4.png')
-        self.i5 = pygame.image.load(r'C:\Users\Ricardo\Desktop\Latency\i5.png')
-        self.i6 = pygame.image.load(r'C:\Users\Ricardo\Desktop\Latency\i6.png')
+        self.i1 = pygame.image.load('DadoImagenes/i1.png')
+        self.i2 = pygame.image.load('DadoImagenes/i2.png')
+        self.i3 = pygame.image.load('DadoImagenes/i3.png')
+        self.i4 = pygame.image.load('DadoImagenes/i4.png')
+        self.i5 = pygame.image.load('DadoImagenes/i5.png')
+        self.i6 = pygame.image.load('DadoImagenes/i6.png')
 
     def dibujarDado(self, res, pan):
         if res == 1:
@@ -174,7 +174,5 @@ while True:
 
         if event.type == pygame.QUIT:
             pygame.quit()
-            sys.exit()
-
 
     pygame.display.update()
