@@ -1,5 +1,6 @@
 import pygame
 from random import randint
+import backtracking_ubongo
 
 class CFigura:
     x = 0
@@ -91,6 +92,8 @@ class Plantilla:
     ma_vali = []
     color = (0,0,0)
     pos = (0,0)
+    tabla_pc =[]
+    piezas = []
     
     def __init__(self, x, y):
         self.x = x
@@ -109,6 +112,27 @@ class Plantilla:
             CFigura(150,(300),11,"Fichas/Ficha11.png"),
             CFigura(150,(350),12,"Fichas/Ficha12.png")]
         
+        self.tabla_pc = backtracking_ubongo.gen_matrix("""
+                                       00001
+                                       10001
+                                       10000
+                                       11001
+                                       """)
+        
+        self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                02
+                                                22
+                                                22
+                                                """
+        ),backtracking_ubongo.gen_matrix("""
+                                           3333
+                                           """),
+        backtracking_ubongo.gen_matrix("""
+                                        04
+                                        44
+                                        40
+                                        """)]
+        
     def colocar(self, piez_x, piez_y, aux):
         n_col = len(self.ma_vali[0])
         n_fil = len(self.ma_vali)
@@ -126,10 +150,17 @@ class Plantilla:
     def getMat(self):
         return self.ma_vali
     
+    def getTabla_pc(self):
+        return self.tabla_pc
+    
+    def getPiezas(self):
+        return self.piezas
+    
     # 3 Fichas
     def DibujarPlantilla1(self, surface, x, y):
         self.color = (255, 255, 255)
         self.x = x
+        
         
         # Fila 1
         self.y = 250
@@ -155,6 +186,10 @@ class Plantilla:
                             [-1, 0, 0, 0, -1],
                             [-1, 0, 0, 0,  0],
                             [-1,-1, 0, 0, -1]]
+            
+        
+        
+        
 
     # 3 FICHAS
     def DibujarPlantilla2(self, surface, x, y):

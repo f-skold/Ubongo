@@ -1,4 +1,4 @@
-
+import backtracking_ubongo as bu
 from FichasyTableros import *
 
 def main():
@@ -38,6 +38,17 @@ def main():
     
     # aux -> Tomará los valores de la Figura seleccionada
     aux = 0
+    
+    #SOLUCION CON BACTRACKING DE LA PLANTILLA 1 CON SUS RESPECTIVAS PIEZAS
+    
+    piezas = Esc.getPiezas()
+    tabla = Esc.getTabla_pc()
+    #solucion será de las mismas dimensiones de la taabla
+    solucion = [[0 for j in range(len(tabla[i]))]for i in range(len(tabla))]
+    #mandamos las piezas, la tabla y la tabla que traerá la solución
+    bu.resolucion(piezas,tabla, solucion)
+    #después que el algoritmo cambió a la variable solución ya la tenemos para usarla
+    print(solucion)
 
     # bucle infinito
     while running:

@@ -19,7 +19,6 @@ class dado:
     def __init__(self):
         self.res = 0
 
-
         self.i1 = pygame.image.load(r'DadoImagenes/i1.png')
         self.i2 = pygame.image.load(r'DadoImagenes/i2.png')
         self.i3 = pygame.image.load(r'DadoImagenes/i3.png')
@@ -858,17 +857,14 @@ def instrucciones():
         if button_2.collidepoint((mx, my)):
             if click:
                 pygame.quit()
-                sys.exit()
 
         click = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
-                    sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
