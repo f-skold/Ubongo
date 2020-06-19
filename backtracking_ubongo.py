@@ -72,7 +72,6 @@ def solve(pieces, board, solu):
     # Base case: No more pieces to add.
     # Due to the way the puzzle is created, this means that the board is full.
     if len(pieces) == 0:
-        print_2d(board)
         for i in range(len(board)):
                 for j in range(len(board[i])):
                     solu[i][j] = board[i][j]
