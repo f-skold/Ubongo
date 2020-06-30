@@ -1,5 +1,6 @@
 import backtracking_ubongo as bu
 from FichasyTableros import *
+import numpy as np
 
 def main():
 
@@ -25,6 +26,7 @@ def main():
 
     # Reloj
     reloj = pygame.time.Clock()
+    current_time = 0
 
     #Se crea la lista de Escenarios
     Esc = Plantilla(600,0)
@@ -43,16 +45,17 @@ def main():
     
     piezas = Esc.getPiezas()
     tabla = Esc.getTabla_pc()
-    #solucion será de las mismas dimensiones de la taabla
+    #solucion será de las mismas dimensiones de la tabla
     solucion = [[0 for j in range(len(tabla[i]))]for i in range(len(tabla))]
     #mandamos las piezas, la tabla y la tabla que traerá la solución
     bu.resolucion(piezas,tabla, solucion)
     #después que el algoritmo cambió a la variable solución ya la tenemos para usarla
-    print(solucion)
+    print(np.matrix(solucion))
+    print()
 
     # bucle infinito
     while running:
-        
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -107,11 +110,36 @@ def main():
 
         surface.fill((255,139,129))
 
-        Esc.DibujarPlantilla1(surface,origenPlantilla,0)
-        
+        Esc.DibujarPlantilla6(surface,origenPlantilla,0)
+
+        #PRUEBAS ROBERTO
+        # jugador computadora
+        origenY = 250
+        width = 50
+        height = 50
+        color1 = (255, 0, 0)
+        color2 = (0, 255, 0)
+        color3 = (0, 0, 255)
+        color4 = (127, 0, 255)
+
+        current_time = pygame.time.get_ticks()
+        #print(current_time)
+
+        for y in range(len(solucion)):
+            for x in range(len(solucion[y])):
+                if solucion[y][x] == 2 and current_time >= 2000:
+                    pygame.draw.rect(surface, color1, [(origenPlantilla+(x*50), origenY+(y*50)), (width, height)])
+                if solucion[y][x] == 3 and current_time >= 4000:
+                    pygame.draw.rect(surface, color2, [(origenPlantilla+(x*50), origenY+(y*50)), (width, height)])
+                if solucion[y][x] == 4 and current_time >= 6000:
+                    pygame.draw.rect(surface, color3, [(origenPlantilla+(x*50), origenY+(y*50)), (width, height)])
+                if solucion[y][x] == 5 and current_time >= 8000:
+                    pygame.draw.rect(surface, color4, [(origenPlantilla+(x*50), origenY+(y*50)), (width, height)])
+
         # Se cargan todas las figuras
         Esc.cargarFiguras(surface,4,0)
-        
+
+
         screen.update()
 
 main()
