@@ -111,28 +111,35 @@ class Plantilla:
             CFigura(150,(250),10,"Fichas/Ficha10.png"),
             CFigura(150,(300),11,"Fichas/Ficha11.png"),
             CFigura(150,(350),12,"Fichas/Ficha12.png")]
-        
+
         self.tabla_pc = backtracking_ubongo.gen_matrix("""
-                                       00001
-                                       10001
-                                       10000
-                                       11001
-                                       """)
-        
+                                               1100
+                                               1100
+                                               0000
+                                               0000
+                                               1000
+                                               """)
+
         self.piezas = [backtracking_ubongo.gen_matrix("""
-                                                02
-                                                22
-                                                22
-                                                """
-        ),backtracking_ubongo.gen_matrix("""
-                                           3333
-                                           """),
-        backtracking_ubongo.gen_matrix("""
-                                        04
-                                        44
-                                        40
-                                        """)]
-        
+                                                        20
+                                                        22
+                                                        02
+                                                        """
+                                                      ), backtracking_ubongo.gen_matrix("""
+                                                   33
+                                                   33
+                                                   """),
+                       backtracking_ubongo.gen_matrix("""
+                                                4
+                                                4
+                                                4
+                                                """),
+                       backtracking_ubongo.gen_matrix("""
+                                                       55
+                                                       05
+                                                       05
+                                                       """)]
+
     def colocar(self, piez_x, piez_y, aux):
         n_col = len(self.ma_vali[0])
         n_fil = len(self.ma_vali)
@@ -140,12 +147,12 @@ class Plantilla:
         y = piez_y - self.y
         aux.formaMatriz()
         aux_mat = aux.getMat()
-        
+
         for f in range(len(aux_mat)):
             for c in range(len(aux_mat[f])):
                 if aux_mat[f][c] != -1:
                     self.ma_vali[f+(y//50)][c+(x//50)] = aux_mat[f][c]
-                
+
 
     def getMat(self):
         return self.ma_vali
@@ -186,16 +193,16 @@ class Plantilla:
                             [-1, 0, 0, 0, -1],
                             [-1, 0, 0, 0,  0],
                             [-1,-1, 0, 0, -1]]
-            
-        
-        
-        
+
+
+
+
 
     # 3 FICHAS
     def DibujarPlantilla2(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        
+
         self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
@@ -229,7 +236,7 @@ class Plantilla:
     def DibujarPlantilla3(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        
+
         self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
@@ -489,7 +496,7 @@ class Plantilla:
 
     def getFiguras(self):
         return self.Figuras
-    
+
     def cargarFiguras(self, surface, cara, nplantilla):
         if cara == 0:
                 self.Figuras[3].cargarImg(surface)
@@ -515,5 +522,4 @@ class Plantilla:
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[3].cargarImg(surface)
-            
-    
+
