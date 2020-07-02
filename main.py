@@ -30,7 +30,10 @@ def main():
     current_time = 0
 
     # Se crea la lista de Escenarios
+    #Esc -> enemigo
+    #Esc -> jugador
     Esc = Plantilla(600, 0)
+    #NO ME QUEDA CLARO COMO FUNCIONABA ESTO
     Esc2 = Plantilla(100, 0)
 
     # Variables controladoras
@@ -44,7 +47,7 @@ def main():
     aux = 0
 
     # SOLUCION CON BACTRACKING DE LA PLANTILLA 1 CON SUS RESPECTIVAS PIEZAS
-
+    #enemigo
     piezas = Esc.getPiezas()
     tabla = Esc.getTabla_pc()
     # solucion será de las mismas dimensiones de la tabla
@@ -55,6 +58,10 @@ def main():
     print("solucion:")
     print(np.matrix(solucion))
     print()
+
+    piezas2 = Esc2.getPiezas()
+    tabla2 = Esc2.getTabla_pc()
+    print(np.matrix(tabla2))
 
     # bucle infinito
     while running:
@@ -109,9 +116,6 @@ def main():
         if activate:
             aux.setPos(x, y)
 
-        # PRUEBAS ROBERTO
-        # jugador computadora
-
         origenPlantillaJugador = 100
         origenPlantillaEnemigo = 400
 
@@ -129,20 +133,21 @@ def main():
         color2 = (0, 255, 0)
         color3 = (0, 0, 255)
         color4 = (127, 0, 255)
-        tiempoLimite = 10000
+        #Tiempo que demora la computadora en completar el puzzle
+        tiempoLimite = 15000
 
         current_time = pygame.time.get_ticks()
         # print(current_time)
 
         for yy in range(len(solucion)):
             for xx in range(len(solucion[yy])):
-                if solucion[yy][xx] == 2 and current_time >= 2500:
+                if solucion[yy][xx] == 2 and current_time >= tiempoLimite*0.25:
                     pygame.draw.rect(surface, color1,
                                      [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
-                if solucion[yy][xx] == 3 and current_time >= 5000:
+                if solucion[yy][xx] == 3 and current_time >= tiempoLimite*0.5:
                     pygame.draw.rect(surface, color2,
                                      [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
-                if solucion[yy][xx] == 4 and current_time >= 7500:
+                if solucion[yy][xx] == 4 and current_time >= tiempoLimite*0.75:
                     pygame.draw.rect(surface, color3,
                                      [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                 # Si se supera el tiempo limite, computadora gana la partida
@@ -158,6 +163,9 @@ def main():
 
         # Imprimir Tiempo
         #print(current_time)
+
+        # Pruebas
+        #print(aux)
 
         screen.update()
 
