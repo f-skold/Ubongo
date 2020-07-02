@@ -151,8 +151,11 @@ class Plantilla:
         for f in range(len(aux_mat)):
             for c in range(len(aux_mat[f])):
                 if aux_mat[f][c] != -1:
-                    self.ma_vali[f+(y//50)][c+(x//50)] = aux_mat[f][c]
-
+                    try:
+                        self.ma_vali[f+(y//50)][c+(x//50)] = aux_mat[f][c]
+                    except IndexError:
+                        print("no seas vivo compare! error en la matrix")
+                        #self.ma_vali[f + y][c + x] = aux_mat[f][c]
 
     def getMat(self):
         return self.ma_vali
