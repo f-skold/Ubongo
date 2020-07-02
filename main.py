@@ -31,7 +31,7 @@ def main():
 
     # Se crea la lista de Escenarios
     #Esc -> enemigo
-    #Esc -> jugador
+    #Esc2 -> jugador
     Esc = Plantilla(600, 0)
     #NO ME QUEDA CLARO COMO FUNCIONABA ESTO
     Esc2 = Plantilla(100, 0)
@@ -90,11 +90,11 @@ def main():
                 if event.button == pygame.BUTTON_LEFT:
                     pixel = list(surface.get_at((x, y)))
                     # se busca la figura que coincida con la pos del cursor
-                    for i in range(len(Esc.getFiguras())):
-                        if pixel == list(Esc.getFiguras()[i].getCol()):
+                    for i in range(len(Esc2.getFiguras())):
+                        if pixel == list(Esc2.getFiguras()[i].getCol()):
                             # se activa el movimiento
                             activate = True
-                            aux = Esc.getFiguras()[i]
+                            aux = Esc2.getFiguras()[i]
 
                 # si el boton es derecho
                 elif event.button == pygame.BUTTON_RIGHT:
@@ -105,7 +105,7 @@ def main():
                     if aux != 0:
                         aux.acomodarImg()
                         actualX, actualY = aux.getPos()
-                        Esc.colocar(actualX, actualY, aux)
+                        Esc2.colocar(actualX, actualY, aux)
                     aux = 0
 
         # FPS fijados en 20
@@ -122,7 +122,7 @@ def main():
         surface.fill((255, 139, 129))
 
         #Dibujar Plantillas
-        Esc2.DibujarPlantilla6(surface, origenPlantillaJugador, 0)
+        Esc2.DibujarPlantilla1(surface, origenPlantillaJugador, 0)
         Esc.DibujarPlantilla6(surface, origenPlantillaEnemigo, 0)
 
         #Plantilla enemiga
@@ -159,7 +159,7 @@ def main():
                     surface.blit(start, (640, 550))
 
         # Se cargan todas las figuras
-        Esc.cargarFiguras(surface, 4, 0)
+        Esc2.cargarFiguras(surface, 4, 0)
 
         # Imprimir Tiempo
         #print(current_time)

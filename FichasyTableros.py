@@ -28,7 +28,7 @@ class CFigura:
             for j in range(0, ancho//50):
                 pixelcol=self.image.get_at((j*50,i*50))
                 if pixelcol == self.col:
-                    self.mat[i][j] = 1
+                    self.mat[i][j] = self._id
         
     def imagen(self, filename, transparent=False):
         self.image = pygame.image.load(filename)
@@ -143,19 +143,23 @@ class Plantilla:
     def colocar(self, piez_x, piez_y, aux):
         n_col = len(self.ma_vali[0])
         n_fil = len(self.ma_vali)
-        x = piez_x - self.x
-        y = piez_y - self.y
+        pos = []
         aux.formaMatriz()
         aux_mat = aux.getMat()
-
-        for f in range(len(aux_mat)):
-            for c in range(len(aux_mat[f])):
-                if aux_mat[f][c] != -1:
-                    try:
-                        self.ma_vali[f+(y//50)][c+(x//50)] = aux_mat[f][c]
-                    except IndexError:
-                        print("no seas vivo compare! error en la matrix")
-                        #self.ma_vali[f + y][c + x] = aux_mat[f][c]
+        if(piez_x >= self.x and piez_x + len(aux_mat[0])*50 <= self.x + n_col*50 and piez_y >= self.y and piez_y + len(aux_mat)*50 <= self.y + n_fil*50):
+            x = (piez_x - self.x)//50
+            y = (piez_y -self.y) // 50
+            for f in range(len(aux_mat)):
+                for c in range(len(aux_mat[f])):
+                    if aux_mat[f][c] != -1:
+                        if(self.ma_vali[f+y][c+x] == 0):
+                           pos.append([f+y,c+x]) 
+                        else:
+                            print(self.ma_vali)
+                            return
+            for i in range(len(pos)):
+                self.ma_vali[pos[i][0]][pos[i][1]] = aux.getId()
+        print(self.ma_vali)
 
     def getMat(self):
         return self.ma_vali
