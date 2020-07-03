@@ -685,84 +685,402 @@ class Plantilla:
                 self.Figuras[6].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       2
+                                                                       2
+                                                                       2
+                                                                       2
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               04
+                                                               44
+                                                               04
+                                                               04
+                                                               """)]
             elif cara == 1:
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[2].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  33
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               04
+                                                               04
+                                                               04
+                                                               44
+                                                               """)]
             elif cara == 2:
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[8].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       02
+                                                                       02
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  3
+                                                                  3
+                                                                  3
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               04
+                                                               """)]
             elif cara == 3:
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                              02
+                                                                              22
+                                                                              02
+                                                                              02
+                                                                              """
+                                                                            ), backtracking_ubongo.gen_matrix("""
+                                                                         30
+                                                                         33
+                                                                         03
+                                                                         """),
+                                             backtracking_ubongo.gen_matrix("""
+                                                                      44
+                                                                      04
+                                                                      04
+                                                                      """)]
             elif cara == 4:
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[6].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  3
+                                                                  3
+                                                                  3
+                                                                  3
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               04
+                                                               """)]
             elif cara == 5:
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[6].cargarImg(surface)
-
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       02
+                                                                       02
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  03
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               4
+                                                               4
+                                                               4
+                                                               4
+                                                               """)]
         if nplantilla == 3:
             if cara == 0:
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[6].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       20
+                                                                       22
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               4
+                                                               4
+                                                               4
+                                                               4
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               05
+                                                               55
+                                                               05
+                                                               05
+                                                               """)]
             elif cara == 1:
                 self.Figuras[3].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[6].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       220
+                                                                       020
+                                                                       022
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  33
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               5
+                                                               5
+                                                               5
+                                                               5
+                                                               """)]
             elif cara == 2:
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       02
+                                                                       02
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  30
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               04
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               05
+                                                               55
+                                                               05
+                                                               05
+                                                               """)]
             elif cara == 3:
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  30
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               55
+                                                               55
+                                                               05
+                                                               """)]
             elif cara == 4:
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       22
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               04
+                                                               04
+                                                               04
+                                                               44
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               50
+                                                               55
+                                                               05
+                                                               """)]
             elif cara == 5:
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       02
+                                                                       02
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               04
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               5
+                                                               5
+                                                               5
+                                                               5
+                                                               """)]
 
         if nplantilla == 4:
             if cara == 0:
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       22
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  30
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               04
+                                                               """)]
             elif cara == 1:
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                          20
+                                                                          22
+                                                                          02
+                                                                          """
+                                                                        ), backtracking_ubongo.gen_matrix("""
+                                                                     33
+                                                                     03
+                                                                     03
+                                                                     """),
+                                         backtracking_ubongo.gen_matrix("""
+                                                                  04
+                                                                  44
+                                                                  04
+                                                                  04
+                                                                  """)]
             elif cara == 2:
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[1].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       02
+                                                                       02
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               40
+                                                               44
+                                                               """)]
             elif cara == 3:
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[2].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  30
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               04
+                                                               04
+                                                               04
+                                                               44
+                                                               """)]
             elif cara == 4:
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[6].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       20
+                                                                       22
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  3
+                                                                  3
+                                                                  3
+                                                                  3
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               04
+                                                               44
+                                                               04
+                                                               04
+                                                               """)]
             elif cara == 5:
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                          22
+                                                                          22
+                                                                          """
+                                                                        ), backtracking_ubongo.gen_matrix("""
+                                                                     03
+                                                                     33
+                                                                     03
+                                                                     03
+                                                                     """),
+                                         backtracking_ubongo.gen_matrix("""
+                                                                  44
+                                                                  04
+                                                                  04
+                                                                  """)]
 
         if nplantilla == 5:
             if cara == 0:
@@ -770,31 +1088,153 @@ class Plantilla:
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[8].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       02
+                                                                       02
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  03
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               04
+                                                               44
+                                                               04
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      5
+                                                                      5
+                                                                      5
+                                                                      """)]
             elif cara == 1:
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               40
+                                                               44
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      55
+                                                                      55
+                                                                      05
+                                                                      """)]
             elif cara == 2:
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[3].cargarImg(surface)
                 self.Figuras[6].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       22
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  03
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               440
+                                                               040
+                                                               044
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      5
+                                                                      5
+                                                                      5
+                                                                      5
+                                                                      """)]
             elif cara == 3:
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      55
+                                                                      05
+                                                                      05
+                                                                      """)]
             elif cara == 4:
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[1].cargarImg(surface)
                 self.Figuras[3].cargarImg(surface)
                 self.Figuras[2].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  30
+                                                                  33
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               440
+                                                               040
+                                                               044
+                                                               """),
+                       backtracking_ubongo.gen_matrix("""
+                                                       05
+                                                       05
+                                                       05
+                                                       55
+                                                       """)]
             elif cara == 5:
                 self.Figuras[6].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       2
+                                                                       2
+                                                                       2
+                                                                       2
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      55
+                                                                      05
+                                                                      05
+                                                                      """)]
 
         if nplantilla == 6:
             if cara == 0:
@@ -802,63 +1242,298 @@ class Plantilla:
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[6].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       2
+                                                                       2
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               04
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      5
+                                                                      5
+                                                                      5
+                                                                      5
+                                                                      """)]
             elif cara == 1:
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[0].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      5
+                                                                      5
+                                                                      """)]
             elif cara == 2:
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[8].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       22
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  3
+                                                                  3
+                                                                  3
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      55
+                                                                      05
+                                                                      05
+                                                                      """)]
             elif cara == 3:
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[0].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       02
+                                                                       02
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               04
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      5
+                                                                      5
+                                                                      """)]
             elif cara == 4:
                 self.Figuras[8].cargarImg(surface)
                 self.Figuras[1].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       2
+                                                                       2
+                                                                       2
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  30
+                                                                  33
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               04
+                                                               44
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      55
+                                                                      55
+                                                                      05
+                                                                      """)]
             elif cara == 5:
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[8].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
-
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       20
+                                                                       22
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  33
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               4
+                                                               4
+                                                               4
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      55
+                                                                      05
+                                                                      05
+                                                                      """)]
+                
         if nplantilla == 7:
             if cara == 0:
                 self.Figuras[1].cargarImg(surface)
                 self.Figuras[8].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[2].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       20
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  3
+                                                                  3
+                                                                  3
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               04
+                                                               44
+                                                               04
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               05
+                                                               05
+                                                               05
+                                                               55
+                                                               """)]
             elif cara == 1:
                 self.Figuras[6].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[1].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       2
+                                                                       2
+                                                                       2
+                                                                       2
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  30
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               40
+                                                               44
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               55
+                                                               55
+                                                               05
+                                                               """)]
             elif cara == 2:
                 self.Figuras[0].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[3].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       2
+                                                                       2
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               550
+                                                               050
+                                                               055
+                                                               """)]
             elif cara == 3:
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[1].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  33
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               04
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               50
+                                                               55
+                                                               """)]
             elif cara == 4:
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[8].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       22
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  3
+                                                                  3
+                                                                  3
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               40
+                                                               44
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               55
+                                                               05
+                                                               05
+                                                               """)]
             elif cara == 5:
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[0].cargarImg(surface)
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  3
+                                                                  3
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               04
+                                                               04
+                                                               04
+                                                               44
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               55
+                                                               55
+                                                               05
+                                                               """)]
 
         if nplantilla == 8:
             if cara == 0:
@@ -866,31 +1541,147 @@ class Plantilla:
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[0].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       2
+                                                                       2
+                                                                       2
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               04
+                                                               44
+                                                               04
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               5
+                                                               5
+                                                               """)]
             elif cara == 1:
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[0].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[8].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       22
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  3
+                                                                  3
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               5
+                                                               5
+                                                               5
+                                                               """)]
             elif cara == 2:
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[0].cargarImg(surface)
                 self.Figuras[8].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       02
+                                                                       02
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  3
+                                                                  3
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               4
+                                                               4
+                                                               4
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               05
+                                                               55
+                                                               05
+                                                               """)]
             elif cara == 3:
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[0].cargarImg(surface)
                 self.Figuras[8].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  33
+                                                                  33
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               4
+                                                               4
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               5
+                                                               5
+                                                               5
+                                                               """)]
             elif cara == 4:
                 self.Figuras[6].cargarImg(surface)
                 self.Figuras[0].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                2
+                                                                2
+                                                                2
+                                                                2
+                                                                """
+                                                              ), backtracking_ubongo.gen_matrix("""
+                                                           3
+                                                           3
+                                                           """),
+                               backtracking_ubongo.gen_matrix("""
+                                                        44
+                                                        04
+                                                        04
+                                                        """),
+                               backtracking_ubongo.gen_matrix("""
+                                                        55
+                                                        55
+                                                        """)]
             elif cara == 5:
                 self.Figuras[8].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[0].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       2
+                                                                       2
+                                                                       2
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               40
+                                                               44
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               5
+                                                               5
+                                                               """)]
 
         if nplantilla == 9:
             if cara == 0:
@@ -898,28 +1689,149 @@ class Plantilla:
                 self.Figuras[1].cargarImg(surface)
                 self.Figuras[3].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  30
+                                                                  33
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               440
+                                                               040
+                                                               044
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      55
+                                                                      55
+                                                                      05
+                                                                      """)]
             elif cara == 1:
                 self.Figuras[6].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       2
+                                                                       2
+                                                                       2
+                                                                       2
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  30
+                                                                  33
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               04
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      05
+                                                                      55
+                                                                      05
+                                                                      05
+                                                                      """)]
             elif cara == 2:
                 self.Figuras[4].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       22
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               40
+                                                               44
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      55
+                                                                      55
+                                                                      """)]
             elif cara == 3:
                 self.Figuras[1].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                      20
+                                                                      22
+                                                                      """
+                                                                    ), backtracking_ubongo.gen_matrix("""
+                                                                 33
+                                                                 33
+                                                                 03
+                                                                 """),
+                                     backtracking_ubongo.gen_matrix("""
+                                                              44
+                                                              44
+                                                              """),
+                                     backtracking_ubongo.gen_matrix("""
+                                                                     05
+                                                                     05
+                                                                     05
+                                                                     55
+                                                                     """)]
             elif cara == 4:
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[1].cargarImg(surface)
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       02
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  30
+                                                                  33
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               04
+                                                               04
+                                                               04
+                                                               44
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      05
+                                                                      55
+                                                                      05
+                                                                      """)]
             elif cara == 5:
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[6].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[10].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  3
+                                                                  3
+                                                                  3
+                                                                  3
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               04
+                                                               """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                                      55
+                                                                      05
+                                                                      05
+                                                                      """)]
