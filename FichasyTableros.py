@@ -504,29 +504,274 @@ class Plantilla:
     def getFiguras(self):
         return self.Figuras
 
-    def cargarFiguras(self, surface, cara, nplantilla):
-        if cara == 0:
-                self.Figuras[3].cargarImg(surface)
-                self.Figuras[5].cargarImg(surface)
-                self.Figuras[8].cargarImg(surface)
-        elif cara == 1:
+        def cargarFiguras(self, surface, cara, nplantilla):
+        if nplantilla == 1:
+            if cara == 0:
+                    self.Figuras[3].cargarImg(surface)
+                    self.Figuras[5].cargarImg(surface)
+                    self.Figuras[8].cargarImg(surface)
+            elif cara == 1:
+                    self.Figuras[9].cargarImg(surface)
+                    self.Figuras[5].cargarImg(surface)
+                    self.Figuras[0].cargarImg(surface)
+            elif cara == 2:
+                    self.Figuras[0].cargarImg(surface)
+                    self.Figuras[2].cargarImg(surface)
+                    self.Figuras[4].cargarImg(surface)
+            elif cara == 3:
+                    self.Figuras[1].cargarImg(surface)
+                    self.Figuras[7].cargarImg(surface)
+                    self.Figuras[5].cargarImg(surface)
+            elif cara == 4:
+                    self.Figuras[6].cargarImg(surface)
+                    self.Figuras[9].cargarImg(surface)
+                    self.Figuras[5].cargarImg(surface)
+            elif cara == 5:
+                    self.Figuras[9].cargarImg(surface)
+                    self.Figuras[11].cargarImg(surface)
+                    self.Figuras[3].cargarImg(surface)
+
+        if nplantilla == 2:
+            if cara == 0:
+                    self.Figuras[6].cargarImg(surface)
+                    self.Figuras[4].cargarImg(surface)
+                    self.Figuras[7].cargarImg(surface)
+            elif cara == 1:
+                    self.Figuras[10].cargarImg(surface)
+                    self.Figuras[11].cargarImg(surface)
+                    self.Figuras[2].cargarImg(surface)
+            elif cara == 2:
+                    self.Figuras[2].cargarImg(surface)
+                    self.Figuras[8].cargarImg(surface)
+                    self.Figuras[5].cargarImg(surface)
+            elif cara == 3:
+                    self.Figuras[7].cargarImg(surface)
+                    self.Figuras[9].cargarImg(surface)
+                    self.Figuras[10].cargarImg(surface)
+            elif cara == 4:
+                    self.Figuras[10].cargarImg(surface)
+                    self.Figuras[6].cargarImg(surface)
+                    self.Figuras[5].cargarImg(surface)
+            elif cara == 5:
+                    self.Figuras[2].cargarImg(surface)
+                    self.Figuras[10].cargarImg(surface)
+                    self.Figuras[6].cargarImg(surface)
+
+        if nplantilla == 3:
+            if cara == 0:
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
-                self.Figuras[0].cargarImg(surface)
-        elif cara == 2:
-                self.Figuras[0].cargarImg(surface)
-                self.Figuras[2].cargarImg(surface)
-                self.Figuras[4].cargarImg(surface)
-        elif cara == 3:
-                self.Figuras[1].cargarImg(surface)
-                self.Figuras[7].cargarImg(surface)
-                self.Figuras[5].cargarImg(surface)
-        elif cara == 4:
                 self.Figuras[6].cargarImg(surface)
-                self.Figuras[9].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+            elif cara == 1:
+                self.Figuras[3].cargarImg(surface)
+                self.Figuras[11].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
-        elif cara == 5:
+                self.Figuras[6].cargarImg(surface)
+            elif cara == 2:
+                self.Figuras[2].cargarImg(surface)
+                self.Figuras[11].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+            elif cara == 3:
+                self.Figuras[7].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+            elif cara == 4:
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+                self.Figuras[2].cargarImg(surface)
+                self.Figuras[9].cargarImg(surface)
+            elif cara == 5:
+                self.Figuras[2].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[9].cargarImg(surface)
+
+        if nplantilla == 4:
+            if cara == 0:
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[9].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+            elif cara == 1:
+                self.Figuras[9].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+            elif cara == 2:
+                self.Figuras[2].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+                self.Figuras[1].cargarImg(surface)
+            elif cara == 3:
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[9].cargarImg(surface)
+                self.Figuras[2].cargarImg(surface)
+            elif cara == 4:
+                self.Figuras[9].cargarImg(surface)
+                self.Figuras[6].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+            elif cara == 5:
+                self.Figuras[11].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+
+        if nplantilla == 5:
+            if cara == 0:
+                self.Figuras[2].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+                self.Figuras[8].cargarImg(surface)
+            elif cara == 1:
+                self.Figuras[11].cargarImg(surface)
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[9].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+            elif cara == 2:
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
                 self.Figuras[3].cargarImg(surface)
+                self.Figuras[6].cargarImg(surface)
+            elif cara == 3:
+                self.Figuras[11].cargarImg(surface)
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+            elif cara == 4:
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[1].cargarImg(surface)
+                self.Figuras[3].cargarImg(surface)
+                self.Figuras[2].cargarImg(surface)
+            elif cara == 5:
+                self.Figuras[6].cargarImg(surface)
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+
+        if nplantilla == 6:
+            if cara == 0:
+                self.Figuras[0].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[6].cargarImg(surface)
+            elif cara == 1:
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+                self.Figuras[11].cargarImg(surface)
+                self.Figuras[0].cargarImg(surface)
+            elif cara == 2:
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[8].cargarImg(surface)
+                self.Figuras[11].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+            elif cara == 3:
+                self.Figuras[2].cargarImg(surface)
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[0].cargarImg(surface)
+            elif cara == 4:
+                self.Figuras[8].cargarImg(surface)
+                self.Figuras[1].cargarImg(surface)
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+            elif cara == 5:
+                self.Figuras[9].cargarImg(surface)
+                self.Figuras[11].cargarImg(surface)
+                self.Figuras[8].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+
+        if nplantilla == 7:
+            if cara == 0:
+                self.Figuras[1].cargarImg(surface)
+                self.Figuras[8].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+                self.Figuras[2].cargarImg(surface)
+            elif cara == 1:
+                self.Figuras[6].cargarImg(surface)
+                self.Figuras[9].cargarImg(surface)
+                self.Figuras[1].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+            elif cara == 2:
+                self.Figuras[0].cargarImg(surface)
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+                self.Figuras[3].cargarImg(surface)
+            elif cara == 3:
+                self.Figuras[7].cargarImg(surface)
+                self.Figuras[11].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[1].cargarImg(surface)
+            elif cara == 4:
+                self.Figuras[5].cargarImg(surface)
+                self.Figuras[8].cargarImg(surface)
+                self.Figuras[9].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+            elif cara == 5:
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[0].cargarImg(surface)
+                self.Figuras[2].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+
+        if nplantilla == 8:
+            if cara == 0:
+                self.Figuras[8].cargarImg(surface)
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+                self.Figuras[0].cargarImg(surface)
+            elif cara == 1:
+                self.Figuras[5].cargarImg(surface)
+                self.Figuras[0].cargarImg(surface)
+                self.Figuras[11].cargarImg(surface)
+                self.Figuras[8].cargarImg(surface)
+            elif cara == 2:
+                self.Figuras[2].cargarImg(surface)
+                self.Figuras[0].cargarImg(surface)
+                self.Figuras[8].cargarImg(surface)
+                self.Figuras[4].cargarImg(surface)
+            elif cara == 3:
+                self.Figuras[7].cargarImg(surface)
+                self.Figuras[11].cargarImg(surface)
+                self.Figuras[0].cargarImg(surface)
+                self.Figuras[8].cargarImg(surface)
+            elif cara == 4:
+                self.Figuras[6].cargarImg(surface)
+                self.Figuras[0].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[11].cargarImg(surface)
+            elif cara == 5:
+                self.Figuras[8].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+                self.Figuras[9].cargarImg(surface)
+                self.Figuras[0].cargarImg(surface)
+
+        if nplantilla == 9:
+            if cara == 0:
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[1].cargarImg(surface)
+                self.Figuras[3].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+            elif cara == 1:
+                self.Figuras[6].cargarImg(surface)
+                self.Figuras[9].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+            elif cara == 2:
+                self.Figuras[4].cargarImg(surface)
+                self.Figuras[7].cargarImg(surface)
+                self.Figuras[9].cargarImg(surface)
+                self.Figuras[11].cargarImg(surface)
+            elif cara == 3:
+                self.Figuras[1].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+                self.Figuras[2].cargarImg(surface)
+                self.Figuras[4].cargarImg(surface)
+            elif cara == 4:
+                self.Figuras[7].cargarImg(surface)
+                self.Figuras[1].cargarImg(surface)
+                self.Figuras[2].cargarImg(surface)
+                self.Figuras[4].cargarImg(surface)
+            elif cara == 5:
+                self.Figuras[11].cargarImg(surface)
+                self.Figuras[6].cargarImg(surface)
+                self.Figuras[5].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
 
