@@ -157,19 +157,23 @@ def main():
                     pygame.draw.rect(surface, color3,
                                      [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                     if (Esc.DibujarPlantilla1 or Esc.DibujarPlantilla2 or Esc.DibujarPlantilla4):
+                        surface.fill((0, 0, 200))
+                        partidasRestantes = partidasRestantes - 1
                         perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (220, 0, 0))
                         surface.blit(perder1, (400, 550))
 
                 # Si se supera el tiempo limite, computadora gana la partida
                 if solucion[yy][xx] == 5 and current_time >= tiempoLimite:
-                    pygame.draw.rect(surface, color4,
-                                     [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
+                    surface.fill((0, 0, 200))
+                    partidasRestantes = partidasRestantes - 1
+                    pygame.draw.rect(surface, color4,[(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                     perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (220, 0, 0))
                     surface.blit(perder1, (400, 550))
 
         # Puzzle Jugador
         if (Esc2.IsComplete() == True):
             # Si se gana la partida actual, aparece este mensaje
+            surface.fill((0, 0, 255))
             partidasRestantes = partidasRestantes - 1
             ganar1 = menufont.render('Ganaste esta partida. Quedan {} partidas.'.format(partidasRestantes), True,(220, 0, 0))
             surface.blit(ganar1, (100, 633))
