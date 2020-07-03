@@ -2,11 +2,7 @@ import backtracking_ubongo as bu
 from FichasyTableros import *
 import numpy as np
 
-
 def main():
-
-    # Booleano que controla el while principal
-    running = True
 
     # inicializa Pygame
     pygame.init()
@@ -27,19 +23,27 @@ def main():
 
     # Reloj
     reloj = pygame.time.Clock()
-    current_time = 0
 
     # Se crea la lista de Escenarios
-    #Esc -> enemigo
-    #Esc2 -> jugador
+    # Esc -> enemigo
+    # Esc2 -> jugador
     Esc = Plantilla(600, 0)
-    #NO ME QUEDA CLARO COMO FUNCIONABA ESTO
+    # NO ME QUEDA CLARO COMO FUNCIONABA ESTO
     Esc2 = Plantilla(100, 0)
 
     # Variables controladoras
     # X y Y sirven para obtener la posicion del raton
     x = 0
     y = 0
+
+    # Numero de partidas restantes al inicio
+    partidasRestantes = 9
+
+    # Booleano que controla el while principal
+    running = True
+
+    current_time = 0
+
     # Bool que activa o desactiva el movimiento
     activate = False
 
@@ -47,7 +51,7 @@ def main():
     aux = 0
 
     # SOLUCION CON BACTRACKING DE LA PLANTILLA 1 CON SUS RESPECTIVAS PIEZAS
-    #enemigo
+    # enemigo
     piezas = Esc.getPiezas()
     tabla = Esc.getTabla_pc()
     # solucion será de las mismas dimensiones de la tabla
@@ -65,6 +69,9 @@ def main():
 
     # bucle infinito
     while running:
+
+        # fuente para escribir texto:
+        menufont = pygame.font.Font(None, 24)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -123,7 +130,7 @@ def main():
 
         #Dibujar Plantillas
         Esc2.DibujarPlantilla1(surface, origenPlantillaJugador, 0)
-        Esc.DibujarPlantilla6(surface, origenPlantillaEnemigo, 0)
+        Esc.DibujarPlantilla1(surface, origenPlantillaEnemigo, 0)
 
         #Plantilla enemiga
         origenY = 250
@@ -137,8 +144,7 @@ def main():
         tiempoLimite = 15000
 
         current_time = pygame.time.get_ticks()
-        # print(current_time)
-
+        #Backtracking enemigo
         for yy in range(len(solucion)):
             for xx in range(len(solucion[yy])):
                 if solucion[yy][xx] == 2 and current_time >= tiempoLimite*0.25:
@@ -150,22 +156,32 @@ def main():
                 if solucion[yy][xx] == 4 and current_time >= tiempoLimite*0.75:
                     pygame.draw.rect(surface, color3,
                                      [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
+                    if (Esc.DibujarPlantilla1 or Esc.DibujarPlantilla2 or Esc.DibujarPlantilla4):
+                        perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (220, 0, 0))
+                        surface.blit(perder1, (400, 550))
+
                 # Si se supera el tiempo limite, computadora gana la partida
                 if solucion[yy][xx] == 5 and current_time >= tiempoLimite:
                     pygame.draw.rect(surface, color4,
                                      [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
-                    menufont = pygame.font.Font(None, 24)
-                    start = menufont.render('Perdiste esta partida. Quedan {i}.', True, (220, 0, 0))
-                    surface.blit(start, (300, 550))
+                    perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (220, 0, 0))
+                    surface.blit(perder1, (400, 550))
+
+        # Puzzle Jugador
+        if (Esc2.IsComplete() == True):
+            # Si se gana la partida actual, aparece este mensaje
+            partidasRestantes = partidasRestantes - 1
+            ganar1 = menufont.render('Ganaste esta partida. Quedan {} partidas.'.format(partidasRestantes), True,(220, 0, 0))
+            surface.blit(ganar1, (100, 633))
 
         # Se cargan todas las figuras
-        Esc2.cargarFiguras(surface, 4, 0)
+        Esc2.cargarFiguras(surface, 0, 1)
 
         # Imprimir Tiempo
-        #print(current_time)
+        # print(current_time)
 
         # Pruebas
-        #print(aux)
+        # print(aux)
 
         screen.update()
 
