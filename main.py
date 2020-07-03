@@ -154,9 +154,9 @@ def main():
                 if solucion[yy][xx] == 5 and current_time >= tiempoLimite:
                     pygame.draw.rect(surface, color4,
                                      [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
-                    menufont = pygame.font.Font(None, 48)
-                    start = menufont.render('Perdiste', True, (220, 0, 0))
-                    surface.blit(start, (640, 550))
+                    menufont = pygame.font.Font(None, 24)
+                    start = menufont.render('Perdiste esta partida. Quedan {i}.', True, (220, 0, 0))
+                    surface.blit(start, (300, 550))
 
         # Se cargan todas las figuras
         Esc2.cargarFiguras(surface, 4, 0)
