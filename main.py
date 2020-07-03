@@ -2,6 +2,47 @@ import backtracking_ubongo as bu
 from FichasyTableros import *
 import numpy as np
 
+def DefinirPlantillaJugador(NumeroPlantilla_Jugador, Esc2, surface, origenPlantillaJugador):
+        #Dibujar Plantillas
+        if(NumeroPlantilla_Jugador == 1):
+            Esc2.DibujarPlantilla1(surface, origenPlantillaJugador)
+        elif NumeroPlantilla_Jugador == 2:
+            Esc2.DibujarPlantilla2(surface, origenPlantillaJugador)
+        elif NumeroPlantilla_Jugador == 3: 
+            Esc2.DibujarPlantilla3(surface, origenPlantillaJugador)
+        elif NumeroPlantilla_Jugador == 4:
+            Esc2.DibujarPlantilla4(surface, origenPlantillaJugador)
+        elif NumeroPlantilla_Jugador == 5:
+            Esc2.DibujarPlantilla5(surface, origenPlantillaJugador)
+        elif NumeroPlantilla_Jugador == 6:
+            Esc2.DibujarPlantilla6(surface, origenPlantillaJugador)
+        elif NumeroPlantilla_Jugador == 7:
+            Esc2.DibujarPlantilla7(surface, origenPlantillaJugador)
+        elif NumeroPlantilla_Jugador == 8:
+            Esc2.DibujarPlantilla8(surface, origenPlantillaJugador)
+        elif NumeroPlantilla_Jugador == 9:
+            Esc2.DibujarPlantilla9(surface, origenPlantillaJugador)
+
+def DefinirPlantillaPC(NumeroPlantilla_PC,Esc, surface, origenPlantillaEnemigo):
+        if(NumeroPlantilla_PC == 1):
+            Esc.DibujarPlantilla1(surface, origenPlantillaEnemigo)
+        elif NumeroPlantilla_PC == 2:
+            Esc.DibujarPlantilla2(surface, origenPlantillaEnemigo)
+        elif NumeroPlantilla_PC == 3:
+            Esc.DibujarPlantilla3(surface, origenPlantillaEnemigo)
+        elif NumeroPlantilla_PC == 4:
+            Esc.DibujarPlantilla4(surface, origenPlantillaEnemigo)
+        elif NumeroPlantilla_PC == 5:
+            Esc.DibujarPlantilla5(surface, origenPlantillaEnemigo)
+        elif NumeroPlantilla_PC == 6:
+            Esc.DibujarPlantilla6(surface, origenPlantillaEnemigo)
+        elif NumeroPlantilla_PC == 7:
+            Esc.DibujarPlantilla7(surface, origenPlantillaEnemigo)
+        elif NumeroPlantilla_PC == 8:
+            Esc.DibujarPlantilla8(surface, origenPlantillaEnemigo)
+        elif NumeroPlantilla_PC == 9:
+            Esc.DibujarPlantilla9(surface, origenPlantillaEnemigo)
+
 def main():
 
     # inicializa Pygame
@@ -14,8 +55,7 @@ def main():
 
     # Tamaño de la pantalla
     xs = 800
-    ys = 800
-
+    ys = 800 
     # Superfice que se toma
     surface = screen.set_mode([xs, ys])
 
@@ -27,14 +67,16 @@ def main():
     # Se crea la lista de Escenarios
     # Esc -> enemigo
     # Esc2 -> jugador
-    Esc = Plantilla(600, 0)
+    Esc = Plantilla()
     # NO ME QUEDA CLARO COMO FUNCIONABA ESTO
-    Esc2 = Plantilla(100, 0)
+    Esc2 = Plantilla()
 
     # Variables controladoras
     # X y Y sirven para obtener la posicion del raton
     x = 0
     y = 0
+    origenPlantillaJugador = 100
+    origenPlantillaEnemigo = 400
 
     # Numero de partidas restantes al inicio
     partidasRestantes = 9
@@ -50,10 +92,16 @@ def main():
     # aux -> Tomará los valores de la Figura seleccionada
     aux = 0
 
-    # SOLUCION CON BACTRACKING DE LA PLANTILLA 1 CON SUS RESPECTIVAS PIEZAS
-    # enemigo
-    piezas = Esc.getPiezas()
+    #Plantillas aleatorias que se le asigna al jugador y a la máquina
+    NumeroPlantilla_Jugador = randint(1,9)
+    NumeroPlantilla_PC = 1
+
+    DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
+
     tabla = Esc.getTabla_pc()
+    Esc.cargarFiguras(surface,randint(0,5),NumeroPlantilla_PC)
+    piezas = Esc.getPiezas()
+    print(piezas)
     # solucion será de las mismas dimensiones de la tabla
     solucion = [[0 for j in range(len(tabla[i]))] for i in range(len(tabla))]
     # mandamos las piezas, la tabla y la tabla que traerá la solución
@@ -63,9 +111,6 @@ def main():
     print(np.matrix(solucion))
     print()
 
-    piezas2 = Esc2.getPiezas()
-    tabla2 = Esc2.getTabla_pc()
-    print(np.matrix(tabla2))
 
     # bucle infinito
     while running:
@@ -112,7 +157,10 @@ def main():
                     if aux != 0:
                         aux.acomodarImg()
                         actualX, actualY = aux.getPos()
-                        Esc2.colocar(actualX, actualY, aux)
+
+                        #cambia a su posición inicial cuando tiene una posición invalida
+                        if not Esc2.colocar(actualX, actualY, aux):
+                          aux.setIniPos()  
                     aux = 0
 
         # FPS fijados en 20
@@ -123,14 +171,9 @@ def main():
         if activate:
             aux.setPos(x, y)
 
-        origenPlantillaJugador = 100
-        origenPlantillaEnemigo = 400
 
         surface.fill((255, 139, 129))
 
-        #Dibujar Plantillas
-        Esc2.DibujarPlantilla1(surface, origenPlantillaJugador, 0)
-        Esc.DibujarPlantilla1(surface, origenPlantillaEnemigo, 0)
 
         #Plantilla enemiga
         origenY = 250
@@ -142,6 +185,10 @@ def main():
         color4 = (127, 0, 255)
         #Tiempo que demora la computadora en completar el puzzle
         tiempoLimite = 15000
+
+        #Se cargan las plantillas
+        DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface,origenPlantillaEnemigo) 
+        DefinirPlantillaJugador(NumeroPlantilla_Jugador,Esc2, surface,origenPlantillaJugador)
 
         current_time = pygame.time.get_ticks()
         #Backtracking enemigo
@@ -157,14 +204,12 @@ def main():
                     pygame.draw.rect(surface, color3,
                                      [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                     if (Esc.DibujarPlantilla1 or Esc.DibujarPlantilla2 or Esc.DibujarPlantilla4):
-                        surface.fill((0, 0, 200))
-                        partidasRestantes = partidasRestantes - 1
-                        perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (220, 0, 0))
-                        surface.blit(perder1, (400, 550))
+                       partidasRestantes = partidasRestantes - 1
+                       perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (220, 0, 0))
+                       surface.blit(perder1, (400, 550))
 
-                # Si se supera el tiempo limite, computadora gana la partida
+                #Si se supera el tiempo limite, computadora gana la partida
                 if solucion[yy][xx] == 5 and current_time >= tiempoLimite:
-                    surface.fill((0, 0, 200))
                     partidasRestantes = partidasRestantes - 1
                     pygame.draw.rect(surface, color4,[(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                     perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (220, 0, 0))
@@ -173,19 +218,13 @@ def main():
         # Puzzle Jugador
         if (Esc2.IsComplete() == True):
             # Si se gana la partida actual, aparece este mensaje
-            surface.fill((0, 0, 255))
             partidasRestantes = partidasRestantes - 1
             ganar1 = menufont.render('Ganaste esta partida. Quedan {} partidas.'.format(partidasRestantes), True,(220, 0, 0))
             surface.blit(ganar1, (100, 633))
 
+
         # Se cargan todas las figuras
-        Esc2.cargarFiguras(surface, 0, 1)
-
-        # Imprimir Tiempo
-        # print(current_time)
-
-        # Pruebas
-        # print(aux)
+        Esc2.cargarFiguras(surface, 0, NumeroPlantilla_Jugador)
 
         screen.update()
 

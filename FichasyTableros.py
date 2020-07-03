@@ -6,6 +6,8 @@ import backtracking_ubongo
 class CFigura:
     x = 0
     y = 0
+    ini_x = 0
+    ini_y = 0
     _id = 0
     col = (0, 0, 0)
     image = 0
@@ -15,6 +17,9 @@ class CFigura:
     def __init__(self, x, y, n, filename):
         self.x = x
         self.y = y
+        self.ini_x = self.x
+        self.ini_y = self.y
+
         self._id = n
         self.imagen(filename, True)
         if self._id == 4 or self._id == 6 or self._id == 10:
@@ -92,6 +97,9 @@ class CFigura:
     def setMatPos(self, pos):
         self.ma_pos = pos
 
+    def setIniPos(self):
+       self.x = self.ini_x
+       self.y = self.ini_y
 
 class Plantilla:
     # ESCENARIOS
@@ -103,9 +111,9 @@ class Plantilla:
     tabla_pc = []
     piezas = []
 
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+    def __init__(self):
+        self.y = 250
+
         self.Figuras = [
             CFigura(150, (50), 1, "Fichas/Ficha1.png"),
             CFigura(150, (150), 2, "Fichas/Ficha2.png"),
@@ -120,63 +128,58 @@ class Plantilla:
             CFigura(150, (300), 11, "Fichas/Ficha11.png"),
             CFigura(150, (350), 12, "Fichas/Ficha12.png")]
 
-        self.tabla_pc = backtracking_ubongo.gen_matrix("""
-                                               00001
-                                               10001
-                                               10000
-                                               11001
-                                               """)
-
-        self.piezas = [backtracking_ubongo.gen_matrix("""
-                                                                220
-                                                                020
-                                                                022
-                                                                """
-                                                      ), backtracking_ubongo.gen_matrix("""
-                                                           33
-                                                           33
-                                                           03
-                                                           """),
-                       backtracking_ubongo.gen_matrix("""
-                                                        4
-                                                        4
-                                                        4
-                                                        """)]
-
     def colocar(self, piez_x, piez_y, aux):
         n_col = len(self.ma_vali[0])
         n_fil = len(self.ma_vali)
         pos = []
         aux.formaMatriz()
         aux_mat = aux.getMat()
-        if (piez_x >= self.x and piez_x + len(
-                aux_mat[0]) * 50 <= self.x + n_col * 50 and piez_y >= self.y and piez_y + len(
-                aux_mat) * 50 <= self.y + n_fil * 50):
+        if (piez_x >= self.x and piez_x + len(aux_mat[0]) * 50 <= self.x + n_col * 50 and piez_y >= self.y and piez_y + len(aux_mat) * 50 <= self.y + n_fil * 50):
             x = (piez_x - self.x) // 50
             y = (piez_y - self.y) // 50
             for f in range(len(aux_mat)):
                 for c in range(len(aux_mat[f])):
                     if aux_mat[f][c] != -1:
-                        if (self.ma_vali[f + y][c + x] == 0):
+                        if (self.ma_vali[f + y][c + x] == 0 or self.ma_vali[f+y][c+x] == aux.getId()):
                             pos.append([f + y, c + x])
                         else:
-                            print(self.ma_vali)
-                            return
+                            self.mostrarMatVali() 
+                            #retorna false cuando la pieza se quiere sobreponer a otra 
+                            return False
+            #Vacia la posicion anterior cuando la pieza cambió de posición dentro 
+            for i in range(len(aux.getMatPos())):
+                if(self.ma_vali[aux.getMatPos()[i][0]][aux.getMatPos()[i][1]] == aux.getId()):
+                    self.ma_vali[aux.getMatPos()[i][0]][aux.getMatPos()[i][1]] = 0
+            #Llena en la nueva posición
             for i in range(len(pos)):
                 self.ma_vali[pos[i][0]][pos[i][1]] = aux.getId()
             aux.setMatPos(pos)
+
+            #retorna True cuando la pieza entra en la plantilla sin ponerse encima de otra pieza
+            self.mostrarMatVali() 
+            return True
         else:
+            #Vacia la posicion anterior cuando la pieza se colocó afuera
             actual_pos = aux.getMatPos()
             for i in range(len(actual_pos)):
                 self.ma_vali[actual_pos[i][0]][actual_pos[i][1]] = 0
 
-        print(self.ma_vali)
+            self.mostrarMatVali() 
+            #retorna false cuando la pieza no está dentro de la plantilla
+            return False
+
 
     def IsComplete(self):
         for i in range(len(self.ma_vali)):
             if 0 in self.ma_vali[i]:
                 return False
         return True
+
+    def mostrarMatVali(self):
+        for i in self.ma_vali:
+            print(i,end="\n")
+        print()
+
 
     def getMat(self):
         return self.ma_vali
@@ -188,7 +191,7 @@ class Plantilla:
         return self.piezas
 
     # 3 Fichas
-    def DibujarPlantilla1(self, surface, x, y):
+    def DibujarPlantilla1(self, surface, x):
         self.color = (255, 255, 255)
         self.x = x
 
@@ -198,7 +201,7 @@ class Plantilla:
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)])
-        # Fila 2
+        # Fila 
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)])
@@ -211,6 +214,12 @@ class Plantilla:
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
 
+        self.tabla_pc = backtracking_ubongo.gen_matrix("""
+                                               00001
+                                               10001
+                                               10000
+                                               11001
+                                               """)
         if len(self.ma_vali) == 0:
             self.ma_vali = [[0, 0, 0, 0, -1],
                             [-1, 0, 0, 0, -1],
@@ -218,7 +227,7 @@ class Plantilla:
                             [-1, -1, 0, 0, -1]]
 
     # 3 FICHAS
-    def DibujarPlantilla2(self, surface, x, y):
+    def DibujarPlantilla2(self, surface, x):
         self.color = (33, 33, 33)
         self.x = x
 
@@ -242,6 +251,14 @@ class Plantilla:
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 200), (50, 50)])
         # Fila 6
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 250), (50, 50)])
+        self.tabla_pc = backtracking_ubongo.gen_matrix("""
+                                                         001
+				                         000
+				                         000
+				                         000
+				                         110
+				                         110
+                                                         """)
 
         if len(self.ma_vali) == 0:
             self.ma_vali = [[0, 0, -1],
@@ -252,7 +269,7 @@ class Plantilla:
                             [-1, -1, 0]]
 
     # 4 FICHAS
-    def DibujarPlantilla3(self, surface, x, y):
+    def DibujarPlantilla3(self, surface, x):
         self.color = (33, 33, 33)
         self.x = x
 
@@ -281,6 +298,14 @@ class Plantilla:
         # Fila 6
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 250), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 250), (50, 50)])
+        self.tabla_pc = backtracking_ubongo.gen_matrix("""
+                                                      1000
+                                                      0000
+                                                      0000
+                                                      1000
+                                                      1001
+                                                      1001
+                                                      """)
 
         if len(self.ma_vali) == 0:
             self.ma_vali = [[-1, 0, 0, 0],
@@ -291,7 +316,7 @@ class Plantilla:
                             [-1, 0, 0, -1]]
 
     # 4 FICHAS
-    def DibujarPlantilla4(self, surface, x, y):
+    def DibujarPlantilla4(self, surface, x):
         self.color = (33, 33, 33)
         self.x = x
         self.y = 250
@@ -312,6 +337,12 @@ class Plantilla:
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 150), (50, 50)])
+        self.tabla_pc = backtracking_ubongo.gen_matrix("""
+                                                    10011
+                                                    00011
+                                                    00001
+                                                    10000
+                                                    """)
 
         if len(self.ma_vali) == 0:
             self.ma_vali = [[-1, 0, 0, -1, -1],
@@ -320,7 +351,7 @@ class Plantilla:
                             [-1, 0, 0, 0, 0, ]]
 
     # 4 FICHAS
-    def DibujarPlantilla5(self, surface, x, y):
+    def DibujarPlantilla5(self, surface, x):
         self.color = (33, 33, 33)
         self.x = x
         self.y = 250
@@ -347,6 +378,14 @@ class Plantilla:
         pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 200), (50, 50)])
         # Fila 6
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 250), (50, 50)])
+        self.tabla_pc = backtracking_ubongo.gen_matrix("""
+                                               1100
+                                               1100
+                                               0000
+                                               0000
+                                               0000
+                                               1011
+                                               """)
 
         if len(self.ma_vali) == 0:
             self.ma_vali = [[-1, -1, 0, 0],
@@ -357,7 +396,7 @@ class Plantilla:
                             [-1, 0, -1, -1]]
 
     # 4 FICHAS
-    def DibujarPlantilla6(self, surface, x, y):
+    def DibujarPlantilla6(self, surface, x):
         self.color = (33, 33, 33)
         self.x = x
         self.y = 250
@@ -381,6 +420,13 @@ class Plantilla:
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 200), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 200), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 200), (50, 50)])
+        self.tabla_pc = backtracking_ubongo.gen_matrix("""
+                                               1100
+                                               1100
+                                               0000
+                                               0000
+                                               1000
+                                               """)
 
         if len(self.ma_vali) == 0:
             self.ma_vali = [[-1, -1, 0, 0],
@@ -390,7 +436,7 @@ class Plantilla:
                             [-1, 0, 0, 0]]
 
     # 4 FICHAS
-    def DibujarPlantilla7(self, surface, x, y):
+    def DibujarPlantilla7(self, surface, x):
         self.color = (33, 33, 33)
         self.x = x
         self.y = 250
@@ -416,6 +462,14 @@ class Plantilla:
         # Fila 6
         pygame.draw.rect(surface, self.color, [(self.x, self.y + 250), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 250), (50, 50)])
+        self.tabla_pc = backtracking_ubongo.gen_matrix("""
+                                               1001
+                                               1000
+                                               1000
+                                               0000
+                                               0011
+                                               0011
+                                               """)
 
         if len(self.ma_vali) == 0:
             self.ma_vali = [[-1, 0, 0, -1],
@@ -426,7 +480,7 @@ class Plantilla:
                             [0, 0, -1, -1]]
 
     # 4 FICHAS
-    def DibujarPlantilla8(self, surface, x, y):
+    def DibujarPlantilla8(self, surface, x):
         self.color = (33, 33, 33)
         self.x = x
         self.y = 250
@@ -448,6 +502,12 @@ class Plantilla:
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
+        self.tabla_pc = backtracking_ubongo.gen_matrix("""
+                                               0000
+                                               0000
+                                               1000
+                                               1000
+                                               """)
 
         if len(self.ma_vali) == 0:
             self.ma_vali = [[0, 0, 0, 0],
@@ -456,32 +516,9 @@ class Plantilla:
                             [-1, 0, 0, 0]]
 
     # 4 FICHAS
-    def DibujarPlantilla9(self, surface, x, y):
+    def DibujarPlantilla9(self, surface, x):
         self.color = (33, 33, 33)
         self.x = x
-        # y = 0
-        # DIBUJAR TABLERO DE JUGADOR PERSONA
-        # Fila 1
-        # pygame.draw.rect(surface, color, [(x, y), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 50, y), (50, 50)])
-        # Fila 2
-        # pygame.draw.rect(surface, color, [(x, y + 50), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 50, y + 50), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 100, y + 50), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 150, y + 50), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 200, y + 50), (50, 50)])
-        # Fila 3
-        # pygame.draw.rect(surface, color, [(x, y + 100), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 50, y + 100), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 100, y + 100), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 150, y + 100), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 200, y + 100), (50, 50)])
-        # Fila 4
-        # pygame.draw.rect(surface, color, [(x, y + 150), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 50, y + 150), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 100, y + 150), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 150, y + 150), (50, 50)])
-        # pygame.draw.rect(surface, color, [(x + 200, y + 150), (50, 50)])
 
         # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
         self.y = 250
@@ -506,6 +543,12 @@ class Plantilla:
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 150), (50, 50)])
+        self.tabla_pc = backtracking_ubongo.gen_matrix("""
+                                               00111
+                                               00000
+                                               00000
+                                               00000
+                                               """)
 
         if len(self.ma_vali) == 0:
             self.ma_vali = [[0, 0, -1, -1, -1],
@@ -522,26 +565,114 @@ class Plantilla:
                 self.Figuras[3].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[8].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                220
+                                                                020
+                                                                022
+                                                                """
+                                                              ), backtracking_ubongo.gen_matrix("""
+                                                           33
+                                                           33
+                                                           03
+                                                           """),
+                               backtracking_ubongo.gen_matrix("""
+                                                        4
+                                                        4
+                                                        4
+                                                        """)]
             elif cara == 1:
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
                 self.Figuras[0].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                20
+                                                                22
+                                                                02
+                                                                """
+                                                              ), backtracking_ubongo.gen_matrix("""
+                                                           33
+                                                           33
+                                                           03
+                                                           """),
+                               backtracking_ubongo.gen_matrix("""
+                                                        44
+                                                        04
+                                                        04
+                                                        """)]
             elif cara == 2:
                 self.Figuras[0].cargarImg(surface)
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       22
+                                                                       02
+                                                                       02
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  03
+                                                                  03
+                                                                  33
+                                                                  """),
+                       backtracking_ubongo.gen_matrix("""
+                                                04
+                                                44
+                                                04
+                                                """)]
             elif cara == 3:
                 self.Figuras[1].cargarImg(surface)
                 self.Figuras[7].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                                       20
+                                                                       22
+                                                                       """
+                                                                     ), backtracking_ubongo.gen_matrix("""
+                                                                  03
+                                                                  33
+                                                                  03
+                                                                  03
+                                                                  """),
+                                      backtracking_ubongo.gen_matrix("""
+                                                               44
+                                                               44
+                                                               04
+                                                               """)]
             elif cara == 4:
                 self.Figuras[6].cargarImg(surface)
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                         02
+                                                         22
+                                                         22
+                                                         """
+                 ),backtracking_ubongo.gen_matrix("""
+                                                    3333
+                                                    """),
+                 backtracking_ubongo.gen_matrix("""
+                                                 04
+                                                 44
+                                                 40
+                                                 """)]
             elif cara == 5:
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[11].cargarImg(surface)
                 self.Figuras[3].cargarImg(surface)
+                self.piezas = [backtracking_ubongo.gen_matrix("""
+                                                               20
+                                                               22
+                                                               02
+                                                               """
+                       ),backtracking_ubongo.gen_matrix("""
+                                                          33
+                                                          33
+                                                          """),
+                       backtracking_ubongo.gen_matrix("""
+                                                       440
+                                                       040
+                                                       044
+                                                       """)]
 
         if nplantilla == 2:
             if cara == 0:
