@@ -37,7 +37,12 @@ class dado:
     def tirar(self, pan):
         self.res = random.randint(1, 6)
         self.dibujarDado(self.res, pan)
+        global res
+        res = self.res
+        return res
 
+    def getRes(self):
+        return res
 
 class gema:
     def __init__(self, a, b, e):

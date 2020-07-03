@@ -218,6 +218,8 @@ def main():
     ##### CONTROL DE PARTIDA #######
     # Numero de partidas restantes al inicio
     partidasRestantes = 9
+    ganar = False
+    tiros = 1
 
 
     # Bool que activa o desactiva el movimiento
@@ -283,29 +285,32 @@ def main():
                 if event.key == pygame.K_q and aux != 0:
                     aux.voltearImg()
 
-                # teclas tablero
-                if event.key == K_e:
-                    players[0].ganargemas(gemas)
-                if event.key == K_r:
-                    players[1].ganargemas(gemas)
-                if event.key == K_UP:
-                    if players[0].mueve == True and players[0].movidas > 0 and players[0].y - la >= 0:
-                        players[0].y = players[0].y - la
-                        players[0].movidas = players[0].movidas - 1
-                if event.key == K_DOWN:
-                    if players[0].mueve == True and players[0].movidas > 0 and players[0].y + la <= la * 6:
-                        players[0].y = players[0].y + la
-                        players[0].movidas = players[0].movidas - 1
-                if event.key == K_w:
-                    if players[1].mueve == True and players[1].movidas > 0 and players[1].y - la >= 0:
-                        players[1].y = players[1].y - la
-                        players[1].movidas = players[1].movidas - 1
-                if event.key == K_s:
-                    if players[1].mueve == True and players[1].movidas > 0 and players[1].y + la <= la * 6:
-                        players[1].y = players[1].y + la
-                        players[1].movidas = players[1].movidas - 1
-                if event.key == K_x:
-                    Dado.tirar(surface)
+                if ganar == True:
+                    # teclas tablero
+                    if event.key == K_e:
+                        players[0].ganargemas(gemas)
+                    if event.key == K_r:
+                        players[1].ganargemas(gemas)
+                    if event.key == K_UP:
+                        if players[0].mueve == True and players[0].movidas > 0 and players[0].y - la >= 0:
+                            players[0].y = players[0].y - la
+                            players[0].movidas = players[0].movidas - 1
+                    if event.key == K_DOWN:
+                        if players[0].mueve == True and players[0].movidas > 0 and players[0].y + la <= la * 6:
+                            players[0].y = players[0].y + la
+                            players[0].movidas = players[0].movidas - 1
+                    if event.key == K_w:
+                        if players[1].mueve == True and players[1].movidas > 0 and players[1].y - la >= 0:
+                            players[1].y = players[1].y - la
+                            players[1].movidas = players[1].movidas - 1
+                    if event.key == K_s:
+                        if players[1].mueve == True and players[1].movidas > 0 and players[1].y + la <= la * 6:
+                            players[1].y = players[1].y + la
+                            players[1].movidas = players[1].movidas - 1
+                if tiros >= 1:
+                    if event.key == K_x:
+                        Dado.tirar(surface)
+                        tiros = tiros - 1
 
             # Si se apreta un boton del mouse
             elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -387,7 +392,8 @@ def main():
             partidasRestantes = partidasRestantes - 1
             ganar1 = menufont.render('Ganaste esta partida. Quedan {} partidas.'.format(partidasRestantes),
                                      True, (0, 255, 0))
-            surface.blit(ganar1, (100, 633))
+            surface.blit(ganar1, (100, 700))
+            print("ganaste")
 
         # para tablero
         drawTablero(dimensiones, surface)
@@ -408,14 +414,14 @@ def main():
         Dado.dibujarDado(Dado.res, surface)
 
         # Se cargan todas las figuras
-        Esc2.cargarFiguras(surface, 0, NumeroPlantilla_Jugador)
+        Esc2.cargarFiguras(surface, Dado.res-1, NumeroPlantilla_Jugador)
 
         #Separador
         pygame.draw.line(surface, (0, 0, 0), (dimensiones[0] / 2, dimensiones[1]), (dimensiones[0] / 2, 900), 20)
 
         # Display nombres jugador y computadora
         displayNombreJugador = menufont.render('{}'.format(nombreJugador),True, (0, 0, 0))
-        surface.blit(displayNombreJugador, (20, 600))
+        surface.blit(displayNombreJugador, (380, 600))
         displayNombreComputadora = menufont.render('HAL 9000', True, (0, 0, 0))
         surface.blit(displayNombreComputadora, (900, 580))
 
