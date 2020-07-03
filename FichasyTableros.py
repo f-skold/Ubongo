@@ -9,6 +9,7 @@ class CFigura:
     col = (0, 0, 0)
     image = 0
     mat = []
+    ma_pos = []
     
     def __init__(self, x, y, n, filename):
         self.x = x
@@ -85,6 +86,12 @@ class CFigura:
     def getMat(self):
         return self.mat
     
+    def getMatPos(self):
+        return self.ma_pos
+    
+    def setMatPos(self, pos):
+        self.ma_pos = pos
+    
 class Plantilla:
     # ESCENARIOS
     
@@ -159,8 +166,14 @@ class Plantilla:
                             return
             for i in range(len(pos)):
                 self.ma_vali[pos[i][0]][pos[i][1]] = aux.getId()
+            aux.setMatPos(pos) 
+        else:
+            actual_pos = aux.getMatPos()
+            for i in range(len(actual_pos)):
+               self.ma_vali[actual_pos[i][0]][actual_pos[i][1]] = 0
+               
         print(self.ma_vali)
-
+        
     def getMat(self):
         return self.ma_vali
     
