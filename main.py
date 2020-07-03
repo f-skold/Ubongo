@@ -1,47 +1,48 @@
 import backtracking_ubongo as bu
+from random import randint
 from FichasyTableros import *
 import numpy as np
 
 def DefinirPlantillaJugador(NumeroPlantilla_Jugador, Esc2, surface, origenPlantillaJugador):
         #Dibujar Plantillas
         if(NumeroPlantilla_Jugador == 1):
-            Esc2.DibujarPlantilla1(surface, origenPlantillaJugador)
+            Esc2.DibujarPlantilla1(surface, origenPlantillaJugador, 400)
         elif NumeroPlantilla_Jugador == 2:
-            Esc2.DibujarPlantilla2(surface, origenPlantillaJugador)
+            Esc2.DibujarPlantilla2(surface, origenPlantillaJugador, 400)
         elif NumeroPlantilla_Jugador == 3: 
-            Esc2.DibujarPlantilla3(surface, origenPlantillaJugador)
+            Esc2.DibujarPlantilla3(surface, origenPlantillaJugador, 400)
         elif NumeroPlantilla_Jugador == 4:
-            Esc2.DibujarPlantilla4(surface, origenPlantillaJugador)
+            Esc2.DibujarPlantilla4(surface, origenPlantillaJugador, 400)
         elif NumeroPlantilla_Jugador == 5:
-            Esc2.DibujarPlantilla5(surface, origenPlantillaJugador)
+            Esc2.DibujarPlantilla5(surface, origenPlantillaJugador, 400)
         elif NumeroPlantilla_Jugador == 6:
-            Esc2.DibujarPlantilla6(surface, origenPlantillaJugador)
+            Esc2.DibujarPlantilla6(surface, origenPlantillaJugador, 400)
         elif NumeroPlantilla_Jugador == 7:
-            Esc2.DibujarPlantilla7(surface, origenPlantillaJugador)
+            Esc2.DibujarPlantilla7(surface, origenPlantillaJugador, 400)
         elif NumeroPlantilla_Jugador == 8:
-            Esc2.DibujarPlantilla8(surface, origenPlantillaJugador)
+            Esc2.DibujarPlantilla8(surface, origenPlantillaJugador, 400)
         elif NumeroPlantilla_Jugador == 9:
-            Esc2.DibujarPlantilla9(surface, origenPlantillaJugador)
+            Esc2.DibujarPlantilla9(surface, origenPlantillaJugador, 400)
 
 def DefinirPlantillaPC(NumeroPlantilla_PC,Esc, surface, origenPlantillaEnemigo):
         if(NumeroPlantilla_PC == 1):
-            Esc.DibujarPlantilla1(surface, origenPlantillaEnemigo)
+            Esc.DibujarPlantilla1(surface, origenPlantillaEnemigo, 400)
         elif NumeroPlantilla_PC == 2:
-            Esc.DibujarPlantilla2(surface, origenPlantillaEnemigo)
+            Esc.DibujarPlantilla2(surface, origenPlantillaEnemigo, 400)
         elif NumeroPlantilla_PC == 3:
-            Esc.DibujarPlantilla3(surface, origenPlantillaEnemigo)
+            Esc.DibujarPlantilla3(surface, origenPlantillaEnemigo, 400)
         elif NumeroPlantilla_PC == 4:
-            Esc.DibujarPlantilla4(surface, origenPlantillaEnemigo)
+            Esc.DibujarPlantilla4(surface, origenPlantillaEnemigo, 400)
         elif NumeroPlantilla_PC == 5:
-            Esc.DibujarPlantilla5(surface, origenPlantillaEnemigo)
+            Esc.DibujarPlantilla5(surface, origenPlantillaEnemigo, 400)
         elif NumeroPlantilla_PC == 6:
-            Esc.DibujarPlantilla6(surface, origenPlantillaEnemigo)
+            Esc.DibujarPlantilla6(surface, origenPlantillaEnemigo, 400)
         elif NumeroPlantilla_PC == 7:
-            Esc.DibujarPlantilla7(surface, origenPlantillaEnemigo)
+            Esc.DibujarPlantilla7(surface, origenPlantillaEnemigo, 400)
         elif NumeroPlantilla_PC == 8:
-            Esc.DibujarPlantilla8(surface, origenPlantillaEnemigo)
+            Esc.DibujarPlantilla8(surface, origenPlantillaEnemigo, 400)
         elif NumeroPlantilla_PC == 9:
-            Esc.DibujarPlantilla9(surface, origenPlantillaEnemigo)
+            Esc.DibujarPlantilla9(surface, origenPlantillaEnemigo, 400)
 
 def main():
 
@@ -67,9 +68,9 @@ def main():
     # Se crea la lista de Escenarios
     # Esc -> enemigo
     # Esc2 -> jugador
-    Esc = Plantilla()
+    Esc = Plantilla(600, 400)
     # NO ME QUEDA CLARO COMO FUNCIONABA ESTO
-    Esc2 = Plantilla()
+    Esc2 = Plantilla(100, 400)
 
     # Variables controladoras
     # X y Y sirven para obtener la posicion del raton
@@ -176,7 +177,7 @@ def main():
 
 
         #Plantilla enemiga
-        origenY = 250
+        origenY = 400
         width = 50
         height = 50
         color1 = (255, 0, 0)

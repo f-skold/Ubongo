@@ -111,7 +111,8 @@ class Plantilla:
     tabla_pc = []
     piezas = []
 
-    def __init__(self):
+    def __init__(self, x, y):
+        #self.x = x
         self.y = 250
 
         self.Figuras = [
@@ -191,12 +192,12 @@ class Plantilla:
         return self.piezas
 
     # 3 Fichas
-    def DibujarPlantilla1(self, surface, x):
+    def DibujarPlantilla1(self, surface, x, y):
         self.color = (255, 255, 255)
         self.x = x
+        self.y = y
 
         # Fila 1
-        self.y = 250
         pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
@@ -227,11 +228,11 @@ class Plantilla:
                             [-1, -1, 0, 0, -1]]
 
     # 3 FICHAS
-    def DibujarPlantilla2(self, surface, x):
+    def DibujarPlantilla2(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
+        self.y = y
 
-        self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
@@ -253,11 +254,11 @@ class Plantilla:
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 250), (50, 50)])
         self.tabla_pc = backtracking_ubongo.gen_matrix("""
                                                          001
-				                         000
-				                         000
-				                         000
-				                         110
-				                         110
+                                                         000
+                                                         000
+                                                         000
+                                                         110
+                                                         110
                                                          """)
 
         if len(self.ma_vali) == 0:
@@ -269,11 +270,11 @@ class Plantilla:
                             [-1, -1, 0]]
 
     # 4 FICHAS
-    def DibujarPlantilla3(self, surface, x):
+    def DibujarPlantilla3(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
+        self.y = y
 
-        self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
@@ -316,10 +317,11 @@ class Plantilla:
                             [-1, 0, 0, -1]]
 
     # 4 FICHAS
-    def DibujarPlantilla4(self, surface, x):
+    def DibujarPlantilla4(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        self.y = 250
+        self.y = y
+
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
@@ -351,10 +353,11 @@ class Plantilla:
                             [-1, 0, 0, 0, 0, ]]
 
     # 4 FICHAS
-    def DibujarPlantilla5(self, surface, x):
+    def DibujarPlantilla5(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        self.y = 250
+        self.y = y
+
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)])
@@ -396,10 +399,11 @@ class Plantilla:
                             [-1, 0, -1, -1]]
 
     # 4 FICHAS
-    def DibujarPlantilla6(self, surface, x):
+    def DibujarPlantilla6(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        self.y = 250
+        self.y = y
+
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)])
@@ -436,10 +440,11 @@ class Plantilla:
                             [-1, 0, 0, 0]]
 
     # 4 FICHAS
-    def DibujarPlantilla7(self, surface, x):
+    def DibujarPlantilla7(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        self.y = 250
+        self.y = y
+
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
@@ -480,10 +485,11 @@ class Plantilla:
                             [0, 0, -1, -1]]
 
     # 4 FICHAS
-    def DibujarPlantilla8(self, surface, x):
+    def DibujarPlantilla8(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
-        self.y = 250
+        self.y = y
+
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
@@ -516,12 +522,12 @@ class Plantilla:
                             [-1, 0, 0, 0]]
 
     # 4 FICHAS
-    def DibujarPlantilla9(self, surface, x):
+    def DibujarPlantilla9(self, surface, x, y):
         self.color = (33, 33, 33)
         self.x = x
+        self.y = y
 
         # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
-        self.y = 250
         # Fila 1
         pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
         pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
