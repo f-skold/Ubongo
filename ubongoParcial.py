@@ -232,15 +232,15 @@ def main():
     # Se crea la lista de Escenarios
     # Esc -> enemigo
     # Esc2 -> jugador
-    Esc = Plantilla(600, 400)
-    Esc2 = Plantilla(100, 400)
+    Esc = Plantilla(900, 400)
+    Esc2 = Plantilla(500, 400)
     # Variables controladoras
     # X y Y sirven para obtener la posicion del raton
     x = 0
     y = 0
     
-    origenPlantillaJugador = 100
-    origenPlantillaEnemigo = 600
+    origenPlantillaJugador = 500
+    origenPlantillaEnemigo = 900
 
     ##### CONTROL DE PARTIDA #######
     # Numero de partidas restantes al inicio
@@ -448,13 +448,13 @@ def main():
             Esc2.cargarFiguras(surface, Dado.getRes()-1, NumeroPlantilla_Jugador)
 
         #Separador
-        pygame.draw.line(surface, (0, 0, 0), (dimensiones[0] / 2, dimensiones[1]), (dimensiones[0] / 2, 900), 20)
+        pygame.draw.line(surface, (0, 0, 0), (800, dimensiones[1]), (800, 900), 20)
 
         # Display nombres jugador y computadora
         displayNombreJugador = menufont.render('{}'.format(nombreJugador),True, (0, 0, 0))
-        surface.blit(displayNombreJugador, (20, 600))
+        surface.blit(displayNombreJugador, (20, 720))
         displayNombreComputadora = menufont.render('HAL 9000', True, (0, 0, 0))
-        surface.blit(displayNombreComputadora, (900, 580))
+        surface.blit(displayNombreComputadora, (1100, 720))
 
         screen.update()
         if(armarPuzzle):
@@ -474,7 +474,7 @@ surface = screen.set_mode([xs, ys])
 
 #Inicializar variables de partida
 global tiempoLimite
-tiempoLimite = 15000
+tiempoLimite = 30000
 global nombreJugador
 nombreJugador = 'player'
 
@@ -501,7 +501,7 @@ menu = pygame_menu.Menu(400, 400, 'Ubongo',
                         theme=pygame_menu.themes.THEME_SOLARIZED)
 
 menu.add_text_input('Nombre :', nombre='', onchange=check_name)
-menu.add_selector('Dificultad :', [('Dificil', 5000), ('Medio', 10000), ('Facil', 15000)], onchange=set_difficulty)
+menu.add_selector('Dificultad :', [('Dificil', 30000), ('Medio', 60000), ('Facil', 90000)], onchange=set_difficulty)
 menu.add_button('Play', start_the_game)
 menu.add_button('Quit', pygame_menu.events.EXIT)
 

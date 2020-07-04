@@ -186,6 +186,7 @@ class Plantilla:
     def borrarRastro(self):
         for i in self.Figuras:
             i.setMatPos([])
+            i.setIniPos()
 
     def getMat(self):
         return self.ma_vali
