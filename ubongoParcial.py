@@ -176,10 +176,11 @@ def instrucciones():
         pygame.display.update()
         reloj.tick(60)
 
-def cambiarPlantillasPiezas(Esc,surface,Dado,origenPlantillaEnemigo):  
-    NumeroPlantilla_Jugador = 1
+def cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo):
+    NumeroPlantilla_Jugador = randint(1,9)
     NumeroPlantilla_PC = randint(1,9)
     DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
+    DefinirPlantillaJugador(NumeroPlantilla_Jugador,Esc2, surface, 100)
     tabla = Esc.getTabla_pc()
     Dado.tirar(surface)
     caraDado = Dado.getRes()-1
@@ -253,7 +254,7 @@ def main():
     aux = 0
 
     #Plantillas aleatorias que se le asigna al jugador y a la máquina
-    NumeroPlantilla_Jugador = 1
+    NumeroPlantilla_Jugador = randint(1,9)
     NumeroPlantilla_PC = randint(1,9)
     DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
 
@@ -389,7 +390,7 @@ def main():
                 armarPuzzle = False
                 print("segundoIf")
                 contadorPiezasPuestas = 0
-                NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,surface,Dado,origenPlantillaEnemigo)
+                NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
                 # Si se gana la partida actual, aparece este mensaje
                 partidasRestantes = partidasRestantes - 1
                 ganar1 = menufont.render('Ganaste esta partida. Quedan {} partidas.'.format(partidasRestantes),
@@ -461,7 +462,7 @@ def main():
             if(contSol[0] == ocur[0] and contSol[1] == ocur[1] and contSol[2] == ocur[2] and contSol[3] == ocur[3]):
                 print("primerIf")
                 armarPuzzle = False
-                NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,surface,Dado,origenPlantillaEnemigo)
+                NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
                 perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (0, 0, 0))
                 surface.blit(perder1, (400, 550))
                 partidasRestantes = partidasRestantes - 1
@@ -474,7 +475,7 @@ surface = screen.set_mode([xs, ys])
 
 #Inicializar variables de partida
 global tiempoLimite
-tiempoLimite = 30000
+tiempoLimite = 15000
 global nombreJugador
 nombreJugador = 'player'
 
@@ -501,7 +502,7 @@ menu = pygame_menu.Menu(400, 400, 'Ubongo',
                         theme=pygame_menu.themes.THEME_SOLARIZED)
 
 menu.add_text_input('Nombre :', nombre='', onchange=check_name)
-menu.add_selector('Dificultad :', [('Dificil', 30000), ('Medio', 60000), ('Facil', 90000)], onchange=set_difficulty)
+menu.add_selector('Dificultad :', [('Dificil', 5000), ('Medio', 10000), ('Facil', 15000)], onchange=set_difficulty)
 menu.add_button('Play', start_the_game)
 menu.add_button('Quit', pygame_menu.events.EXIT)
 
