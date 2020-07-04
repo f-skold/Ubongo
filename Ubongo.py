@@ -515,12 +515,12 @@ def main():
         displayGemas3 = menufont.render('{}'.format(players[0].getGemasGanadas()[3]), True, (255, 255, 0))
         displayGemas4 = menufont.render('{}'.format(players[0].getGemasGanadas()[4]), True, (255, 147, 0))
         displayGemas5 = menufont.render('{}'.format(players[0].getGemasGanadas()[5]), True, (128,0,128))
-        surface.blit(displayGemas0,(20,  550))
-        surface.blit(displayGemas1, (40, 550))
-        surface.blit(displayGemas2, (60, 550))
-        surface.blit(displayGemas3, (80, 550))
-        surface.blit(displayGemas4, (100,550))
-        surface.blit(displayGemas5, (120,550))
+        surface.blit(displayGemas0,(20,  700))
+        surface.blit(displayGemas1, (40, 700))
+        surface.blit(displayGemas2, (60, 700))
+        surface.blit(displayGemas3, (80, 700))
+        surface.blit(displayGemas4, (100,700))
+        surface.blit(displayGemas5, (120,700))
 
         displayGemasPC0 = menufont.render('{}'.format(players[1].getGemasGanadas()[0]), True,(255,0,0))
         displayGemasPC1 = menufont.render('{}'.format(players[1].getGemasGanadas()[1]), True, (0, 0, 255))
@@ -528,12 +528,12 @@ def main():
         displayGemasPC3 = menufont.render('{}'.format(players[1].getGemasGanadas()[3]), True, (255, 255, 0))
         displayGemasPC4 = menufont.render('{}'.format(players[1].getGemasGanadas()[4]), True, (255, 147, 0))
         displayGemasPC5 = menufont.render('{}'.format(players[1].getGemasGanadas()[5]), True, (128,0,128))
-        surface.blit(displayGemasPC0,(1080,  550))
-        surface.blit(displayGemasPC1, (1100, 550))
-        surface.blit(displayGemasPC2, (1120, 550))
-        surface.blit(displayGemasPC3, (1140, 550))
-        surface.blit(displayGemasPC4, (1160, 550))
-        surface.blit(displayGemasPC5, (1180, 550))
+        surface.blit(displayGemasPC0,(1080,  700))
+        surface.blit(displayGemasPC1, (1100, 700))
+        surface.blit(displayGemasPC2, (1120, 700))
+        surface.blit(displayGemasPC3, (1140, 700))
+        surface.blit(displayGemasPC4, (1160, 700))
+        surface.blit(displayGemasPC5, (1180, 700))
 
         # Display partidas restantes
         displayPartidasRestantes = menufont.render('Partidas restantes: {}'.format(partidasRestantes), True, (0, 0, 0))
@@ -582,7 +582,7 @@ surface = screen.set_mode([xs, ys])
 
 #Inicializar variables de partida
 global tiempoLimite
-tiempoLimite = 5
+tiempoLimite = 30000
 global nombreJugador
 nombreJugador = 'player'
 

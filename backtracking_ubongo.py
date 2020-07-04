@@ -56,8 +56,6 @@ def rotaciones(pieza):
 
 
 
-
-
 def resol(piezas, tabla, solu):
     # Caso Base: No hay mas fichas que añadir
     if len(piezas) == 0:
