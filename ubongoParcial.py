@@ -27,7 +27,7 @@ def DefinirPlantillaJugador(NumeroPlantilla_Jugador, Esc2, surface, origenPlanti
         elif NumeroPlantilla_Jugador == 8:
             Esc2.DibujarPlantilla8(surface, origenPlantillaJugador, 400)
         elif NumeroPlantilla_Jugador == 9:
-            Esc2.DibujarPlantilla9(surface, origenPlantillaJugador, 400)
+                Esc2.DibujarPlantilla9(surface, origenPlantillaJugador, 400)
 
 def DefinirPlantillaPC(NumeroPlantilla_PC,Esc, surface, origenPlantillaEnemigo):
         if(NumeroPlantilla_PC == 1):
@@ -177,14 +177,15 @@ def instrucciones():
         reloj.tick(60)
 
 def cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo):
+    Esc2.vaciarMaVali()
     NumeroPlantilla_Jugador = randint(1,9)
     NumeroPlantilla_PC = randint(1,9)
     DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
     DefinirPlantillaJugador(NumeroPlantilla_Jugador,Esc2, surface, 100)
+    Esc2.borrarRastro()
     tabla = Esc.getTabla_pc()
     Dado.tirar(surface)
     caraDado = Dado.getRes()-1
-    print(caraDado)
     Esc.cargarFiguras(surface,caraDado,NumeroPlantilla_PC)
     piezas = Esc.getPiezas()
     print(piezas)
@@ -198,7 +199,6 @@ def cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo):
     for i in range(len(solucion)):
         for j in range(2,6):
            ocur[j-2] +=  solucion[i].count(j)
-    print(ocur)
     
     return NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol
 
@@ -335,7 +335,6 @@ def main():
                         players[1].y = players[1].y + la
                         players[1].movidas = players[1].movidas - 1
                 if event.key == K_x:
-                    Dado.tirar(surface)
                     if(armarPuzzle == False):
                         armarPuzzle = True
                         tiempo_inicio = pygame.time.get_ticks()
@@ -388,7 +387,7 @@ def main():
         # Puzzle Jugador
             if (Esc2.IsComplete() == True):
                 armarPuzzle = False
-                print("segundoIf")
+                print("ganaste")
                 contadorPiezasPuestas = 0
                 NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
                 # Si se gana la partida actual, aparece este mensaje
@@ -460,7 +459,7 @@ def main():
         screen.update()
         if(armarPuzzle):
             if(contSol[0] == ocur[0] and contSol[1] == ocur[1] and contSol[2] == ocur[2] and contSol[3] == ocur[3]):
-                print("primerIf")
+                print("perdiste")
                 armarPuzzle = False
                 NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
                 perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (0, 0, 0))

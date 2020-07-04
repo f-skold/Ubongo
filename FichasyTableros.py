@@ -132,6 +132,7 @@ class Plantilla:
     def colocar(self, piez_x, piez_y, aux):
         n_col = len(self.ma_vali[0])
         n_fil = len(self.ma_vali)
+        self.mostrarMatVali()
         pos = []
         aux.formaMatriz()
         aux_mat = aux.getMat()
@@ -181,7 +182,10 @@ class Plantilla:
         for i in self.ma_vali:
             print(i,end="\n")
         print()
-
+        
+    def borrarRastro(self):
+        for i in self.Figuras:
+            i.setMatPos([])
 
     def getMat(self):
         return self.ma_vali
@@ -222,8 +226,7 @@ class Plantilla:
                                                10000
                                                11001
                                                """)
-        if len(self.ma_vali) == 0 or self.IsComplete():
-            print("pruebaaaaa")
+        if len(self.ma_vali) == 0:
             self.ma_vali = [[0, 0, 0, 0, -1],
                             [-1, 0, 0, 0, -1],
                             [-1, 0, 0, 0, 0],
@@ -263,7 +266,7 @@ class Plantilla:
                                                          110
                                                          """)
 
-        if len(self.ma_vali) == 0 or self.IsComplete():
+        if len(self.ma_vali) == 0 :
             self.ma_vali = [[0, 0, -1],
                             [0, 0, 0],
                             [0, 0, 0],
@@ -310,7 +313,7 @@ class Plantilla:
                                                       1001
                                                       """)
 
-        if len(self.ma_vali) == 0 or self.IsComplete():
+        if len(self.ma_vali) == 0 :
             self.ma_vali = [[-1, 0, 0, 0],
                             [0, 0, 0, 0],
                             [0, 0, 0, 0],
@@ -348,7 +351,7 @@ class Plantilla:
                                                     10000
                                                     """)
 
-        if len(self.ma_vali) == 0 or self.IsComplete():
+        if len(self.ma_vali) == 0:
             self.ma_vali = [[-1, 0, 0, -1, -1],
                             [0, 0, 0, -1, -1],
                             [0, 0, 0, 0, -1],
@@ -392,7 +395,7 @@ class Plantilla:
                                                1011
                                                """)
 
-        if len(self.ma_vali) == 0 or self.IsComplete():
+        if len(self.ma_vali) == 0 :
             self.ma_vali = [[-1, -1, 0, 0],
                             [-1, -1, 0, 0],
                             [0, 0, 0, 0],
@@ -434,7 +437,7 @@ class Plantilla:
                                                1000
                                                """)
 
-        if len(self.ma_vali) == 0 or self.IsComplete():
+        if len(self.ma_vali) == 0:
             self.ma_vali = [[-1, -1, 0, 0],
                             [-1, -1, 0, 0],
                             [0, 0, 0, 0],
@@ -478,7 +481,7 @@ class Plantilla:
                                                0011
                                                """)
 
-        if len(self.ma_vali) == 0 or self.IsComplete():
+        if len(self.ma_vali) == 0:
             self.ma_vali = [[-1, 0, 0, -1],
                             [-1, 0, 0, 0],
                             [-1, 0, 0, 0],
@@ -517,7 +520,7 @@ class Plantilla:
                                                1000
                                                """)
 
-        if len(self.ma_vali) == 0 or self.IsComplete():
+        if len(self.ma_vali) == 0 :
             self.ma_vali = [[0, 0, 0, 0],
                             [0, 0, 0, 0],
                             [-1, 0, 0, 0],
@@ -558,7 +561,7 @@ class Plantilla:
                                                00000
                                                """)
 
-        if len(self.ma_vali) == 0 or self.IsComplete():
+        if len(self.ma_vali) == 0 :
             self.ma_vali = [[0, 0, -1, -1, -1],
                             [0, 0, 0, 0, 0],
                             [0, 0, 0, 0, 0],
@@ -566,6 +569,9 @@ class Plantilla:
 
     def getFiguras(self):
         return self.Figuras
+    
+    def vaciarMaVali(self):
+        self.ma_vali = []
 
     def cargarFiguras(self, surface, cara, nplantilla):
         if nplantilla == 1:
