@@ -206,6 +206,9 @@ def cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo):
     
     return NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol
 
+
+
+
 def main():
 
     screen = pygame.display
@@ -321,10 +324,12 @@ def main():
                     aux.voltearImg()
 
                 # teclas tablero
-                if event.key == K_e:
+                if event.key == K_e and players[0].capacidadRecoleccion > 0:
                     players[0].ganargemas(gemas)
-                if event.key == K_r:
+                    players[0].capacidadRecoleccion -= 1
+                if event.key == K_r and players[1].capacidadRecoleccion > 0:
                     players[1].ganargemas(gemas)
+                    players[1].capacidadRecoleccion -= 1
                 if event.key == K_UP:
                     if players[0].mueve == True and players[0].movidas > 0 and players[0].y - la >= 0:
                         players[0].y = players[0].y - la
@@ -372,6 +377,28 @@ def main():
                           aux.setIniPos()  
                     aux = 0
 
+        # Computadora recolecta fichas por si sola
+
+        def movimientoPC():
+            direccion = random.randint(0, 1)
+
+            if direccion == 0 and players[1].movidas > 0 and players[1].y - la >= 0:
+                players[1].y = players[1].y - la
+                players[1].movidas = players[1].movidas - 1
+            if direccion == 1 and players[1].movidas > 0 and players[1].y + la <= la * 6:
+                players[1].y = players[1].y + la
+                players[1].movidas = players[1].movidas - 1
+            recoleccionGemasPC()
+
+        def recoleccionGemasPC():
+            if players[1].capacidadRecoleccion > 0:
+                players[1].ganargemas(gemas)
+                players[1].capacidadRecoleccion -= 1
+
+        print("movidas PC: {}".format(players[1].movidas))
+        print("movidas PC: {}".format(players[1].capacidadRecoleccion))
+
+
         x, y = pygame.mouse.get_pos()
 
         # Cambio de pos de la figura seleccionada
@@ -397,7 +424,11 @@ def main():
                 print("ganaste")
                 partidasGanadas += 1
                 players[0].movidas += 2
+                players[0].capacidadRecoleccion += 2
                 players[1].movidas += 1
+                players[1].capacidadRecoleccion += 1
+                movimientoPC()
+                movimientoPC()
                 contadorPiezasPuestas = 0
                 NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
                 # Si se gana la partida actual, aparece este mensaje
@@ -489,7 +520,11 @@ def main():
                 print("perdiste")
                 partidasGanadas_PC += 1
                 players[0].movidas = 1
+                players[0].capacidadRecoleccion = 1
                 players[1].movidas = 2
+                players[1].capacidadRecoleccion = 2
+                movimientoPC()
+                movimientoPC()
                 armarPuzzle = False
                 NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
                 perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (0, 0, 0))
