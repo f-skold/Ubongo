@@ -199,6 +199,10 @@ def cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo):
     for i in range(len(solucion)):
         for j in range(2,6):
            ocur[j-2] +=  solucion[i].count(j)
+
+    #captura tiempo
+    global tiempoFinal
+    tiempoFinal = pygame.time.get_ticks()
     
     return NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol
 
@@ -244,7 +248,6 @@ def main():
     ##### CONTROL DE PARTIDA #######
     # Numero de partidas restantes al inicio
     partidasRestantes = 9
-
 
     # Bool que activa o desactiva el movimiento
     activate = False
@@ -335,7 +338,7 @@ def main():
                     if players[1].mueve == True and players[1].movidas > 0 and players[1].y + la <= la * 6:
                         players[1].y = players[1].y + la
                         players[1].movidas = players[1].movidas - 1
-                if event.key == K_x:
+                if event.key == K_x and partidasRestantes > 0:
                     if(armarPuzzle == False):
                         armarPuzzle = True
                         tiempo_inicio = pygame.time.get_ticks()
@@ -466,6 +469,8 @@ def main():
             ganadorFont = pygame.font.SysFont("comicsansms",80)
             displayGanador = ganadorFont.render('{}, ganaste!!!'.format(nombreJugador), True,(0, 180, 0))
             surface.blit(displayGanador, (200, 450))
+            displayTiempoJugado = menufont.render("Jugaste {} milisegundos!".format(tiempoFinal - tiempoInicioDePartida), True,(0, 180, 0))
+            surface.blit(displayTiempoJugado, (200, 650))
 
         screen.update()
 
@@ -486,7 +491,7 @@ surface = screen.set_mode([xs, ys])
 
 #Inicializar variables de partida
 global tiempoLimite
-tiempoLimite = 1000
+tiempoLimite = 100
 global nombreJugador
 nombreJugador = 'player'
 
@@ -496,6 +501,8 @@ if menuOpciones()==False:
     instrucciones()
 
 def start_the_game():
+    global tiempoInicioDePartida
+    tiempoInicioDePartida = pygame.time.get_ticks()
     menu.disable()
 
 def set_difficulty(value, difficulty):
