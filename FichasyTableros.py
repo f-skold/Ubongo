@@ -144,7 +144,7 @@ class Plantilla:
                         if (self.ma_vali[f + y][c + x] == 0 or self.ma_vali[f+y][c+x] == aux.getId()):
                             pos.append([f + y, c + x])
                         else:
-                            self.mostrarMatVali() 
+                            #self.mostrarMatVali() 
                             #retorna false cuando la pieza se quiere sobreponer a otra 
                             return False
             #Vacia la posicion anterior cuando la pieza cambió de posición dentro 
@@ -157,7 +157,7 @@ class Plantilla:
             aux.setMatPos(pos)
 
             #retorna True cuando la pieza entra en la plantilla sin ponerse encima de otra pieza
-            self.mostrarMatVali() 
+            #self.mostrarMatVali() 
             return True
         else:
             #Vacia la posicion anterior cuando la pieza se colocó afuera
@@ -165,12 +165,13 @@ class Plantilla:
             for i in range(len(actual_pos)):
                 self.ma_vali[actual_pos[i][0]][actual_pos[i][1]] = 0
 
-            self.mostrarMatVali() 
+            #self.mostrarMatVali() 
             #retorna false cuando la pieza no está dentro de la plantilla
             return False
 
 
     def IsComplete(self):
+        if len(self.ma_vali) == 0: return False
         for i in range(len(self.ma_vali)):
             if 0 in self.ma_vali[i]:
                 return False
@@ -221,7 +222,7 @@ class Plantilla:
                                                10000
                                                11001
                                                """)
-        if len(self.ma_vali) == 0:
+        if len(self.ma_vali) == 0 or self.IsComplete():
             self.ma_vali = [[0, 0, 0, 0, -1],
                             [-1, 0, 0, 0, -1],
                             [-1, 0, 0, 0, 0],
@@ -261,7 +262,7 @@ class Plantilla:
                                                          110
                                                          """)
 
-        if len(self.ma_vali) == 0:
+        if len(self.ma_vali) == 0 or self.IsComplete():
             self.ma_vali = [[0, 0, -1],
                             [0, 0, 0],
                             [0, 0, 0],
@@ -308,7 +309,7 @@ class Plantilla:
                                                       1001
                                                       """)
 
-        if len(self.ma_vali) == 0:
+        if len(self.ma_vali) == 0 or self.IsComplete():
             self.ma_vali = [[-1, 0, 0, 0],
                             [0, 0, 0, 0],
                             [0, 0, 0, 0],
@@ -346,7 +347,7 @@ class Plantilla:
                                                     10000
                                                     """)
 
-        if len(self.ma_vali) == 0:
+        if len(self.ma_vali) == 0 or self.IsComplete():
             self.ma_vali = [[-1, 0, 0, -1, -1],
                             [0, 0, 0, -1, -1],
                             [0, 0, 0, 0, -1],
@@ -390,7 +391,7 @@ class Plantilla:
                                                1011
                                                """)
 
-        if len(self.ma_vali) == 0:
+        if len(self.ma_vali) == 0 or self.IsComplete():
             self.ma_vali = [[-1, -1, 0, 0],
                             [-1, -1, 0, 0],
                             [0, 0, 0, 0],
@@ -432,7 +433,7 @@ class Plantilla:
                                                1000
                                                """)
 
-        if len(self.ma_vali) == 0:
+        if len(self.ma_vali) == 0 or self.IsComplete():
             self.ma_vali = [[-1, -1, 0, 0],
                             [-1, -1, 0, 0],
                             [0, 0, 0, 0],
@@ -476,7 +477,7 @@ class Plantilla:
                                                0011
                                                """)
 
-        if len(self.ma_vali) == 0:
+        if len(self.ma_vali) == 0 or self.IsComplete():
             self.ma_vali = [[-1, 0, 0, -1],
                             [-1, 0, 0, 0],
                             [-1, 0, 0, 0],
@@ -515,7 +516,7 @@ class Plantilla:
                                                1000
                                                """)
 
-        if len(self.ma_vali) == 0:
+        if len(self.ma_vali) == 0 or self.IsComplete():
             self.ma_vali = [[0, 0, 0, 0],
                             [0, 0, 0, 0],
                             [-1, 0, 0, 0],
@@ -556,7 +557,7 @@ class Plantilla:
                                                00000
                                                """)
 
-        if len(self.ma_vali) == 0:
+        if len(self.ma_vali) == 0 or self.IsComplete():
             self.ma_vali = [[0, 0, -1, -1, -1],
                             [0, 0, 0, 0, 0],
                             [0, 0, 0, 0, 0],

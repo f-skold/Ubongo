@@ -176,10 +176,21 @@ def instrucciones():
         pygame.display.update()
         reloj.tick(60)
 
+def cambiarPlantillasPiezas(Esc,NumeroPlantilla_Jugador,NumeroPlantilla_PC,surface,tabla,piezas,solucion,Dado,origenPlantillaEnemigo):  
+    NumeroPlantilla_Jugador = 1
+    NumeroPlantilla_PC = 5
+    DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
+    tabla = Esc.getTabla_pc()
+    Esc.cargarFiguras(surface,Dado.getRes()-1,NumeroPlantilla_PC)
+    piezas = Esc.getPiezas()
+    print(piezas)
+    # solucion será de las mismas dimensiones de la tabla
+    solucion = [[0 for j in range(len(tabla[i]))] for i in range(len(tabla))]
+    # mandamos las piezas, la tabla y la tabla que traerá la solución
+    bu.resolucion(piezas, tabla, solucion)
 
 
 def main():
-
 
     screen = pygame.display
 
@@ -192,6 +203,9 @@ def main():
     Dado = dado()
     gemas = []
     gemas = gema.inicializarGemas(gemas)
+
+    #Booleano que permite jugar con las piezas
+    armarPuzzle = False
 
     # Creacion de las fichas de los jugadores
     players = []
@@ -218,8 +232,6 @@ def main():
     ##### CONTROL DE PARTIDA #######
     # Numero de partidas restantes al inicio
     partidasRestantes = 9
-    ganar = False
-    tiros = 1
 
 
     # Bool que activa o desactiva el movimiento
@@ -229,15 +241,15 @@ def main():
     aux = 0
 
     #Plantillas aleatorias que se le asigna al jugador y a la máquina
-    NumeroPlantilla_Jugador = randint(1,9)
-    NumeroPlantilla_PC = randint(1,9) 
+    NumeroPlantilla_Jugador = 1
+    NumeroPlantilla_PC = 1
     DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
 
     # SOLUCION CON BACTRACKING -> Jugador Computadora
     tabla = Esc.getTabla_pc()
     Esc.cargarFiguras(surface,randint(0,5),NumeroPlantilla_PC)
     piezas = Esc.getPiezas()
-    print(piezas)
+    print(len(piezas))
     # solucion será de las mismas dimensiones de la tabla
     solucion = [[0 for j in range(len(tabla[i]))] for i in range(len(tabla))]
     # mandamos las piezas, la tabla y la tabla que traerá la solución
@@ -246,6 +258,11 @@ def main():
     print("solucion:")
     print(np.matrix(solucion))
     print()
+    ocur = [0,0,0,0,0]
+    for i in range(len(solucion)):
+        for j in range(2,5):
+           ocur[j] =  solucion[i].count(j)
+    print(ocur)
 
     # Booleano que controla el while principal
     running = True
@@ -255,14 +272,10 @@ def main():
     reloj = pygame.time.Clock()
     # FPS fijados en 20
     reloj.tick(20)
-    tiempo_inicio = pygame.time.get_ticks()
+    contadorPiezasPuestas = 0
+
     # bucle infinito
     while running:
-
-        # Probar tiempos
-        #print(tiempoLimite)
-        #print(current_time)
-        #print(tiempo_inicio)
 
         # fuente para escribir texto:
         menufont = pygame.font.Font(None, 24)
@@ -285,32 +298,32 @@ def main():
                 if event.key == pygame.K_q and aux != 0:
                     aux.voltearImg()
 
-                if ganar == True:
-                    # teclas tablero
-                    if event.key == K_e:
-                        players[0].ganargemas(gemas)
-                    if event.key == K_r:
-                        players[1].ganargemas(gemas)
-                    if event.key == K_UP:
-                        if players[0].mueve == True and players[0].movidas > 0 and players[0].y - la >= 0:
-                            players[0].y = players[0].y - la
-                            players[0].movidas = players[0].movidas - 1
-                    if event.key == K_DOWN:
-                        if players[0].mueve == True and players[0].movidas > 0 and players[0].y + la <= la * 6:
-                            players[0].y = players[0].y + la
-                            players[0].movidas = players[0].movidas - 1
-                    if event.key == K_w:
-                        if players[1].mueve == True and players[1].movidas > 0 and players[1].y - la >= 0:
-                            players[1].y = players[1].y - la
-                            players[1].movidas = players[1].movidas - 1
-                    if event.key == K_s:
-                        if players[1].mueve == True and players[1].movidas > 0 and players[1].y + la <= la * 6:
-                            players[1].y = players[1].y + la
-                            players[1].movidas = players[1].movidas - 1
-                if tiros >= 1:
-                    if event.key == K_x:
-                        Dado.tirar(surface)
-                        tiros = tiros - 1
+                # teclas tablero
+                if event.key == K_e:
+                    players[0].ganargemas(gemas)
+                if event.key == K_r:
+                    players[1].ganargemas(gemas)
+                if event.key == K_UP:
+                    if players[0].mueve == True and players[0].movidas > 0 and players[0].y - la >= 0:
+                        players[0].y = players[0].y - la
+                        players[0].movidas = players[0].movidas - 1
+                if event.key == K_DOWN:
+                    if players[0].mueve == True and players[0].movidas > 0 and players[0].y + la <= la * 6:
+                        players[0].y = players[0].y + la
+                        players[0].movidas = players[0].movidas - 1
+                if event.key == K_w:
+                    if players[1].mueve == True and players[1].movidas > 0 and players[1].y - la >= 0:
+                        players[1].y = players[1].y - la
+                        players[1].movidas = players[1].movidas - 1
+                if event.key == K_s:
+                    if players[1].mueve == True and players[1].movidas > 0 and players[1].y + la <= la * 6:
+                        players[1].y = players[1].y + la
+                        players[1].movidas = players[1].movidas - 1
+                if event.key == K_x:
+                    Dado.tirar(surface)
+                    if(armarPuzzle == False):
+                        armarPuzzle = True
+                        tiempo_inicio = pygame.time.get_ticks()
 
             # Si se apreta un boton del mouse
             elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -356,44 +369,64 @@ def main():
         color4 = (127, 0, 255)
 
         #Se cargan las plantillas
-        DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface,origenPlantillaEnemigo) 
-        DefinirPlantillaJugador(NumeroPlantilla_Jugador,Esc2, surface,origenPlantillaJugador)
-
-        current_time = pygame.time.get_ticks()
-
-        # Backtracking enemigo
-        for yy in range(len(solucion)):
-            for xx in range(len(solucion[yy])):
-                if solucion[yy][xx] == 2 and current_time >= (tiempoLimite * 0.25) + tiempo_inicio:
-                    pygame.draw.rect(surface, color1,
-                                     [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
-                if solucion[yy][xx] == 3 and current_time >= (tiempoLimite * 0.5) + tiempo_inicio:
-                    pygame.draw.rect(surface, color2,
-                                     [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
-                if solucion[yy][xx] == 4 and current_time >= (tiempoLimite * 0.75) + tiempo_inicio:
-                    pygame.draw.rect(surface, color3,
-                                     [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
-                    if (Esc.DibujarPlantilla1 or Esc.DibujarPlantilla2 or Esc.DibujarPlantilla4):
-                        partidasRestantes = partidasRestantes - 1
-                        perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (0, 0, 0))
-                        surface.blit(perder1, (400, 550))
-
-                # Si se supera el tiempo limite, computadora gana la partida
-                if solucion[yy][xx] == 5 and current_time >= tiempoLimite + tiempo_inicio:
-                    partidasRestantes = partidasRestantes - 1
-                    pygame.draw.rect(surface, color4, [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
-                    perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes),
-                                              True, (0, 0, 0))
-                    surface.blit(perder1, (400, 550))
-
+        if(armarPuzzle):
         # Puzzle Jugador
-        if (Esc2.IsComplete() == True):
-            # Si se gana la partida actual, aparece este mensaje
-            partidasRestantes = partidasRestantes - 1
-            ganar1 = menufont.render('Ganaste esta partida. Quedan {} partidas.'.format(partidasRestantes),
-                                     True, (0, 255, 0))
-            surface.blit(ganar1, (100, 700))
-            print("ganaste")
+            if (Esc2.IsComplete() == True):
+                armarPuzzle = False
+                print("segundoIf")
+                contadorPiezasPuestas = 0
+                cambiarPlantillasPiezas(Esc,NumeroPlantilla_Jugador,NumeroPlantilla_PC,surface,tabla,piezas,solucion,Dado,origenPlantillaEnemigo)
+                # Si se gana la partida actual, aparece este mensaje
+                partidasRestantes = partidasRestantes - 1
+                ganar1 = menufont.render('Ganaste esta partida. Quedan {} partidas.'.format(partidasRestantes),
+                                             True, (0, 255, 0))
+                surface.blit(ganar1, (100, 633))
+            else: 
+
+                DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface,origenPlantillaEnemigo) 
+                DefinirPlantillaJugador(NumeroPlantilla_Jugador,Esc2, surface,origenPlantillaJugador)
+
+                current_time = pygame.time.get_ticks()
+
+                # Backtracking enemigo
+                for yy in range(len(solucion)):
+                    for xx in range(len(solucion[yy])):
+                        if solucion[yy][xx] == 2 and current_time >= (tiempoLimite * 0.25) + tiempo_inicio:
+                            pygame.draw.rect(surface, color1,
+                                             [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
+                        if solucion[yy][xx] == 3 and current_time >= (tiempoLimite * 0.5) + tiempo_inicio:
+                            pygame.draw.rect(surface, color2,
+                                             [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
+                        if solucion[yy][xx] == 4 and current_time >= (tiempoLimite * 0.75) + tiempo_inicio:
+                            pygame.draw.rect(surface, color3,
+                                             [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
+                        if solucion[yy][xx] == 5 and current_time >= tiempoLimite + tiempo_inicio:
+                            pygame.draw.rect(surface, color4, [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
+                           #if (Esc.DibujarPlantilla1 or Esc.DibujarPlantilla2 or Esc.DibujarPlantilla4):
+                           #    partidasRestantes = partidasRestantes - 1
+                           #    perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (0, 0, 0))
+                           #    surface.blit(perder1, (400, 550))
+                           #    armarPuzzle = False
+                           #    print("PrimerIF")
+                           #    cambiarPlantillasPiezas(Esc,NumeroPlantilla_Jugador,NumeroPlantilla_PC,surface,tabla,piezas,solucion,Dado)
+                if(current_time == (tiempoLimite * 0.25) + tiempo_inicio):
+                   contadorPiezasPuestas+=1
+                if(current_time == (tiempoLimite * 0.5) + tiempo_inicio):
+                   contadorPiezasPuestas+=1
+                if(current_time == (tiempoLimite * 0.75) + tiempo_inicio):
+                   contadorPiezasPuestas+=1
+                
+              
+                if(contadorPiezasPuestas >= len(piezas)):
+                    print("primerIf")
+                    armarPuzzle = False
+                    cambiarPlantillasPiezas(Esc,NumeroPlantilla_Jugador,NumeroPlantilla_PC,surface,tabla,piezas,solucion,Dado,origenPlantillaEnemigo)
+                    perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (0, 0, 0))
+                    surface.blit(perder1, (400, 550))
+                    partidasRestantes = partidasRestantes - 1
+                    contadorPiezasPuestas = 0
+                    Dado.tirar(surface)
+
 
         # para tablero
         drawTablero(dimensiones, surface)
@@ -413,15 +446,16 @@ def main():
 
         Dado.dibujarDado(Dado.res, surface)
 
-        # Se cargan todas las figuras
-        Esc2.cargarFiguras(surface, Dado.res-1, NumeroPlantilla_Jugador)
+        if(armarPuzzle):
+            # Se cargan todas las figuras
+            Esc2.cargarFiguras(surface, Dado.getRes()-1, NumeroPlantilla_Jugador)
 
         #Separador
         pygame.draw.line(surface, (0, 0, 0), (dimensiones[0] / 2, dimensiones[1]), (dimensiones[0] / 2, 900), 20)
 
         # Display nombres jugador y computadora
         displayNombreJugador = menufont.render('{}'.format(nombreJugador),True, (0, 0, 0))
-        surface.blit(displayNombreJugador, (380, 600))
+        surface.blit(displayNombreJugador, (20, 600))
         displayNombreComputadora = menufont.render('HAL 9000', True, (0, 0, 0))
         surface.blit(displayNombreComputadora, (900, 580))
 

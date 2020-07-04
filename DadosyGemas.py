@@ -7,9 +7,6 @@ an = dimensiones[0] / 18
 la = dimensiones[1] / 6
 
 class dado:
-
-
-
     def __init__(self):
         self.res = 0
 
@@ -37,12 +34,9 @@ class dado:
     def tirar(self, pan):
         self.res = random.randint(1, 6)
         self.dibujarDado(self.res, pan)
-        global res
-        res = self.res
-        return res
 
     def getRes(self):
-        return res
+        return self.res
 
 class gema:
     def __init__(self, a, b, e):
