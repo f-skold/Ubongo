@@ -202,7 +202,6 @@ def cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo):
     
     return NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol
 
-
 def main():
 
     screen = pygame.display
@@ -257,6 +256,8 @@ def main():
     NumeroPlantilla_Jugador = randint(1,9)
     NumeroPlantilla_PC = randint(1,9)
     DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
+    Dado.tirar(surface)
+    DefinirPlantillaJugador(NumeroPlantilla_Jugador,Esc2,surface,origenPlantillaJugador)
 
     # SOLUCION CON BACTRACKING -> Jugador Computadora
     tabla = Esc.getTabla_pc()
@@ -456,7 +457,18 @@ def main():
         displayNombreComputadora = menufont.render('HAL 9000', True, (0, 0, 0))
         surface.blit(displayNombreComputadora, (1100, 720))
 
+        # Display partidas restantes
+        displayPartidasRestantes = menufont.render('Partidas restantes: {}'.format(partidasRestantes), True, (0, 0, 0))
+        surface.blit(displayPartidasRestantes, (600, 720))
+
+        # Mostrar al ganador cuando acaban 9 partidas
+        if partidasRestantes == 0:
+            ganadorFont = pygame.font.SysFont("comicsansms",80)
+            displayGanador = ganadorFont.render('{}, ganaste!!!'.format(nombreJugador), True,(0, 180, 0))
+            surface.blit(displayGanador, (200, 450))
+
         screen.update()
+
         if(armarPuzzle):
             if(contSol[0] == ocur[0] and contSol[1] == ocur[1] and contSol[2] == ocur[2] and contSol[3] == ocur[3]):
                 print("perdiste")
@@ -474,7 +486,7 @@ surface = screen.set_mode([xs, ys])
 
 #Inicializar variables de partida
 global tiempoLimite
-tiempoLimite = 30000
+tiempoLimite = 1000
 global nombreJugador
 nombreJugador = 'player'
 

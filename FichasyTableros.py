@@ -116,18 +116,18 @@ class Plantilla:
         self.y = 250
 
         self.Figuras = [
-            CFigura(150, (50), 1, "Fichas/Ficha1.png"),
-            CFigura(150, (150), 2, "Fichas/Ficha2.png"),
-            CFigura(150, (200), 3, "Fichas/Ficha3.png"),
-            CFigura(150, (250), 4, "Fichas/Ficha4.png"),
-            CFigura(150, (300), 5, "Fichas/Ficha5.png"),
-            CFigura(150, (350), 6, "Fichas/Ficha6.png"),
-            CFigura(150, (50), 7, "Fichas/Ficha7.png"),
-            CFigura(150, (150), 8, "Fichas/Ficha8.png"),
-            CFigura(150, (200), 9, "Fichas/Ficha9.png"),
-            CFigura(150, (250), 10, "Fichas/Ficha10.png"),
-            CFigura(150, (300), 11, "Fichas/Ficha11.png"),
-            CFigura(150, (350), 12, "Fichas/Ficha12.png")]
+            CFigura(100, (300), 1, "Fichas/Ficha1.png"),
+            CFigura(100, (350), 2, "Fichas/Ficha2.png"),
+            CFigura(100, (400), 3, "Fichas/Ficha3.png"),
+            CFigura(100, (450), 4, "Fichas/Ficha4.png"),
+            CFigura(100, (500), 5, "Fichas/Ficha5.png"),
+            CFigura(100, (550), 6, "Fichas/Ficha6.png"),
+            CFigura(300, (300), 7, "Fichas/Ficha7.png"),
+            CFigura(300, (350), 8, "Fichas/Ficha8.png"),
+            CFigura(300, (400), 9, "Fichas/Ficha9.png"),
+            CFigura(300, (450), 10, "Fichas/Ficha10.png"),
+            CFigura(300, (500), 11, "Fichas/Ficha11.png"),
+            CFigura(300, (550), 12, "Fichas/Ficha12.png")]
 
     def colocar(self, piez_x, piez_y, aux):
         n_col = len(self.ma_vali[0])
