@@ -176,18 +176,30 @@ def instrucciones():
         pygame.display.update()
         reloj.tick(60)
 
-def cambiarPlantillasPiezas(Esc,NumeroPlantilla_Jugador,NumeroPlantilla_PC,surface,tabla,piezas,solucion,Dado,origenPlantillaEnemigo):  
+def cambiarPlantillasPiezas(Esc,surface,Dado,origenPlantillaEnemigo):  
     NumeroPlantilla_Jugador = 1
     NumeroPlantilla_PC = 5
     DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
     tabla = Esc.getTabla_pc()
-    Esc.cargarFiguras(surface,Dado.getRes()-1,NumeroPlantilla_PC)
+    Dado.tirar(surface)
+    caraDado = Dado.getRes()-1
+    print(caraDado)
+    Esc.cargarFiguras(surface,caraDado,NumeroPlantilla_PC)
     piezas = Esc.getPiezas()
     print(piezas)
     # solucion será de las mismas dimensiones de la tabla
     solucion = [[0 for j in range(len(tabla[i]))] for i in range(len(tabla))]
     # mandamos las piezas, la tabla y la tabla que traerá la solución
     bu.resolucion(piezas, tabla, solucion)
+    contSol = [0,0,0,0]
+    ocur = [0,0,0,0]
+
+    for i in range(len(solucion)):
+        for j in range(2,6):
+           ocur[j-2] +=  solucion[i].count(j)
+    print(ocur)
+    
+    return NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol
 
 
 def main():
@@ -242,7 +254,7 @@ def main():
 
     #Plantillas aleatorias que se le asigna al jugador y a la máquina
     NumeroPlantilla_Jugador = 1
-    NumeroPlantilla_PC = 1
+    NumeroPlantilla_PC = randint(1,9)
     DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
 
     # SOLUCION CON BACTRACKING -> Jugador Computadora
@@ -262,7 +274,7 @@ def main():
     ocur = [0,0,0,0]
 
     for i in range(len(solucion)):
-        for j in range(2,5):
+        for j in range(2,6):
            ocur[j-2] +=  solucion[i].count(j)
     print(ocur)
 
@@ -377,7 +389,7 @@ def main():
                 armarPuzzle = False
                 print("segundoIf")
                 contadorPiezasPuestas = 0
-                cambiarPlantillasPiezas(Esc,NumeroPlantilla_Jugador,NumeroPlantilla_PC,surface,tabla,piezas,solucion,Dado,origenPlantillaEnemigo)
+                NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,surface,Dado,origenPlantillaEnemigo)
                 # Si se gana la partida actual, aparece este mensaje
                 partidasRestantes = partidasRestantes - 1
                 ganar1 = menufont.render('Ganaste esta partida. Quedan {} partidas.'.format(partidasRestantes),
@@ -405,12 +417,12 @@ def main():
                                              [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                         if solucion[yy][xx] == 4 and current_time >= (tiempoLimite * 0.75) + tiempo_inicio:
                             if(contSol[2] < ocur[2]):
-                                contSol[solucion[yy][xx]-2]+=1
+                                contSol[2]+=1
                             pygame.draw.rect(surface, color3,
                                              [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                         if solucion[yy][xx] == 5 and current_time >= tiempoLimite + tiempo_inicio:
                             if(contSol[3] < ocur[3]):
-                                contSol[solucion[yy][xx]-2]+=1
+                                contSol[3]+=1
                             pygame.draw.rect(surface, color4, [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                            #if (Esc.DibujarPlantilla1 or Esc.DibujarPlantilla2 or Esc.DibujarPlantilla4):
                            #    partidasRestantes = partidasRestantes - 1
@@ -430,7 +442,7 @@ def main():
                 if(contSol[0] == ocur[0] and contSol[1] == ocur[1] and contSol[2] == ocur[2] and contSol[3] == ocur[3]):
                     print("primerIf")
                     armarPuzzle = False
-                    cambiarPlantillasPiezas(Esc,NumeroPlantilla_Jugador,NumeroPlantilla_PC,surface,tabla,piezas,solucion,Dado,origenPlantillaEnemigo)
+                    NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,surface,Dado,origenPlantillaEnemigo)
                     perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (0, 0, 0))
                     surface.blit(perder1, (400, 550))
                     partidasRestantes = partidasRestantes - 1
