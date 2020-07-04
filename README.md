@@ -24,6 +24,12 @@ Pygame_menu
 
 ### Instalación 🔧
 
+_Clonación del repositorio_
+
+```
+git clone https://github.com/RaulC2803/Ubongo.git
+```
+
 #### Windonws 10
 
 _Instalación de Pygame y Pygame_menu en Windows 10_
@@ -38,7 +44,7 @@ pip install pygame_menu
 _Instalación de Pygame y Pygame_menu en Linux_
 
 ```
-sudo apt-get install python-pygame
+sudo apt-get install python3-pygame
 pip3 install pygame_menu
 ```
 _Si ocurre algún problema consulte el siguiente [link](https://riptutorial.com/es/pygame/example/16814/instalando-pygame)_
@@ -59,8 +65,6 @@ E: recolectar gemas(jugador)
 ```
 
 ## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [Pygame](https://www.pygame.org/news) - Documentación de pygame
 
