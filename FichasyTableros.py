@@ -598,7 +598,7 @@ class Plantilla:
             elif cara == 1:
                 self.Figuras[9].cargarImg(surface)
                 self.Figuras[5].cargarImg(surface)
-                self.Figuras[0].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
                 self.piezas = [backtracking_ubongo.gen_matrix("""
                                                                 20
                                                                 22
@@ -615,7 +615,7 @@ class Plantilla:
                                                         04
                                                         """)]
             elif cara == 2:
-                self.Figuras[0].cargarImg(surface)
+                self.Figuras[10].cargarImg(surface)
                 self.Figuras[2].cargarImg(surface)
                 self.Figuras[4].cargarImg(surface)
                 self.piezas = [backtracking_ubongo.gen_matrix("""
