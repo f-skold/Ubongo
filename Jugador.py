@@ -7,7 +7,7 @@ class jugador:
         self.h = 30
         self.w = 30
         self.mueve = True
-        self.movidas = 3
+        self.movidas = 0
         self.gemasganadas = []
 
         if e == 1:

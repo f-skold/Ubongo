@@ -248,6 +248,9 @@ def main():
     ##### CONTROL DE PARTIDA #######
     # Numero de partidas restantes al inicio
     partidasRestantes = 9
+    partidasGanadas = 0
+    partidasGanadas_PC = 0
+
 
     # Bool que activa o desactiva el movimiento
     activate = False
@@ -392,6 +395,9 @@ def main():
             if (Esc2.IsComplete() == True):
                 armarPuzzle = False
                 print("ganaste")
+                partidasGanadas += 1
+                players[0].movidas += 2
+                players[1].movidas += 1
                 contadorPiezasPuestas = 0
                 NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
                 # Si se gana la partida actual, aparece este mensaje
@@ -400,8 +406,7 @@ def main():
                                              True, (0, 255, 0))
                 surface.blit(ganar1, (100, 633))
             else: 
-
-                DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface,origenPlantillaEnemigo) 
+                DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface,origenPlantillaEnemigo)
                 DefinirPlantillaJugador(NumeroPlantilla_Jugador,Esc2, surface,origenPlantillaJugador)
 
                 current_time = pygame.time.get_ticks()
@@ -442,8 +447,9 @@ def main():
         for j in range(len(players)):
             players[j].dibujarjugador(surface)
 
-            if players[j].movidas <= 0:
-                players[j].mueve = False
+            #desactivar. Si esta activada se inhabilita el movimiento
+           # if players[j].movidas <= 0:
+                #players[j].mueve = False
 
         Dado.dibujarDado(Dado.res, surface)
 
@@ -455,10 +461,14 @@ def main():
         pygame.draw.line(surface, (0, 0, 0), (800, dimensiones[1]), (800, 900), 20)
 
         # Display nombres jugador y computadora
-        displayNombreJugador = menufont.render('{}'.format(nombreJugador),True, (0, 0, 0))
+        displayNombreJugador = menufont.render('{}'.format(nombreJugador), True, (0, 0, 0))
         surface.blit(displayNombreJugador, (20, 720))
+        displayPartidasGanadas = menufont.render('Partidas ganadas: {}'.format(partidasGanadas), True, (0, 255, 0))
+        surface.blit(displayPartidasGanadas, (20, 750))
         displayNombreComputadora = menufont.render('HAL 9000', True, (0, 0, 0))
         surface.blit(displayNombreComputadora, (1100, 720))
+        displayPartidasGanadas_PC = menufont.render('Partidas ganadas: {}'.format(partidasGanadas_PC), True, (120, 0, 0))
+        surface.blit(displayPartidasGanadas_PC, (1020, 750))
 
         # Display partidas restantes
         displayPartidasRestantes = menufont.render('Partidas restantes: {}'.format(partidasRestantes), True, (0, 0, 0))
@@ -477,6 +487,9 @@ def main():
         if(armarPuzzle):
             if(contSol[0] == ocur[0] and contSol[1] == ocur[1] and contSol[2] == ocur[2] and contSol[3] == ocur[3]):
                 print("perdiste")
+                partidasGanadas_PC += 1
+                players[0].movidas = 1
+                players[1].movidas = 2
                 armarPuzzle = False
                 NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
                 perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (0, 0, 0))
@@ -491,7 +504,7 @@ surface = screen.set_mode([xs, ys])
 
 #Inicializar variables de partida
 global tiempoLimite
-tiempoLimite = 100
+tiempoLimite = 50
 global nombreJugador
 nombreJugador = 'player'
 
