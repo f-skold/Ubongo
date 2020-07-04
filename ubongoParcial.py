@@ -258,10 +258,12 @@ def main():
     print("solucion:")
     print(np.matrix(solucion))
     print()
-    ocur = [0,0,0,0,0]
+    contSol = [0,0,0,0]
+    ocur = [0,0,0,0]
+
     for i in range(len(solucion)):
         for j in range(2,5):
-           ocur[j] =  solucion[i].count(j)
+           ocur[j-2] +=  solucion[i].count(j)
     print(ocur)
 
     # Booleano que controla el while principal
@@ -392,15 +394,23 @@ def main():
                 for yy in range(len(solucion)):
                     for xx in range(len(solucion[yy])):
                         if solucion[yy][xx] == 2 and current_time >= (tiempoLimite * 0.25) + tiempo_inicio:
+                            if(contSol[0] < ocur[0]):
+                                contSol[0]+=1
                             pygame.draw.rect(surface, color1,
                                              [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                         if solucion[yy][xx] == 3 and current_time >= (tiempoLimite * 0.5) + tiempo_inicio:
+                            if(contSol[1] < ocur[1]):
+                                contSol[1]+=1
                             pygame.draw.rect(surface, color2,
                                              [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                         if solucion[yy][xx] == 4 and current_time >= (tiempoLimite * 0.75) + tiempo_inicio:
+                            if(contSol[2] < ocur[2]):
+                                contSol[solucion[yy][xx]-2]+=1
                             pygame.draw.rect(surface, color3,
                                              [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                         if solucion[yy][xx] == 5 and current_time >= tiempoLimite + tiempo_inicio:
+                            if(contSol[3] < ocur[3]):
+                                contSol[solucion[yy][xx]-2]+=1
                             pygame.draw.rect(surface, color4, [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
                            #if (Esc.DibujarPlantilla1 or Esc.DibujarPlantilla2 or Esc.DibujarPlantilla4):
                            #    partidasRestantes = partidasRestantes - 1
@@ -409,15 +419,15 @@ def main():
                            #    armarPuzzle = False
                            #    print("PrimerIF")
                            #    cambiarPlantillasPiezas(Esc,NumeroPlantilla_Jugador,NumeroPlantilla_PC,surface,tabla,piezas,solucion,Dado)
-                if(current_time == (tiempoLimite * 0.25) + tiempo_inicio):
-                   contadorPiezasPuestas+=1
-                if(current_time == (tiempoLimite * 0.5) + tiempo_inicio):
-                   contadorPiezasPuestas+=1
-                if(current_time == (tiempoLimite * 0.75) + tiempo_inicio):
-                   contadorPiezasPuestas+=1
+               #if(contSol[0] == ocur[0] and contSol[0]):
+               #   contadorPiezasPuestas+=1
+               #if(current_time == (tiempoLimite * 0.5) + tiempo_inicio):
+               #   contadorPiezasPuestas+=1
+               #if(current_time == (tiempoLimite * 0.75) + tiempo_inicio):
+               #   contadorPiezasPuestas+=1
                 
               
-                if(contadorPiezasPuestas >= len(piezas)):
+                if(contSol[0] == ocur[0] and contSol[1] == ocur[1] and contSol[2] == ocur[2] and contSol[3] == ocur[3]):
                     print("primerIf")
                     armarPuzzle = False
                     cambiarPlantillasPiezas(Esc,NumeroPlantilla_Jugador,NumeroPlantilla_PC,surface,tabla,piezas,solucion,Dado,origenPlantillaEnemigo)
