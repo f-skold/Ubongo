@@ -69,4 +69,7 @@ class gema:
                  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
         return gemas
+    
+    def getGemas(self,i,j):
+        return self.gemas[i][j]
 

@@ -9,7 +9,7 @@ class jugador:
         self.mueve = True
         self.movidas = 0
         self.capacidadRecoleccion = 0
-        self.gemasganadas = []
+        self.gemasganadas = [0,0,0,0,0,0]
 
         if e == 1:
             self.color = (132, 61, 9)
@@ -27,12 +27,17 @@ class jugador:
     def dibujarjugador(self, pantalla):
         pygame.draw.ellipse(pantalla, self.color, [self.x + an / 4, self.y + la / 4, self.w, self.h])
 
-    def ganargemas(self, gemas):
+    def ganargemas(self, gemas, matGemas):
+        gem = gemas
         f = 0
         for i in range(11, -1, -1):
             if f == 2:
                 break
             if gemas[int(self.y / la)][i] != 0:
-                self.gemasganadas.append(gemas[int(self.y / la)][i])
+                self.gemasganadas[matGemas[int(self.y/la)][i]-1]+=1
                 gemas[int(self.y / la)][i] = 0
                 f = f + 1
+                
+                
+    def getGemasGanadas(self):
+        return self.gemasganadas

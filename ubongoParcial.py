@@ -219,6 +219,12 @@ def main():
     # Datos del tablero
     Dado = dado()
     gemas = []
+    matGemas =  [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
     gemas = gema.inicializarGemas(gemas)
 
     #Booleano que permite jugar con las piezas
@@ -231,7 +237,9 @@ def main():
     # creación y disposición de las gemas en el tablero, color al azar
     for y in range(0, 6):
         for x in range(0, 12):
-            gemas[y][x] = gema(x * an, y * la, random.randint(1, 6))
+            col = randint(1,6)
+            gemas[y][x] = gema(x * an, y * la, col)
+            matGemas[y][x] = col
 
     # Se crea la lista de Escenarios
     # Esc -> enemigo
@@ -296,10 +304,11 @@ def main():
     # FPS fijados en 20
     reloj.tick(20)
     contadorPiezasPuestas = 0
+    
+    gemaRecogida = False
 
     # bucle infinito
     while running:
-
         # fuente para escribir texto:
         menufont = pygame.font.Font(None, 24)
 
@@ -323,10 +332,14 @@ def main():
 
                 # teclas tablero
                 if event.key == K_e and players[0].capacidadRecoleccion > 0:
-                    players[0].ganargemas(gemas)
+                    print("apretaste E")
+                    players[0].ganargemas(gemas,matGemas)
                     players[0].capacidadRecoleccion -= 1
+                    if(gemaRecogida == False):
+                        movimientoPC()
+                        
                 if event.key == K_r and players[1].capacidadRecoleccion > 0:
-                    players[1].ganargemas(gemas)
+                    players[1].ganargemas(gemas,matGemas)
                     players[1].capacidadRecoleccion -= 1
                 if event.key == K_UP:
                     if players[0].mueve == True and players[0].movidas > 0 and players[0].y - la >= 0:
@@ -390,12 +403,8 @@ def main():
 
         def recoleccionGemasPC():
             if players[1].capacidadRecoleccion > 0:
-                players[1].ganargemas(gemas)
+                players[1].ganargemas(gemas,matGemas)
                 players[1].capacidadRecoleccion -= 1
-
-        print("movidas PC: {}".format(players[1].movidas))
-        print("movidas PC: {}".format(players[1].capacidadRecoleccion))
-
 
         x, y = pygame.mouse.get_pos()
 
@@ -419,14 +428,13 @@ def main():
         # Puzzle Jugador
             if (Esc2.IsComplete() == True):
                 armarPuzzle = False
+                gemaRecogida = False
                 print("ganaste")
                 partidasGanadas += 1
-                players[0].movidas += 2
-                players[0].capacidadRecoleccion += 2
-                players[1].movidas += 1
-                players[1].capacidadRecoleccion += 1
-                movimientoPC()
-                movimientoPC()
+                players[0].movidas = 2
+                players[0].capacidadRecoleccion =1
+                players[1].movidas = 1
+                players[1].capacidadRecoleccion =1
                 contadorPiezasPuestas = 0
                 NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
                 # Si se gana la partida actual, aparece este mensaje
@@ -488,6 +496,10 @@ def main():
 
         #Separador
         pygame.draw.line(surface, (0, 0, 0), (800, dimensiones[1]), (800, 900), 20)
+        displayGemas = menufont.render('{}'.format(players[0].getGemasGanadas()), True,(0,0,0))
+        surface.blit(displayGemas,(20,550))
+        displayGemas = menufont.render('{}'.format(players[1].getGemasGanadas()), True,(0,0,0))
+        surface.blit(displayGemas,(1020,550))
 
         # Display nombres jugador y computadora
         displayNombreJugador = menufont.render('{}'.format(nombreJugador), True, (0, 0, 0))
@@ -515,13 +527,13 @@ def main():
 
         if(armarPuzzle):
             if(contSol[0] == ocur[0] and contSol[1] == ocur[1] and contSol[2] == ocur[2] and contSol[3] == ocur[3]):
+                gemaRecogida = True
                 print("perdiste")
                 partidasGanadas_PC += 1
                 players[0].movidas = 1
                 players[0].capacidadRecoleccion = 1
                 players[1].movidas = 2
-                players[1].capacidadRecoleccion = 2
-                movimientoPC()
+                players[1].capacidadRecoleccion = 1
                 movimientoPC()
                 armarPuzzle = False
                 NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
