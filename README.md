@@ -2,6 +2,10 @@
 
 _Proyecto de implementación del juego Ubongo en Python_
 
+## Pequeño Vistazo
+
+Si quiere observar el funcionamiento del proyecto ingrese al link del [video](https://drive.google.com/file/d/1Ig-p4k6ZZ1nGAHaV6yxBGRWOIdaChdY_/view?usp=sharing).
+
 ## Comenzando 🚀
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
