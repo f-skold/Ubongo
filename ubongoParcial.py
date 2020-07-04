@@ -48,6 +48,17 @@ def DefinirPlantillaPC(NumeroPlantilla_PC,Esc, surface, origenPlantillaEnemigo):
             Esc.DibujarPlantilla8(surface, origenPlantillaEnemigo, 400)
         elif NumeroPlantilla_PC == 9:
             Esc.DibujarPlantilla9(surface, origenPlantillaEnemigo, 400)
+            
+def definirGanador(juga,pc):
+    juga = sorted(juga)
+    pc = sorted(pc)
+    cont = 0 
+    while(juga[cont] == pc[cont]):
+       cont+=1 
+    if(juga[cont] > pc[cont]):
+        return True
+    else:
+        return False
 # inicializar Pygame
 pygame.init()
 
@@ -496,24 +507,54 @@ def main():
 
         #Separador
         pygame.draw.line(surface, (0, 0, 0), (800, dimensiones[1]), (800, 900), 20)
-        displayGemas = menufont.render('{}'.format(players[0].getGemasGanadas()), True,(0,0,0))
-        surface.blit(displayGemas,(20,550))
-        displayGemas = menufont.render('{}'.format(players[1].getGemasGanadas()), True,(0,0,0))
-        surface.blit(displayGemas,(1020,550))
 
-        # Display nombres jugador y computadora
-        displayNombreJugador = menufont.render('{}'.format(nombreJugador), True, (0, 0, 0))
-        surface.blit(displayNombreJugador, (20, 720))
-        displayPartidasGanadas = menufont.render('Partidas ganadas: {}'.format(partidasGanadas), True, (0, 255, 0))
-        surface.blit(displayPartidasGanadas, (20, 750))
-        displayNombreComputadora = menufont.render('HAL 9000', True, (0, 0, 0))
-        surface.blit(displayNombreComputadora, (1100, 720))
-        displayPartidasGanadas_PC = menufont.render('Partidas ganadas: {}'.format(partidasGanadas_PC), True, (120, 0, 0))
-        surface.blit(displayPartidasGanadas_PC, (1020, 750))
+        #Display gemas de cada jugador
+        displayGemas0 = menufont.render('{}'.format(players[0].getGemasGanadas()[0]), True,(255,0,0))
+        displayGemas1 = menufont.render('{}'.format(players[0].getGemasGanadas()[1]), True, (0, 0, 255))
+        displayGemas2 = menufont.render('{}'.format(players[0].getGemasGanadas()[2]), True, (52, 234, 17))
+        displayGemas3 = menufont.render('{}'.format(players[0].getGemasGanadas()[3]), True, (255, 255, 0))
+        displayGemas4 = menufont.render('{}'.format(players[0].getGemasGanadas()[4]), True, (255, 147, 0))
+        displayGemas5 = menufont.render('{}'.format(players[0].getGemasGanadas()[5]), True, (128,0,128))
+        surface.blit(displayGemas0,(20,700))
+        surface.blit(displayGemas1, (40, 700))
+        surface.blit(displayGemas2, (60, 700))
+        surface.blit(displayGemas3, (80, 700))
+        surface.blit(displayGemas4, (100, 700))
+        surface.blit(displayGemas5, (120, 700))
+
+        displayGemasPC0 = menufont.render('{}'.format(players[1].getGemasGanadas()[0]), True,(255,0,0))
+        displayGemasPC1 = menufont.render('{}'.format(players[1].getGemasGanadas()[1]), True, (0, 0, 255))
+        displayGemasPC2 = menufont.render('{}'.format(players[1].getGemasGanadas()[2]), True, (52, 234, 17))
+        displayGemasPC3 = menufont.render('{}'.format(players[1].getGemasGanadas()[3]), True, (255, 255, 0))
+        displayGemasPC4 = menufont.render('{}'.format(players[1].getGemasGanadas()[4]), True, (255, 147, 0))
+        displayGemasPC5 = menufont.render('{}'.format(players[1].getGemasGanadas()[5]), True, (128,0,128))
+        surface.blit(displayGemasPC0,(1080,700))
+        surface.blit(displayGemasPC1, (1100, 700))
+        surface.blit(displayGemasPC2, (1120, 700))
+        surface.blit(displayGemasPC3, (1140, 700))
+        surface.blit(displayGemasPC4, (1160, 700))
+        surface.blit(displayGemasPC5, (1180, 700))
 
         # Display partidas restantes
         displayPartidasRestantes = menufont.render('Partidas restantes: {}'.format(partidasRestantes), True, (0, 0, 0))
         surface.blit(displayPartidasRestantes, (600, 720))
+        
+        # Mostrar al ganador cuando acaban 9 partidas
+        if partidasRestantes == 0:
+            if definirGanador(players[0].getGemasGanadas(),players[1].getGemasGanadas()):
+                ganadorFont = pygame.font.SysFont("comicsansms", 80)
+                displayGanador = ganadorFont.render('{}, ganaste!!!'.format(nombreJugador), True, (0, 180, 0))
+                surface.blit(displayGanador, (200, 450))
+                displayTiempoJugado = menufont.render(
+                    "Jugaste {} milisegundos!".format(tiempoFinal - tiempoInicioDePartida), True, (0, 180, 0))
+                surface.blit(displayTiempoJugado, (200, 650))
+            else:
+                ganadorFont = pygame.font.SysFont("comicsansms", 80)
+                displayGanador = ganadorFont.render('{}, Perdiste!!!'.format(nombreJugador), True, (0, 180, 0))
+                surface.blit(displayGanador, (200, 450))
+                displayTiempoJugado = menufont.render(
+                    "Jugaste {} milisegundos!".format(tiempoFinal - tiempoInicioDePartida), True, (0, 180, 0))
+                surface.blit(displayTiempoJugado, (200, 650))
 
         # Mostrar al ganador cuando acaban 9 partidas
         if partidasRestantes == 0:
