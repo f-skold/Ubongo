@@ -4,7 +4,7 @@ def gen_matrix(string):
 
 
 def es_valido(pos, tabla):
-    # Revisa si cada tupla de posicion (x,y) está en el tablero
+    # Revisa si cada tupla de posicion (x,y) está en el tablero y no fuera
     x, y = pos
     if x < 0 or y < 0:
         return False
@@ -18,10 +18,13 @@ def insertar_pieza(pieza, pos, tabla, remover=False):
 
     for dx in range(len(pieza[0])):
         for dy in range(len(pieza)):
+            #asigna la pos inicial hasta la ultima pos de la pieza y la agrega en la tabla
             x, y = esquina_x + dx, esquina_y + dy
+            #si retorna falso la función termina
             assert (es_valido((x, y), tabla))
 
             if pieza[dy][dx] != 0:
+                #esta linea sirve para remover o insertar dependiendo del valor de remover
                 tabla[y][x] = pieza[dy][dx] if not remover else 0
 
 
@@ -31,7 +34,7 @@ def puede_insertar(pieza, pos, tabla):
         for dy in range(len(pieza)):
             x, y = esquina_x + dx, esquina_y + dy
             assert (es_valido((x, y), tabla))
-
+            #si pretende insertarse en un espacio nulo retorn false
             if pieza[dy][dx] != 0 and tabla[y][x] != 0:
                 return False
     return True
@@ -41,6 +44,7 @@ def rotaciones(pieza):
     pieza = tuple(tuple(fila) for fila in pieza)
     rotaciones = {
         pieza,
+        #reverso vertical
         tuple(reversed(pieza))
     }
     for _ in range(3):  # añade otra 3 rotaciones
@@ -51,11 +55,7 @@ def rotaciones(pieza):
     return rotaciones
 
 
-def print_2d(array):
-    for row in array:
-        print(' '.join(map(str, (x if x != 1 else ' ' for x in row))))
 
-    print()
 
 
 def resol(piezas, tabla, solu):
