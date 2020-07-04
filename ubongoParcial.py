@@ -178,7 +178,7 @@ def instrucciones():
 
 def cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo):
     Esc2.vaciarMaVali()
-    NumeroPlantilla_Jugador = 1
+    NumeroPlantilla_Jugador = randint(1,9)
     NumeroPlantilla_PC = randint(1,9)
     DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
     DefinirPlantillaJugador(NumeroPlantilla_Jugador,Esc2, surface, 100)
