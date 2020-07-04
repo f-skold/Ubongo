@@ -8,6 +8,7 @@ class jugador:
         self.w = 30
         self.mueve = True
         self.movidas = 0
+        self.capacidadRecoleccion = 0
         self.gemasganadas = []
 
         if e == 1:

@@ -199,27 +199,27 @@ class Plantilla:
 
     # 3 Fichas
     def DibujarPlantilla1(self, surface, x, y):
-        self.color = (255, 255, 255)
+        self.color = (randint(1,150), randint(1,150), randint(1,150))
         self.x = x
         self.y = y
 
         # Fila 1
-        pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)],5)
         # Fila 
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)],5)
         # Fila 3
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 100), (50, 50)],5)
         # Fila 4
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)],5)
 
         self.tabla_pc = backtracking_ubongo.gen_matrix("""
                                                00001
@@ -235,29 +235,29 @@ class Plantilla:
 
     # 3 FICHAS
     def DibujarPlantilla2(self, surface, x, y):
-        self.color = (33, 33, 33)
+        self.color = (randint(1,180), randint(1,180), randint(1,180))
         self.x = x
         self.y = y
 
         # Fila 1
-        pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)],5)
         # Fila 2
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)],5)
         # Fila 3
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)],5)
         # Fila 4
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)],5)
         # Fila 5
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 200), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 200), (50, 50)],5)
         # Fila 6
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 250), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 250), (50, 50)],5)
         self.tabla_pc = backtracking_ubongo.gen_matrix("""
                                                          001
                                                          000
@@ -277,34 +277,34 @@ class Plantilla:
 
     # 4 FICHAS
     def DibujarPlantilla3(self, surface, x, y):
-        self.color = (33, 33, 33)
+        self.color = (randint(1,180), randint(1,180), randint(1,180))
         self.x = x
         self.y = y
 
         # Fila 1
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)],5)
         # Fila 2
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)],5)
         # Fila 3
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)],5)
         # Fila 4
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)],5)
         # Fila 5
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 200), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 200), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 200), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 200), (50, 50)],5)
         # Fila 6
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 250), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 250), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 250), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 250), (50, 50)],5)
         self.tabla_pc = backtracking_ubongo.gen_matrix("""
                                                       1000
                                                       0000
@@ -324,27 +324,27 @@ class Plantilla:
 
     # 4 FICHAS
     def DibujarPlantilla4(self, surface, x, y):
-        self.color = (33, 33, 33)
+        self.color = (randint(1,180), randint(1,180), randint(1,180))
         self.x = x
         self.y = y
 
         # Fila 1
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)],5)
         # Fila 2
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)],5)
         # Fila 3
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)],5)
         # Fila 4
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 150), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 150), (50, 50)],5)
         self.tabla_pc = backtracking_ubongo.gen_matrix("""
                                                     10011
                                                     00011
@@ -360,33 +360,33 @@ class Plantilla:
 
     # 4 FICHAS
     def DibujarPlantilla5(self, surface, x, y):
-        self.color = (33, 33, 33)
+        self.color = (randint(1,180), randint(1,180), randint(1,180))
         self.x = x
         self.y = y
 
         # Fila 1
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)],5)
         # Fila 2
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)],5)
         # Fila 3
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)],5)
         # Fila 4
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)],5)
         # Fila 5
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 200), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 200), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 200), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 200), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 200), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 200), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 200), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 200), (50, 50)],5)
         # Fila 6
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 250), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 250), (50, 50)],5)
         self.tabla_pc = backtracking_ubongo.gen_matrix("""
                                                1100
                                                1100
@@ -406,30 +406,30 @@ class Plantilla:
 
     # 4 FICHAS
     def DibujarPlantilla6(self, surface, x, y):
-        self.color = (33, 33, 33)
+        self.color = (randint(1,180), randint(1,180), randint(1,180))
         self.x = x
         self.y = y
 
         # Fila 1
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)],5)
         # Fila 2
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)],5)
         # Fila 3
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)],5)
         # Fila 4
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)],5)
         # Fila 5
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 200), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 200), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 200), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 200), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 200), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 200), (50, 50)],5)
         self.tabla_pc = backtracking_ubongo.gen_matrix("""
                                                1100
                                                1100
@@ -447,32 +447,32 @@ class Plantilla:
 
     # 4 FICHAS
     def DibujarPlantilla7(self, surface, x, y):
-        self.color = (33, 33, 33)
+        self.color = (randint(1,180), randint(1,180), randint(1,180))
         self.x = x
         self.y = y
 
         # Fila 1
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)],5)
         # Fila 2
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)],5)
         # Fila 3
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)],5)
         # Fila 4
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)],5)
         # Fila 5
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 200), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 200), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 200), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 200), (50, 50)],5)
         # Fila 6
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 250), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 250), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 250), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 250), (50, 50)],5)
         self.tabla_pc = backtracking_ubongo.gen_matrix("""
                                                1001
                                                1000
@@ -492,28 +492,28 @@ class Plantilla:
 
     # 4 FICHAS
     def DibujarPlantilla8(self, surface, x, y):
-        self.color = (33, 33, 33)
+        self.color = (randint(1,180), randint(1,180), randint(1,180))
         self.x = x
         self.y = y
 
         # Fila 1
-        pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y), (50, 50)],5)
         # Fila 2
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)],5)
         # Fila 3
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)],5)
         # Fila 4
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)],5)
         self.tabla_pc = backtracking_ubongo.gen_matrix("""
                                                0000
                                                0000
@@ -529,32 +529,32 @@ class Plantilla:
 
     # 4 FICHAS
     def DibujarPlantilla9(self, surface, x, y):
-        self.color = (33, 33, 33)
+        self.color = (randint(1,180), randint(1,180), randint(1,180))
         self.x = x
         self.y = y
 
         # DIBUJAR TABLERO DE JUGADOR COMPUTADORA
         # Fila 1
-        pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y), (50, 50)],5)
         # Fila 2
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 50), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 50), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 50), (50, 50)],5)
         # Fila 3
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 100), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 100), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 100), (50, 50)],5)
         # Fila 4
-        pygame.draw.rect(surface, self.color, [(self.x, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)])
-        pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 150), (50, 50)])
+        pygame.draw.rect(surface, self.color, [(self.x, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 50, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 100, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 150, self.y + 150), (50, 50)],5)
+        pygame.draw.rect(surface, self.color, [(self.x + 200, self.y + 150), (50, 50)],5)
         self.tabla_pc = backtracking_ubongo.gen_matrix("""
                                                00111
                                                00000
