@@ -207,8 +207,6 @@ def cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo):
     return NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol
 
 
-
-
 def main():
 
     screen = pygame.display
