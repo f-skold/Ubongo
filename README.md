@@ -36,7 +36,7 @@ _Instalación de Pygame y Pygame_menu en Windows 10_
 
 ```
 pip install your-pygame-package.whl
-pip install pygame_menu
+pip install pygame-menu
 ```
 
 ### Linux
