@@ -1,6 +1,5 @@
-
 def gen_matrix(string):
-    return [[int(x) for x in line.strip()] for line in string.strip().split('\n')]
+    return [[int(x) for x in line.strip()] for line in string.strip().split("\n")]
 
 
 def es_valido(pos, tabla):
@@ -18,13 +17,13 @@ def insertar_pieza(pieza, pos, tabla, remover=False):
 
     for dx in range(len(pieza[0])):
         for dy in range(len(pieza)):
-            #asigna la pos inicial hasta la ultima pos de la pieza y la agrega en la tabla
+            # asigna la pos inicial hasta la ultima pos de la pieza y la agrega en la tabla
             x, y = esquina_x + dx, esquina_y + dy
-            #si retorna falso la función termina
-            assert (es_valido((x, y), tabla))
+            # si retorna falso la función termina
+            assert es_valido((x, y), tabla)
 
             if pieza[dy][dx] != 0:
-                #esta linea sirve para remover o insertar dependiendo del valor de remover
+                # esta linea sirve para remover o insertar dependiendo del valor de remover
                 tabla[y][x] = pieza[dy][dx] if not remover else 0
 
 
@@ -33,8 +32,8 @@ def puede_insertar(pieza, pos, tabla):
     for dx in range(len(pieza[0])):
         for dy in range(len(pieza)):
             x, y = esquina_x + dx, esquina_y + dy
-            assert (es_valido((x, y), tabla))
-            #si pretende insertarse en un espacio nulo retorn false
+            assert es_valido((x, y), tabla)
+            # si pretende insertarse en un espacio nulo retorn false
             if pieza[dy][dx] != 0 and tabla[y][x] != 0:
                 return False
     return True
@@ -44,8 +43,8 @@ def rotaciones(pieza):
     pieza = tuple(tuple(fila) for fila in pieza)
     rotaciones = {
         pieza,
-        #reverso vertical
-        tuple(reversed(pieza))
+        # reverso vertical
+        tuple(reversed(pieza)),
     }
     for _ in range(3):  # añade otra 3 rotaciones
         pieza = tuple(tuple(reversed(fila)) for fila in zip(*pieza))
@@ -53,7 +52,6 @@ def rotaciones(pieza):
         rotaciones.add(pieza)
         rotaciones.add(giro)
     return rotaciones
-
 
 
 def resol(piezas, tabla, solu):

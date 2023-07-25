@@ -3,27 +3,27 @@
     col =(2, 189, 198)
     rect1 = [(0,0), (100,50)]
     #pygame.draw.rect(screen, col, rect1, 0)
-    
-    #FIgura 2 
+
+    #FIgura 2
     col2 = (7, 244, 255)
     #poly2 = [(x,y), (x+100, y), (x+100, y+50), (x+50,y+50), (x+50, 100), (x,y+100)]
-    #pygame.draw.polygon(screen, col, poly2, 0)    
-    
+    #pygame.draw.polygon(screen, col, poly2, 0)
+
     #FIgura 3
     col2 = (142, 68, 173)
     poly3 = [(0,0), (50,0), (50, 50), (200, 50), (200,100), (0,100)]
     #pygame.draw.polygon(screen, col2, poly3,0)
-    
+
     #Figura 4
     col3 = (225, 179, 6)
     poly4 = [(50,0),(150,0), (150,50), (100,50), (100, 150), (0,150), (0,100), (50, 100)]
     #pygame.draw.polygon(screen, col3, poly4, 0)
-    
+
     #Figura 5
     col4 = (255, 255, 29)
     poly5 = [(0,0), (150,0), (150,50), (100,50), (100,100), (50, 100), (50,50), (0,50)]
     #pygame.draw.polygon(screen, col4, poly5, 0)
-    
+
     #FIgura 6
     col5 = (120, 255, 8)
     poly6 = [(50,0), (100,0), (100,150), (0,150), (0,50), (50,50)]

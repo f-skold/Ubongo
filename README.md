@@ -71,6 +71,6 @@ E: recolectar gemas(jugador)
 
 ## Autores ✒️
 
-* **Raúl Casanova** 
-* **Roberto Vega** 
-* **Ricardo Villanueva** 
+* **Raúl Casanova**
+* **Roberto Vega**
+* **Ricardo Villanueva**

@@ -1,5 +1,6 @@
 from DadosyGemas import *
 
+
 class jugador:
     def __init__(self, a, b, e):
         self.x = a
@@ -9,7 +10,7 @@ class jugador:
         self.mueve = True
         self.movidas = 0
         self.capacidadRecoleccion = 0
-        self.gemasganadas = [0,0,0,0,0,0]
+        self.gemasganadas = [0, 0, 0, 0, 0, 0]
 
         if e == 1:
             self.color = (132, 61, 9)
@@ -34,10 +35,9 @@ class jugador:
             if f == 2:
                 break
             if gemas[int(self.y / la)][i] != 0:
-                self.gemasganadas[matGemas[int(self.y/la)][i]-1]+=1
+                self.gemasganadas[matGemas[int(self.y / la)][i] - 1] += 1
                 gemas[int(self.y / la)][i] = 0
                 f = f + 1
-                
-                
+
     def getGemasGanadas(self):
         return self.gemasganadas

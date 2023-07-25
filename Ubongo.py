@@ -1,76 +1,84 @@
 import sys
-import pygame
-from pygame.locals import *
-import pygame_menu
+
 import numpy as np
+import pygame
+import pygame_menu
+from pygame.locals import *
+
 import backtracking_ubongo as bu
-from FichasyTableros import *
 from DadosyGemas import *
+from FichasyTableros import *
 from Jugador import *
 
-def DefinirPlantillaJugador(NumeroPlantilla_Jugador, Esc2, surface, origenPlantillaJugador):
-        #Dibujar Plantillas
-        if(NumeroPlantilla_Jugador == 1):
-            Esc2.DibujarPlantilla1(surface, origenPlantillaJugador, 400)
-        elif NumeroPlantilla_Jugador == 2:
-            Esc2.DibujarPlantilla2(surface, origenPlantillaJugador, 400)
-        elif NumeroPlantilla_Jugador == 3: 
-            Esc2.DibujarPlantilla3(surface, origenPlantillaJugador, 400)
-        elif NumeroPlantilla_Jugador == 4:
-            Esc2.DibujarPlantilla4(surface, origenPlantillaJugador, 400)
-        elif NumeroPlantilla_Jugador == 5:
-            Esc2.DibujarPlantilla5(surface, origenPlantillaJugador, 400)
-        elif NumeroPlantilla_Jugador == 6:
-            Esc2.DibujarPlantilla6(surface, origenPlantillaJugador, 400)
-        elif NumeroPlantilla_Jugador == 7:
-            Esc2.DibujarPlantilla7(surface, origenPlantillaJugador, 400)
-        elif NumeroPlantilla_Jugador == 8:
-            Esc2.DibujarPlantilla8(surface, origenPlantillaJugador, 400)
-        elif NumeroPlantilla_Jugador == 9:
-                Esc2.DibujarPlantilla9(surface, origenPlantillaJugador, 400)
 
-def DefinirPlantillaPC(NumeroPlantilla_PC,Esc, surface, origenPlantillaEnemigo):
-        if(NumeroPlantilla_PC == 1):
-            Esc.DibujarPlantilla1(surface, origenPlantillaEnemigo, 400)
-        elif NumeroPlantilla_PC == 2:
-            Esc.DibujarPlantilla2(surface, origenPlantillaEnemigo, 400)
-        elif NumeroPlantilla_PC == 3:
-            Esc.DibujarPlantilla3(surface, origenPlantillaEnemigo, 400)
-        elif NumeroPlantilla_PC == 4:
-            Esc.DibujarPlantilla4(surface, origenPlantillaEnemigo, 400)
-        elif NumeroPlantilla_PC == 5:
-            Esc.DibujarPlantilla5(surface, origenPlantillaEnemigo, 400)
-        elif NumeroPlantilla_PC == 6:
-            Esc.DibujarPlantilla6(surface, origenPlantillaEnemigo, 400)
-        elif NumeroPlantilla_PC == 7:
-            Esc.DibujarPlantilla7(surface, origenPlantillaEnemigo, 400)
-        elif NumeroPlantilla_PC == 8:
-            Esc.DibujarPlantilla8(surface, origenPlantillaEnemigo, 400)
-        elif NumeroPlantilla_PC == 9:
-            Esc.DibujarPlantilla9(surface, origenPlantillaEnemigo, 400)
-            
-def definirGanador(juga,pc):
+def DefinirPlantillaJugador(NumeroPlantilla_Jugador, Esc2, surface, origenPlantillaJugador):
+    # Dibujar Plantillas
+    if NumeroPlantilla_Jugador == 1:
+        Esc2.DibujarPlantilla1(surface, origenPlantillaJugador, 400)
+    elif NumeroPlantilla_Jugador == 2:
+        Esc2.DibujarPlantilla2(surface, origenPlantillaJugador, 400)
+    elif NumeroPlantilla_Jugador == 3:
+        Esc2.DibujarPlantilla3(surface, origenPlantillaJugador, 400)
+    elif NumeroPlantilla_Jugador == 4:
+        Esc2.DibujarPlantilla4(surface, origenPlantillaJugador, 400)
+    elif NumeroPlantilla_Jugador == 5:
+        Esc2.DibujarPlantilla5(surface, origenPlantillaJugador, 400)
+    elif NumeroPlantilla_Jugador == 6:
+        Esc2.DibujarPlantilla6(surface, origenPlantillaJugador, 400)
+    elif NumeroPlantilla_Jugador == 7:
+        Esc2.DibujarPlantilla7(surface, origenPlantillaJugador, 400)
+    elif NumeroPlantilla_Jugador == 8:
+        Esc2.DibujarPlantilla8(surface, origenPlantillaJugador, 400)
+    elif NumeroPlantilla_Jugador == 9:
+        Esc2.DibujarPlantilla9(surface, origenPlantillaJugador, 400)
+
+
+def DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo):
+    if NumeroPlantilla_PC == 1:
+        Esc.DibujarPlantilla1(surface, origenPlantillaEnemigo, 400)
+    elif NumeroPlantilla_PC == 2:
+        Esc.DibujarPlantilla2(surface, origenPlantillaEnemigo, 400)
+    elif NumeroPlantilla_PC == 3:
+        Esc.DibujarPlantilla3(surface, origenPlantillaEnemigo, 400)
+    elif NumeroPlantilla_PC == 4:
+        Esc.DibujarPlantilla4(surface, origenPlantillaEnemigo, 400)
+    elif NumeroPlantilla_PC == 5:
+        Esc.DibujarPlantilla5(surface, origenPlantillaEnemigo, 400)
+    elif NumeroPlantilla_PC == 6:
+        Esc.DibujarPlantilla6(surface, origenPlantillaEnemigo, 400)
+    elif NumeroPlantilla_PC == 7:
+        Esc.DibujarPlantilla7(surface, origenPlantillaEnemigo, 400)
+    elif NumeroPlantilla_PC == 8:
+        Esc.DibujarPlantilla8(surface, origenPlantillaEnemigo, 400)
+    elif NumeroPlantilla_PC == 9:
+        Esc.DibujarPlantilla9(surface, origenPlantillaEnemigo, 400)
+
+
+def definirGanador(juga, pc):
     juga = sorted(juga)
     pc = sorted(pc)
-    cont = len(juga)-1
-    while(juga[cont] == pc[cont] and cont >= 0):
-       cont-=1 
-    if(juga[cont] > pc[cont]):
+    cont = len(juga) - 1
+    while juga[cont] == pc[cont] and cont >= 0:
+        cont -= 1
+    if juga[cont] > pc[cont]:
         return True
     else:
         return False
+
+
 # inicializar Pygame
 pygame.init()
 
 # establecer el título de la ventana
-pygame.display.set_caption('Ubongo!!!')
+pygame.display.set_caption("Ubongo!!!")
 
 # Tamaño de la pantalla para menu
 xs = 1200
 ys = 800
 
-#LETRAS
-menufont = pygame.font.Font(None,48)
+# LETRAS
+menufont = pygame.font.Font(None, 48)
+
 
 def drawTablero(dimensiones, pantalla):
     pygame.draw.rect(pantalla, (0, 0, 0), [0, 0, dimensiones[0], dimensiones[1]])
@@ -82,12 +90,14 @@ def drawTablero(dimensiones, pantalla):
     for x in range(1, 13):
         pygame.draw.line(pantalla, (92, 38, 7), (x * (an), 0), (x * (an), dimensiones[1] - 1), 2)
 
+
 # Parametros para dibujar el tablero
 dimensiones = [1000, 300]
 an = dimensiones[0] / 18
 la = dimensiones[1] / 6
 
-#Menu e instrucciones
+
+# Menu e instrucciones
 def menuOpciones():
     reloj = pygame.time.Clock()
     running = True
@@ -109,9 +119,9 @@ def menuOpciones():
         imagen2 = pygame.image.load("dibujo2.png")
         display.blit(imagen2, (760, 100))
 
-        start = menufont.render('Comenzar Juego', True, (0, 255, 0))
-        instrucciones = menufont.render('Instrucciones', True, (0, 0, 255))
-        quit = menufont.render('Salir', True, (255, 255, 255))
+        start = menufont.render("Comenzar Juego", True, (0, 255, 0))
+        instrucciones = menufont.render("Instrucciones", True, (0, 0, 255))
+        quit = menufont.render("Salir", True, (255, 255, 255))
 
         display.blit(start, (90, 112))
         display.blit(instrucciones, (225, 210))
@@ -144,11 +154,11 @@ def menuOpciones():
         pygame.display.update()
         reloj.tick(60)
 
+
 def instrucciones():
     reloj = pygame.time.Clock()
     running = True
     while running:
-
         display = pygame.display.set_mode((xs, ys))
         display.fill((0, 0, 0))
 
@@ -161,8 +171,8 @@ def instrucciones():
         display.blit(imagen1, (-40, 0))
         pygame.draw.rect(display, (0, 255, 0), button_1)
         pygame.draw.rect(display, (255, 0, 0), button_2)
-        empezar = menufont.render('Empezar', True, (0, 0, 255))
-        volver = menufont.render('Salir', True, (0, 0, 255))
+        empezar = menufont.render("Empezar", True, (0, 0, 255))
+        volver = menufont.render("Salir", True, (0, 0, 255))
         display.blit(empezar, (55, 60))
         display.blit(volver, (78, 110))
 
@@ -187,58 +197,60 @@ def instrucciones():
         pygame.display.update()
         reloj.tick(60)
 
-def cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo):
+
+def cambiarPlantillasPiezas(Esc, Esc2, surface, Dado, origenPlantillaEnemigo):
     Esc2.vaciarMaVali()
-    NumeroPlantilla_Jugador = randint(1,9)
-    NumeroPlantilla_PC = randint(1,9)
+    NumeroPlantilla_Jugador = randint(1, 9)
+    NumeroPlantilla_PC = randint(1, 9)
     DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
-    DefinirPlantillaJugador(NumeroPlantilla_Jugador,Esc2, surface, 100)
+    DefinirPlantillaJugador(NumeroPlantilla_Jugador, Esc2, surface, 100)
     Esc2.borrarRastro()
     tabla = Esc.getTabla_pc()
     Dado.tirar(surface)
-    caraDado = Dado.getRes()-1
-    Esc.cargarFiguras(surface,caraDado,NumeroPlantilla_PC)
+    caraDado = Dado.getRes() - 1
+    Esc.cargarFiguras(surface, caraDado, NumeroPlantilla_PC)
     piezas = Esc.getPiezas()
     print(piezas)
     # solucion será de las mismas dimensiones de la tabla
     solucion = [[0 for j in range(len(tabla[i]))] for i in range(len(tabla))]
     # mandamos las piezas, la tabla y la tabla que traerá la solución
     bu.resolucion(piezas, tabla, solucion)
-    contSol = [0,0,0,0]
-    ocur = [0,0,0,0]
+    contSol = [0, 0, 0, 0]
+    ocur = [0, 0, 0, 0]
 
     for i in range(len(solucion)):
-        for j in range(2,6):
-           ocur[j-2] +=  solucion[i].count(j)
+        for j in range(2, 6):
+            ocur[j - 2] += solucion[i].count(j)
 
-    #captura tiempo
+    # captura tiempo
     global tiempoFinal
     tiempoFinal = pygame.time.get_ticks()
-    
-    return NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol
+
+    return NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion, ocur, contSol
 
 
 def main():
-
     screen = pygame.display
 
     # Superfice que se toma
     surface = screen.set_mode([xs, ys])
-    #tiempoLimite = None
+    # tiempoLimite = None
     pygame.display.flip()
 
     # Datos del tablero
     Dado = dado()
     gemas = []
-    matGemas =  [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    matGemas = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ]
     gemas = gema.inicializarGemas(gemas)
 
-    #Booleano que permite jugar con las piezas
+    # Booleano que permite jugar con las piezas
     armarPuzzle = False
 
     # Creacion de las fichas de los jugadores
@@ -248,7 +260,7 @@ def main():
     # creación y disposición de las gemas en el tablero, color al azar
     for y in range(0, 6):
         for x in range(0, 12):
-            col = randint(1,6)
+            col = randint(1, 6)
             gemas[y][x] = gema(x * an, y * la, col)
             matGemas[y][x] = col
 
@@ -261,7 +273,7 @@ def main():
     # X y Y sirven para obtener la posicion del raton
     x = 0
     y = 0
-    
+
     origenPlantillaJugador = 500
     origenPlantillaEnemigo = 900
 
@@ -271,23 +283,22 @@ def main():
     partidasGanadas = 0
     partidasGanadas_PC = 0
 
-
     # Bool que activa o desactiva el movimiento
     activate = False
 
     # aux -> Tomará los valores de la Figura seleccionada
     aux = 0
 
-    #Plantillas aleatorias que se le asigna al jugador y a la máquina
-    NumeroPlantilla_Jugador = randint(1,9)
-    NumeroPlantilla_PC = randint(1,9)
+    # Plantillas aleatorias que se le asigna al jugador y a la máquina
+    NumeroPlantilla_Jugador = randint(1, 9)
+    NumeroPlantilla_PC = randint(1, 9)
     DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
     Dado.tirar(surface)
-    DefinirPlantillaJugador(NumeroPlantilla_Jugador,Esc2,surface,origenPlantillaJugador)
+    DefinirPlantillaJugador(NumeroPlantilla_Jugador, Esc2, surface, origenPlantillaJugador)
 
     # SOLUCION CON BACTRACKING -> Jugador Computadora
     tabla = Esc.getTabla_pc()
-    Esc.cargarFiguras(surface,randint(0,5),NumeroPlantilla_PC)
+    Esc.cargarFiguras(surface, randint(0, 5), NumeroPlantilla_PC)
     piezas = Esc.getPiezas()
     print(len(piezas))
     # solucion será de las mismas dimensiones de la tabla
@@ -298,12 +309,12 @@ def main():
     print("solucion:")
     print(np.matrix(solucion))
     print()
-    contSol = [0,0,0,0]
-    ocur = [0,0,0,0]
+    contSol = [0, 0, 0, 0]
+    ocur = [0, 0, 0, 0]
 
     for i in range(len(solucion)):
-        for j in range(2,6):
-           ocur[j-2] +=  solucion[i].count(j)
+        for j in range(2, 6):
+            ocur[j - 2] += solucion[i].count(j)
     print(ocur)
 
     # Booleano que controla el while principal
@@ -315,7 +326,7 @@ def main():
     # FPS fijados en 20
     reloj.tick(20)
     contadorPiezasPuestas = 0
-    
+
     gemaRecogida = False
 
     # bucle infinito
@@ -344,13 +355,13 @@ def main():
                 # teclas tablero
                 if event.key == K_e and players[0].capacidadRecoleccion > 0:
                     print("apretaste E")
-                    players[0].ganargemas(gemas,matGemas)
+                    players[0].ganargemas(gemas, matGemas)
                     players[0].capacidadRecoleccion -= 1
-                    if(gemaRecogida == False):
+                    if gemaRecogida == False:
                         movimientoPC()
-                        
+
                 if event.key == K_r and players[1].capacidadRecoleccion > 0:
-                    players[1].ganargemas(gemas,matGemas)
+                    players[1].ganargemas(gemas, matGemas)
                     players[1].capacidadRecoleccion -= 1
                 if event.key == K_UP:
                     if players[0].mueve == True and players[0].movidas > 0 and players[0].y - la >= 0:
@@ -369,7 +380,7 @@ def main():
                         players[1].y = players[1].y + la
                         players[1].movidas = players[1].movidas - 1
                 if event.key == K_x and partidasRestantes > 0:
-                    if(armarPuzzle == False):
+                    if armarPuzzle == False:
                         armarPuzzle = True
                         tiempo_inicio = pygame.time.get_ticks()
 
@@ -394,9 +405,9 @@ def main():
                     if aux != 0:
                         aux.acomodarImg()
                         actualX, actualY = aux.getPos()
-                        #cambia a su posición inicial cuando tiene una posición invalida
+                        # cambia a su posición inicial cuando tiene una posición invalida
                         if not Esc2.colocar(actualX, actualY, aux):
-                          aux.setIniPos()  
+                            aux.setIniPos()
                     aux = 0
 
         # Computadora recolecta fichas por si sola
@@ -414,7 +425,7 @@ def main():
 
         def recoleccionGemasPC():
             if players[1].capacidadRecoleccion > 0:
-                players[1].ganargemas(gemas,matGemas)
+                players[1].ganargemas(gemas, matGemas)
                 players[1].capacidadRecoleccion -= 1
 
         x, y = pygame.mouse.get_pos()
@@ -434,28 +445,37 @@ def main():
         color3 = (0, 0, 255)
         color4 = (127, 0, 255)
 
-        #Se cargan las plantillas
-        if(armarPuzzle):
-        # Puzzle Jugador
-            if (Esc2.IsComplete() == True):
+        # Se cargan las plantillas
+        if armarPuzzle:
+            # Puzzle Jugador
+            if Esc2.IsComplete() == True:
                 armarPuzzle = False
                 gemaRecogida = False
                 print("ganaste")
                 partidasGanadas += 1
                 players[0].movidas = 2
-                players[0].capacidadRecoleccion =1
+                players[0].capacidadRecoleccion = 1
                 players[1].movidas = 1
-                players[1].capacidadRecoleccion =1
+                players[1].capacidadRecoleccion = 1
                 contadorPiezasPuestas = 0
-                NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
+                (
+                    NumeroPlantilla_Jugador,
+                    NumeroPlantilla_PC,
+                    tabla,
+                    piezas,
+                    solucion,
+                    ocur,
+                    contSol,
+                ) = cambiarPlantillasPiezas(Esc, Esc2, surface, Dado, origenPlantillaEnemigo)
                 # Si se gana la partida actual, aparece este mensaje
                 partidasRestantes = partidasRestantes - 1
-                ganar1 = menufont.render('Ganaste esta partida. Quedan {} partidas.'.format(partidasRestantes),
-                                             True, (0, 255, 0))
+                ganar1 = menufont.render(
+                    "Ganaste esta partida. Quedan {} partidas.".format(partidasRestantes), True, (0, 255, 0)
+                )
                 surface.blit(ganar1, (100, 633))
-            else: 
-                DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface,origenPlantillaEnemigo)
-                DefinirPlantillaJugador(NumeroPlantilla_Jugador,Esc2, surface,origenPlantillaJugador)
+            else:
+                DefinirPlantillaPC(NumeroPlantilla_PC, Esc, surface, origenPlantillaEnemigo)
+                DefinirPlantillaJugador(NumeroPlantilla_Jugador, Esc2, surface, origenPlantillaJugador)
 
                 current_time = pygame.time.get_ticks()
 
@@ -463,24 +483,37 @@ def main():
                 for yy in range(len(solucion)):
                     for xx in range(len(solucion[yy])):
                         if solucion[yy][xx] == 2 and current_time >= (tiempoLimite * 0.25) + tiempo_inicio:
-                            if(contSol[0] < ocur[0]):
-                                contSol[0]+=1
-                            pygame.draw.rect(surface, color1,
-                                             [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
+                            if contSol[0] < ocur[0]:
+                                contSol[0] += 1
+                            pygame.draw.rect(
+                                surface,
+                                color1,
+                                [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)],
+                            )
                         if solucion[yy][xx] == 3 and current_time >= (tiempoLimite * 0.5) + tiempo_inicio:
-                            if(contSol[1] < ocur[1]):
-                                contSol[1]+=1
-                            pygame.draw.rect(surface, color2,
-                                             [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
+                            if contSol[1] < ocur[1]:
+                                contSol[1] += 1
+                            pygame.draw.rect(
+                                surface,
+                                color2,
+                                [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)],
+                            )
                         if solucion[yy][xx] == 4 and current_time >= (tiempoLimite * 0.75) + tiempo_inicio:
-                            if(contSol[2] < ocur[2]):
-                                contSol[2]+=1
-                            pygame.draw.rect(surface, color3,
-                                             [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
+                            if contSol[2] < ocur[2]:
+                                contSol[2] += 1
+                            pygame.draw.rect(
+                                surface,
+                                color3,
+                                [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)],
+                            )
                         if solucion[yy][xx] == 5 and current_time >= tiempoLimite + tiempo_inicio:
-                            if(contSol[3] < ocur[3]):
-                                contSol[3]+=1
-                            pygame.draw.rect(surface, color4, [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)])
+                            if contSol[3] < ocur[3]:
+                                contSol[3] += 1
+                            pygame.draw.rect(
+                                surface,
+                                color4,
+                                [(origenPlantillaEnemigo + (xx * 50), origenY + (yy * 50)), (width, height)],
+                            )
 
         # para tablero
         drawTablero(dimensiones, surface)
@@ -495,40 +528,40 @@ def main():
         for j in range(len(players)):
             players[j].dibujarjugador(surface)
 
-            #desactivar. Si esta activada se inhabilita el movimiento
-           # if players[j].movidas <= 0:
-                #players[j].mueve = False
+            # desactivar. Si esta activada se inhabilita el movimiento
+        # if players[j].movidas <= 0:
+        # players[j].mueve = False
 
         Dado.dibujarDado(Dado.res, surface)
 
-        if(armarPuzzle):
+        if armarPuzzle:
             # Se cargan todas las figuras
-            Esc2.cargarFiguras(surface, Dado.getRes()-1, NumeroPlantilla_Jugador)
+            Esc2.cargarFiguras(surface, Dado.getRes() - 1, NumeroPlantilla_Jugador)
 
-        #Separador
+        # Separador
         pygame.draw.line(surface, (0, 0, 0), (800, dimensiones[1]), (800, 900), 20)
 
-        #Display gemas de cada jugador
-        displayGemas0 = menufont.render('{}'.format(players[0].getGemasGanadas()[0]), True,(255,0,0))
-        displayGemas1 = menufont.render('{}'.format(players[0].getGemasGanadas()[1]), True, (0, 0, 255))
-        displayGemas2 = menufont.render('{}'.format(players[0].getGemasGanadas()[2]), True, (52, 234, 17))
-        displayGemas3 = menufont.render('{}'.format(players[0].getGemasGanadas()[3]), True, (255, 255, 0))
-        displayGemas4 = menufont.render('{}'.format(players[0].getGemasGanadas()[4]), True, (255, 147, 0))
-        displayGemas5 = menufont.render('{}'.format(players[0].getGemasGanadas()[5]), True, (128,0,128))
-        surface.blit(displayGemas0,(20,  700))
+        # Display gemas de cada jugador
+        displayGemas0 = menufont.render("{}".format(players[0].getGemasGanadas()[0]), True, (255, 0, 0))
+        displayGemas1 = menufont.render("{}".format(players[0].getGemasGanadas()[1]), True, (0, 0, 255))
+        displayGemas2 = menufont.render("{}".format(players[0].getGemasGanadas()[2]), True, (52, 234, 17))
+        displayGemas3 = menufont.render("{}".format(players[0].getGemasGanadas()[3]), True, (255, 255, 0))
+        displayGemas4 = menufont.render("{}".format(players[0].getGemasGanadas()[4]), True, (255, 147, 0))
+        displayGemas5 = menufont.render("{}".format(players[0].getGemasGanadas()[5]), True, (128, 0, 128))
+        surface.blit(displayGemas0, (20, 700))
         surface.blit(displayGemas1, (40, 700))
         surface.blit(displayGemas2, (60, 700))
         surface.blit(displayGemas3, (80, 700))
-        surface.blit(displayGemas4, (100,700))
-        surface.blit(displayGemas5, (120,700))
+        surface.blit(displayGemas4, (100, 700))
+        surface.blit(displayGemas5, (120, 700))
 
-        displayGemasPC0 = menufont.render('{}'.format(players[1].getGemasGanadas()[0]), True,(255,0,0))
-        displayGemasPC1 = menufont.render('{}'.format(players[1].getGemasGanadas()[1]), True, (0, 0, 255))
-        displayGemasPC2 = menufont.render('{}'.format(players[1].getGemasGanadas()[2]), True, (52, 234, 17))
-        displayGemasPC3 = menufont.render('{}'.format(players[1].getGemasGanadas()[3]), True, (255, 255, 0))
-        displayGemasPC4 = menufont.render('{}'.format(players[1].getGemasGanadas()[4]), True, (255, 147, 0))
-        displayGemasPC5 = menufont.render('{}'.format(players[1].getGemasGanadas()[5]), True, (128,0,128))
-        surface.blit(displayGemasPC0,(1080,  700))
+        displayGemasPC0 = menufont.render("{}".format(players[1].getGemasGanadas()[0]), True, (255, 0, 0))
+        displayGemasPC1 = menufont.render("{}".format(players[1].getGemasGanadas()[1]), True, (0, 0, 255))
+        displayGemasPC2 = menufont.render("{}".format(players[1].getGemasGanadas()[2]), True, (52, 234, 17))
+        displayGemasPC3 = menufont.render("{}".format(players[1].getGemasGanadas()[3]), True, (255, 255, 0))
+        displayGemasPC4 = menufont.render("{}".format(players[1].getGemasGanadas()[4]), True, (255, 147, 0))
+        displayGemasPC5 = menufont.render("{}".format(players[1].getGemasGanadas()[5]), True, (128, 0, 128))
+        surface.blit(displayGemasPC0, (1080, 700))
         surface.blit(displayGemasPC1, (1100, 700))
         surface.blit(displayGemasPC2, (1120, 700))
         surface.blit(displayGemasPC3, (1140, 700))
@@ -536,30 +569,32 @@ def main():
         surface.blit(displayGemasPC5, (1180, 700))
 
         # Display partidas restantes
-        displayPartidasRestantes = menufont.render('Partidas restantes: {}'.format(partidasRestantes), True, (0, 0, 0))
+        displayPartidasRestantes = menufont.render("Partidas restantes: {}".format(partidasRestantes), True, (0, 0, 0))
         surface.blit(displayPartidasRestantes, (600, 720))
-        
+
         # Mostrar al ganador cuando acaban 9 partidas
         if partidasRestantes == 0:
-            if definirGanador(players[0].getGemasGanadas(),players[1].getGemasGanadas()):
+            if definirGanador(players[0].getGemasGanadas(), players[1].getGemasGanadas()):
                 ganadorFont = pygame.font.SysFont("comicsansms", 80)
-                displayGanador = ganadorFont.render('{}, ganaste!!!'.format(nombreJugador), True, (0, 180, 0))
+                displayGanador = ganadorFont.render("{}, ganaste!!!".format(nombreJugador), True, (0, 180, 0))
                 surface.blit(displayGanador, (200, 450))
                 displayTiempoJugado = menufont.render(
-                    "Jugaste {} milisegundos!".format(tiempoFinal - tiempoInicioDePartida), True, (0, 180, 0))
+                    "Jugaste {} milisegundos!".format(tiempoFinal - tiempoInicioDePartida), True, (0, 180, 0)
+                )
                 surface.blit(displayTiempoJugado, (200, 650))
             else:
                 ganadorFont = pygame.font.SysFont("comicsansms", 80)
-                displayGanador = ganadorFont.render('{}, Perdiste!!!'.format(nombreJugador), True, (0, 180, 0))
+                displayGanador = ganadorFont.render("{}, Perdiste!!!".format(nombreJugador), True, (0, 180, 0))
                 surface.blit(displayGanador, (200, 450))
                 displayTiempoJugado = menufont.render(
-                    "Jugaste {} milisegundos!".format(tiempoFinal - tiempoInicioDePartida), True, (0, 180, 0))
+                    "Jugaste {} milisegundos!".format(tiempoFinal - tiempoInicioDePartida), True, (0, 180, 0)
+                )
                 surface.blit(displayTiempoJugado, (200, 650))
 
         screen.update()
 
-        if(armarPuzzle):
-            if(contSol[0] == ocur[0] and contSol[1] == ocur[1] and contSol[2] == ocur[2] and contSol[3] == ocur[3]):
+        if armarPuzzle:
+            if contSol[0] == ocur[0] and contSol[1] == ocur[1] and contSol[2] == ocur[2] and contSol[3] == ocur[3]:
                 gemaRecogida = True
                 print("perdiste")
                 partidasGanadas_PC += 1
@@ -569,8 +604,18 @@ def main():
                 players[1].capacidadRecoleccion = 1
                 movimientoPC()
                 armarPuzzle = False
-                NumeroPlantilla_Jugador, NumeroPlantilla_PC, tabla, piezas, solucion,ocur,contSol = cambiarPlantillasPiezas(Esc,Esc2,surface,Dado,origenPlantillaEnemigo)
-                perder1 = menufont.render('Perdiste esta partida. Quedan {} partidas.'.format(partidasRestantes), True, (0, 0, 0))
+                (
+                    NumeroPlantilla_Jugador,
+                    NumeroPlantilla_PC,
+                    tabla,
+                    piezas,
+                    solucion,
+                    ocur,
+                    contSol,
+                ) = cambiarPlantillasPiezas(Esc, Esc2, surface, Dado, origenPlantillaEnemigo)
+                perder1 = menufont.render(
+                    "Perdiste esta partida. Quedan {} partidas.".format(partidasRestantes), True, (0, 0, 0)
+                )
                 surface.blit(perder1, (400, 550))
                 partidasRestantes = partidasRestantes - 1
                 contadorPiezasPuestas = 0
@@ -580,21 +625,23 @@ def main():
 screen = pygame.display
 surface = screen.set_mode([xs, ys])
 
-#Inicializar variables de partida
+# Inicializar variables de partida
 global tiempoLimite
 tiempoLimite = 30000
 global nombreJugador
-nombreJugador = 'player'
+nombreJugador = "player"
 
 menuOpciones()
 
-if menuOpciones()==False:
+if menuOpciones() == False:
     instrucciones()
+
 
 def start_the_game():
     global tiempoInicioDePartida
     tiempoInicioDePartida = pygame.time.get_ticks()
     menu.disable()
+
 
 def set_difficulty(value, difficulty):
     global current_time
@@ -602,18 +649,19 @@ def set_difficulty(value, difficulty):
     global tiempoLimite
     tiempoLimite = difficulty
 
+
 def check_name(value, nombre):
     global nombreJugador
     nombreJugador = value
-    #print(nombreJugador)
+    # print(nombreJugador)
 
-menu = pygame_menu.Menu(400, 400, 'Ubongo',
-                        theme=pygame_menu.themes.THEME_SOLARIZED)
 
-menu.add_text_input('Nombre :', nombre='', onchange=check_name)
-menu.add_selector('Dificultad :', [('Dificil', 30000), ('Medio', 60000), ('Facil', 90000)], onchange=set_difficulty)
-menu.add_button('Play', start_the_game)
-menu.add_button('Quit', pygame_menu.events.EXIT)
+menu = pygame_menu.Menu(400, 400, "Ubongo", theme=pygame_menu.themes.THEME_SOLARIZED)
+
+menu.add_text_input("Nombre :", nombre="", onchange=check_name)
+menu.add_selector("Dificultad :", [("Dificil", 30000), ("Medio", 60000), ("Facil", 90000)], onchange=set_difficulty)
+menu.add_button("Play", start_the_game)
+menu.add_button("Quit", pygame_menu.events.EXIT)
 
 menu.mainloop(surface)
 

@@ -1,4 +1,5 @@
 import random
+
 from FichasyTableros import *
 
 # Parametros para dibujar el tablero
@@ -6,16 +7,17 @@ dimensiones = [1000, 300]
 an = dimensiones[0] / 18
 la = dimensiones[1] / 6
 
+
 class dado:
     def __init__(self):
         self.res = 0
 
-        self.i1 = pygame.image.load(r'DadoImagenes/i1.png')
-        self.i2 = pygame.image.load(r'DadoImagenes/i2.png')
-        self.i3 = pygame.image.load(r'DadoImagenes/i3.png')
-        self.i4 = pygame.image.load(r'DadoImagenes/i4.png')
-        self.i5 = pygame.image.load(r'DadoImagenes/i5.png')
-        self.i6 = pygame.image.load(r'DadoImagenes/i6.png')
+        self.i1 = pygame.image.load(r"DadoImagenes/i1.png")
+        self.i2 = pygame.image.load(r"DadoImagenes/i2.png")
+        self.i3 = pygame.image.load(r"DadoImagenes/i3.png")
+        self.i4 = pygame.image.load(r"DadoImagenes/i4.png")
+        self.i5 = pygame.image.load(r"DadoImagenes/i5.png")
+        self.i6 = pygame.image.load(r"DadoImagenes/i6.png")
 
     def dibujarDado(self, res, pan):
         if res == 1:
@@ -37,6 +39,7 @@ class dado:
 
     def getRes(self):
         return self.res
+
 
 class gema:
     def __init__(self, a, b, e):
@@ -62,14 +65,15 @@ class gema:
         pygame.draw.ellipse(pantalla, self.color, [self.x + an / 4, self.y + la / 4, self.w, self.h])
 
     def inicializarGemas(self):
-        gemas = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        gemas = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
         return gemas
-    
-    def getGemas(self,i,j):
-        return self.gemas[i][j]
 
+    def getGemas(self, i, j):
+        return self.gemas[i][j]
