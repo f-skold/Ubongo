@@ -1,0 +1,6 @@
+[flake8]
+max-line-length = 120
+exclude =
+    .git,
+    __pycache__,
+    src/rio_tiler_pds_sentinel_utils*.py
