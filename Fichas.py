@@ -1,6 +1,55 @@
+import re
+
 import pygame
 
 # import backtracking_ubongo
+
+
+def readTextFile():
+    def add_shape(all_figures, figure, shape):
+        figure["shape"] = shape
+        id = figure["id"]
+        all_figures[id] = figure
+        print(figure)
+
+    re_num = re.compile(r"Num:")
+    re_name = re.compile(r"Name:")
+    re_color = re.compile(r"Color:")
+    re_shape = re.compile(r"Shape:")
+
+    filename = "Fichas/fichas.txt"
+    all_figures = {}
+    figure = {}
+    shape = []
+    shape_mode = False
+    with open(filename, "rt") as fp:
+        for line1 in fp.readlines():
+            line2 = line1.strip()
+            if 0 == len(line2):
+                if shape:
+                    add_shape(all_figures, figure, shape)
+                shape = []
+                shape_mode = False
+
+            elif re_num.match(line2):
+                temp = line2.split(":")
+                second = temp[1].strip()
+                figure = {"id": int(second)}
+                figure["name"] = second
+            elif re_name.match(line2):
+                temp = line2.split(":")
+                figure["name"] = temp[1].strip()
+            elif re_color.match(line2):
+                temp = line2.split(":")
+                second = temp[1].strip()
+                figure["color"] = second
+            elif re_shape.match(line2):
+                shape_mode = True
+            elif shape_mode:
+                shape.append([int(c) for c in line2])
+        if shape:
+            add_shape(all_figures, figure, shape)
+    return all_figures
 
 
 class CFigura:

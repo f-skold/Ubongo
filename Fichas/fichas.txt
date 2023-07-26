@@ -1,0 +1,74 @@
+Num: 1
+Color: #00FFFF
+Shape:
+11
+
+Num: 2
+Color: #09C1CA
+Shape:
+11
+10
+
+Num: 3
+Color: #FF00FF
+Shape:
+1000
+1111
+
+Num: 4
+Color: #FFFF00
+Shape:
+011
+010
+110
+
+Num: 5
+Color: #FFC600
+Shape:
+111
+010
+
+Num: 6
+Color: #00FF00
+Shape:
+01
+11
+11
+
+Num: 7
+Color: #B97A57
+Shape:
+1111
+
+Num: 8
+Color: #FF8000
+Shape:
+1111
+0100
+
+Num: 9
+Color: #A349A4
+Shape:
+1
+1
+1
+
+Num: 10
+Color: #3F48CC
+Shape:
+01
+11
+10
+
+Num: 11
+Color: #22B14C
+Shape:
+11
+10
+10
+
+Num: 12
+Color: #ED1C24
+Shape:
+11
+11
