@@ -2,6 +2,18 @@ def gen_matrix(string):
     return [[int(x) for x in line.strip()] for line in string.strip().split("\n")]
 
 
+# change values
+def gen_matrix2(string, num):
+    def transform_value(n):
+        if 0 == n:
+            return n
+        else:
+            return num
+
+    temp = gen_matrix(string)
+    return [map(transform_value, row) for row in temp]
+
+
 def es_valido(pos, tabla):
     # Revisa si cada tupla de posicion (x,y) está en el tablero y no fuera
     x, y = pos
