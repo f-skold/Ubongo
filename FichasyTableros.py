@@ -109,6 +109,28 @@ class Plantilla:
     def getPiezas(self):
         return self.piezas
 
+    # DibujarPlantilla1
+    def DrawTemplate1(self, surface, x, y):
+        brick_size = (50, 50)
+        card = RetriveCard(1)
+        mat = card.GetMatrix()
+
+        # Draw graphix
+        y = self.y
+        for row in mat:
+            x = self.x
+            for column in row:
+                if 0 == column:
+                    pygame.draw.rect(surface, self.color, [(x, y), brick_size], 5)
+                x += 50
+            y += 50
+
+        # Matrix
+        if len(self.ma_vali) == 0:
+            # NOTE: replace 1 with -1 ?
+            self.ma_vali = mat
+        pass
+
     # 3 Fichas
     def DibujarPlantilla1(self, surface, x, y):
         self.color = (randint(1, 150), randint(1, 150), randint(1, 150))
