@@ -42,3 +42,18 @@ class CardTemplateReader:
             if card:
                 add_card(card, board)
         return self.cards
+
+    def PrintBoard(self, num):
+        card = self.cards[num]
+        board = card["board"]
+        for row in board:
+            s = "|"
+            for col in row:
+                if 0 == col:
+                    s += "."
+                elif 1 == col:
+                    s += "X"
+            s += "|"
+            print(s)
+        count = 2 + len(board[0])
+        print("+" * count)
