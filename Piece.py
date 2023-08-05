@@ -91,10 +91,14 @@ class Piece:
         # print(self.rotations)
         temp = []
         for i in range(self.biggest):
-            temp.append(["." for _ in range((1 + self.biggest) * len(self.rotations))])
+            temp.append([" " for _ in range((1 + self.biggest) * len(self.rotations))])
 
         for i, mat in enumerate(self.rotations):
             start = (1 + self.biggest) * i
+            if start - 1 > 0:
+                for y in range(self.biggest):
+                    temp[y][start - 1] = "|"
+
             for y, row in enumerate(mat):
                 for x, value in enumerate(row):
                     try:

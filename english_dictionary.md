@@ -21,6 +21,7 @@
 | tabla_pc | table piece? |
 | fila | row |
 | piezas | parts |
+| cara | ? |
 
 | Dibujar Plantilla | Draw Template |
 | Dibujar tablero de jugador computadora | Draw computer player board |
